@@ -1,0 +1,203 @@
+snapshot_date,source_id,level,application,chain_product,unit,unit_as_published,project_id,metric,value,note
+2024-07-23,B12,platform,,,,,C01,departments,19,
+2024-07-23,B12,platform,,,,,C01,documents,81192971,
+2024-07-23,B12,platform,,,,,C01,organisations_states,9,
+2024-07-23,B12,platform,,,,,C01,products,5,
+2024-07-23,B12,application,Central Board of Secondary Education,Certificate Chain,,,,documents,17124672,
+2024-07-23,B12,application,Certificate Chain,Certificate Chain,,,,documents,29733,
+2024-07-23,B12,application,Document Chain,Document Chain,,,,documents,29083400,
+2024-07-23,B12,application,Drug logistics,Logistics Chain,,,,documents,2675479,
+2024-07-23,B12,application,Judiciary Chain,Judiciary Chain,,,,documents,97,
+2024-07-23,B12,application,Property Chain,Property Chain,,,,documents,19659090,
+2024-07-23,B12,application,SSLC & PUC,Certificate Chain,,,,documents,12620500,
+2024-07-23,B12,department,Central Board of Secondary Education,Certificate Chain,Central Board of Secondary Education,Central Board of Secondary Education,O14,documents,17124672,application total (single department)
+2024-07-23,B12,department,Certificate Chain,Certificate Chain,"Chhattisgarh – Indira Gandhi Krishi Vishwavidyalaya, Raipur","Chhattisgarh – Indira Gandhi Krishi Vishwavidyalaya, Raipur",S12,documents,1349,
+2024-07-23,B12,department,Certificate Chain,Certificate Chain,Manipur – Council of Higher Secondary Education,Manipur – Council of Higher Secondary Education Manipur,S48,documents,28384,
+2024-07-23,B12,department,Document Chain,Document Chain,Andhra Pradesh – Water Resources Department,Andhra Pradesh – Water Resource Department,S04,documents,12,
+2024-07-23,B12,department,Document Chain,Document Chain,Delhi – Revenue Department,Delhi – Revenue Department,S74,documents,121810,
+2024-07-23,B12,department,Document Chain,Document Chain,Karnataka – Directorate of Economics & Statistics,Karnataka – Directorate of economics and statistics,S23,documents,3368429,
+2024-07-23,B12,department,Document Chain,Document Chain,Karnataka – Revenue Department,Karnataka – Revenue Department,S24,documents,25201556,
+2024-07-23,B12,department,Document Chain,Document Chain,Ministry of Consumer Affairs – Department of Consumer Affairs,Ministry of Consumer Affairs – Department of Consumer Affairs,C11,documents,5225,
+2024-07-23,B12,department,Document Chain,Document Chain,Puducherry – Department of Civil Supplies & Consumer Affairs,Puducherry – Department of Civil Supplies and Consumer Affairs,S78,documents,386363,
+2024-07-23,B12,department,Document Chain,Document Chain,Puducherry – Revenue Department,Puducherry – Revenue Department,S77,documents,1,
+2024-07-23,B12,department,Drug logistics,Logistics Chain,Karnataka – State Medical Supplies Corporation Ltd,Drug logistics,S22,documents,2675479,application total (single department)
+2024-07-23,B12,department,Judiciary Chain,Judiciary Chain,Ministry of Law & Justice – Supreme Court of India,Ministry of Justice – Supreme Court,C08,documents,97,
+2024-07-23,B12,department,Property Chain,Property Chain,Jharkhand – Department of Revenue,Jharkhand – Department of Revenue,S21,documents,4185,
+2024-07-23,B12,department,Property Chain,Property Chain,Karnataka – City Corporation,Karnataka – City Corporation,S27,documents,34169,
+2024-07-23,B12,department,Property Chain,Property Chain,Karnataka – Revenue Department,Karnataka – Revenue Department,S26,documents,19620723,
+2024-07-23,B12,department,Property Chain,Property Chain,Karnataka – Town Municipal Council,Karnataka – Town Municipal Council,S27,documents,9,
+2024-07-23,B12,department,Property Chain,Property Chain,Puducherry – Revenue Department,Puducherry – Revenue Department,,documents,4,Not matched to a project row (no Puducherry property-chain project found; 4 documents).
+2024-07-23,B12,department,SSLC & PUC,Certificate Chain,Karnataka – School Examination and Assessment Board,SSLC & PUC,S25,documents,12620500,application total (single department)
+2025-12-14,D01,platform,,,,,C01,departments,21,Dashboard tiles shown in presentation slides (as on 14-12-2025)
+2025-12-14,D01,platform,,,,,C01,documents,103772193,Dashboard tiles shown in presentation slides (as on 14-12-2025)
+2025-12-14,D01,platform,,,,,C01,organisations_states,10,Dashboard tiles shown in presentation slides (as on 14-12-2025)
+2025-12-14,D01,platform,,,,,C01,pocs,4,Dashboard tiles shown in presentation slides (as on 14-12-2025)
+2025-12-14,D01,platform,,,,,C01,products,6,Dashboard tiles shown in presentation slides (as on 14-12-2025)
+2025-12-14,D01,platform,,,,,C01,verifications_total,363602368,Dashboard tiles shown in presentation slides (as on 14-12-2025)
+2026-10-03,B01,platform,,,,,C01,departments,22,
+2026-10-03,B01,platform,,,,,C01,documents,112546175,
+2026-10-03,B01,platform,,,,,C01,organisations_states,12,
+2026-10-03,B01,platform,,,,,C01,pocs,4,
+2026-10-03,B01,platform,,,,,C01,products,6,
+2026-10-03,B01,platform,,,,,C01,verifications_total,471359890,
+2026-10-03,B01,department,Central Board of Secondary Education,Certificate Chain,Central Board of Secondary Education,Central Board of Secondary Education,O14,documents,21071556,
+2026-10-03,B01,department,Central Board of Secondary Education,Certificate Chain,Central Board of Secondary Education,Central Board of Secondary Education,O14,verifications_current_month,0,month-to-date on the data date Dashboard lists these verifications under 'Karnataka Examination Authority' (labelling quirk).
+2026-10-03,B01,department,Central Board of Secondary Education,Certificate Chain,Central Board of Secondary Education,Central Board of Secondary Education,O14,verifications_total,85261,Dashboard lists these verifications under 'Karnataka Examination Authority' (labelling quirk).
+2026-10-03,B01,department,Certificate Chain,Certificate Chain,"Chhattisgarh – Indira Gandhi Krishi Vishwavidyalaya, Raipur","Chhattisgarh – Indira Gandhi Krishi Vishwavidyalaya, Raipur",S12,documents,7277,
+2026-10-03,B01,department,Certificate Chain,Certificate Chain,"Chhattisgarh – Indira Gandhi Krishi Vishwavidyalaya, Raipur","Chhattisgarh – Indira Gandhi Krishi Vishwavidyalaya, Raipur",S12,verifications_current_month,0,month-to-date on the data date
+2026-10-03,B01,department,Certificate Chain,Certificate Chain,"Chhattisgarh – Indira Gandhi Krishi Vishwavidyalaya, Raipur","Chhattisgarh – Indira Gandhi Krishi Vishwavidyalaya, Raipur",S12,verifications_total,103,
+2026-10-03,B01,department,Certificate Chain,Certificate Chain,Maharashtra – Maharashtra University of Health Sciences,Maharashtra – Maharashtra University of Health Sciences,S40,documents,31749,
+2026-10-03,B01,department,Certificate Chain,Certificate Chain,Maharashtra – Maharashtra University of Health Sciences,Maharashtra – Maharashtra University of Health Sciences,S40,verifications_current_month,23,month-to-date on the data date
+2026-10-03,B01,department,Certificate Chain,Certificate Chain,Maharashtra – Maharashtra University of Health Sciences,Maharashtra – Maharashtra University of Health Sciences,S40,verifications_total,6324,
+2026-10-03,B01,department,Certificate Chain,Certificate Chain,Maharashtra – State Board of Nursing & Paramedical Education,Maharashtra – State Board of Nursing & Paramedical Education,S41,documents,202444,
+2026-10-03,B01,department,Certificate Chain,Certificate Chain,Maharashtra – State Board of Nursing & Paramedical Education,Maharashtra – State Board of Nursing & Paramedical Education,S41,verifications_current_month,0,month-to-date on the data date
+2026-10-03,B01,department,Certificate Chain,Certificate Chain,Maharashtra – State Board of Nursing & Paramedical Education,Maharashtra – State Board of Nursing & Paramedical Education,S41,verifications_total,10783,
+2026-10-03,B01,department,Certificate Chain,Certificate Chain,Manipur – Council of Higher Secondary Education,Manipur – Council of Higher Secondary Education,S48,documents,79614,
+2026-10-03,B01,department,Certificate Chain,Certificate Chain,Manipur – Council of Higher Secondary Education,Manipur – Council of Higher Secondary Education,S48,verifications_current_month,0,month-to-date on the data date
+2026-10-03,B01,department,Certificate Chain,Certificate Chain,Manipur – Council of Higher Secondary Education,Manipur – Council of Higher Secondary Education,S48,verifications_total,59,
+2026-10-03,B01,department,Document Chain,Document Chain,Delhi – Revenue Department,Delhi – Revenue Department,S74,documents,816543,
+2026-10-03,B01,department,Document Chain,Document Chain,Delhi – Revenue Department,Delhi – Revenue Department,S74,verifications_current_month,747,month-to-date on the data date
+2026-10-03,B01,department,Document Chain,Document Chain,Delhi – Revenue Department,Delhi – Revenue Department,S74,verifications_total,153834,
+2026-10-03,B01,department,Document Chain,Document Chain,Karnataka – Directorate of Economics & Statistics,Karnataka – Directorate of Economics & Statistics,S23,documents,6766802,
+2026-10-03,B01,department,Document Chain,Document Chain,Karnataka – Directorate of Economics & Statistics,Karnataka – Directorate of Economics & Statistics,S23,verifications_current_month,0,month-to-date on the data date
+2026-10-03,B01,department,Document Chain,Document Chain,Karnataka – Directorate of Economics & Statistics,Karnataka – Directorate of Economics & Statistics,S23,verifications_total,37,
+2026-10-03,B01,department,Document Chain,Document Chain,Karnataka – Revenue Department,Karnataka – Revenue Department,S24,documents,42230722,
+2026-10-03,B01,department,Document Chain,Document Chain,Karnataka – Revenue Department,Karnataka – Revenue Department,S24,verifications_current_month,0,month-to-date on the data date
+2026-10-03,B01,department,Document Chain,Document Chain,Karnataka – Revenue Department,Karnataka – Revenue Department,S24,verifications_total,2,
+2026-10-03,B01,department,Document Chain,Document Chain,Maharashtra – General Administration Department,Maharashtra – General Administration Department,S42,documents,968,
+2026-10-03,B01,department,Document Chain,Document Chain,Maharashtra – General Administration Department,Maharashtra – General Administration Department,S42,verifications_current_month,0,month-to-date on the data date
+2026-10-03,B01,department,Document Chain,Document Chain,Maharashtra – General Administration Department,Maharashtra – General Administration Department,S42,verifications_total,72,
+2026-10-03,B01,department,Document Chain,Document Chain,Ministry of Consumer Affairs – Department of Consumer Affairs,Ministry of Consumer Affairs – Dept of Consumer Affairs,C11,documents,22709,
+2026-10-03,B01,department,Document Chain,Document Chain,Ministry of Consumer Affairs – Department of Consumer Affairs,Ministry of Consumer Affairs – Dept of Consumer Affairs,C11,verifications_current_month,0,month-to-date on the data date
+2026-10-03,B01,department,Document Chain,Document Chain,Ministry of Consumer Affairs – Department of Consumer Affairs,Ministry of Consumer Affairs – Dept of Consumer Affairs,C11,verifications_total,16,
+2026-10-03,B01,department,Document Chain,Document Chain,Ministry of Rural Development – Rural Skills Division,Ministry of Rural Development – Rural Skills Division,C12,documents,409,
+2026-10-03,B01,department,Document Chain,Document Chain,Ministry of Rural Development – Rural Skills Division,Ministry of Rural Development – Rural Skills Division,C12,verifications_current_month,14,month-to-date on the data date
+2026-10-03,B01,department,Document Chain,Document Chain,Ministry of Rural Development – Rural Skills Division,Ministry of Rural Development – Rural Skills Division,C12,verifications_total,24,
+2026-10-03,B01,department,Document Chain,Document Chain,Puducherry – Department of Civil Supplies & Consumer Affairs,Puducherry – Dept of Civil Supplies & Consumer Affairs,S78,documents,387616,
+2026-10-03,B01,department,Document Chain,Document Chain,Puducherry – Department of Civil Supplies & Consumer Affairs,Puducherry – Dept of Civil Supplies & Consumer Affairs,S78,verifications_current_month,0,month-to-date on the data date
+2026-10-03,B01,department,Document Chain,Document Chain,Puducherry – Department of Civil Supplies & Consumer Affairs,Puducherry – Dept of Civil Supplies & Consumer Affairs,S78,verifications_total,828,
+2026-10-03,B01,department,Document Chain,Document Chain,Puducherry – Revenue Department,Puducherry – Revenue Department,S77,verifications_current_month,0,month-to-date on the data date
+2026-10-03,B01,department,Document Chain,Document Chain,Puducherry – Revenue Department,Puducherry – Revenue Department,S77,verifications_total,15,
+2026-10-03,B01,department,Document Chain,Document Chain,"Uttarakhand – Department of IT, Good Governance & Science and Technology","Uttarakhand – Dept of IT, Good Governance & S&T",S70,documents,3465,
+2026-10-03,B01,department,Document Chain,Document Chain,"Uttarakhand – Department of IT, Good Governance & Science and Technology","Uttarakhand – Dept of IT, Good Governance & S&T",S70,verifications_current_month,0,month-to-date on the data date
+2026-10-03,B01,department,Document Chain,Document Chain,"Uttarakhand – Department of IT, Good Governance & Science and Technology","Uttarakhand – Dept of IT, Good Governance & S&T",S70,verifications_total,1,
+2026-10-03,B01,department,Drug logistics,Logistics Chain,Karnataka – State Medical Supplies Corporation Ltd,Karnataka – Karnataka State Medical Supplies Corporation Ltd,S22,documents,3493771,
+2026-10-03,B01,department,ICJS Chain,ICJS Chain,Ministry of Law & Justice – High Court of Karnataka,Ministry of Justice – High Court of Karnataka,C09,documents,1737549,
+2026-10-03,B01,department,ICJS Chain,ICJS Chain,Ministry of Law & Justice – High Court of Karnataka,Ministry of Justice – High Court of Karnataka,C09,verifications_current_month,15042,month-to-date on the data date
+2026-10-03,B01,department,ICJS Chain,ICJS Chain,Ministry of Law & Justice – High Court of Karnataka,Ministry of Justice – High Court of Karnataka,C09,verifications_total,2095354,
+2026-10-03,B01,department,Judiciary Chain,Judiciary Chain,Ministry of Law & Justice – Supreme Court of India,Ministry of Justice – Supreme Court,C08,documents,442,
+2026-10-03,B01,department,Judiciary Chain,Judiciary Chain,Ministry of Law & Justice – Supreme Court of India,Ministry of Justice – Supreme Court,C08,verifications_current_month,0,month-to-date on the data date
+2026-10-03,B01,department,Judiciary Chain,Judiciary Chain,Ministry of Law & Justice – Supreme Court of India,Ministry of Justice – Supreme Court,C08,verifications_total,983,
+2026-10-03,B01,department,Property Chain,Property Chain,Andhra Pradesh – Department of Revenue,Andhra Pradesh – Department of Revenue,S06,documents,0,
+2026-10-03,B01,department,Property Chain,Property Chain,Andhra Pradesh – Department of Revenue,Andhra Pradesh – Department of Revenue,S06,verifications_current_month,2386,month-to-date on the data date
+2026-10-03,B01,department,Property Chain,Property Chain,Andhra Pradesh – Department of Revenue,Andhra Pradesh – Department of Revenue,S06,verifications_total,144471,
+2026-10-03,B01,department,Property Chain,Property Chain,Andhra Pradesh – Department of Survey,Andhra Pradesh – Department of Survey,S06,documents,149781,
+2026-10-03,B01,department,Property Chain,Property Chain,Andhra Pradesh – Department of Survey,Andhra Pradesh – Department of Survey,S06,verifications_current_month,0,month-to-date on the data date
+2026-10-03,B01,department,Property Chain,Property Chain,Andhra Pradesh – Department of Survey,Andhra Pradesh – Department of Survey,S06,verifications_total,141,
+2026-10-03,B01,department,Property Chain,Property Chain,Jharkhand – Department of Revenue,Jharkhand – Department of Revenue,S21,documents,4474,
+2026-10-03,B01,department,Property Chain,Property Chain,Jharkhand – Department of Revenue,Jharkhand – Department of Revenue,S21,verifications_current_month,0,month-to-date on the data date
+2026-10-03,B01,department,Property Chain,Property Chain,Jharkhand – Department of Revenue,Jharkhand – Department of Revenue,S21,verifications_total,31,
+2026-10-03,B01,department,Property Chain,Property Chain,Karnataka – City Corporation,Karnataka – City Corporation,S27,documents,43556,
+2026-10-03,B01,department,Property Chain,Property Chain,Karnataka – City Corporation,Karnataka – City Corporation,S27,verifications_current_month,0,month-to-date on the data date
+2026-10-03,B01,department,Property Chain,Property Chain,Karnataka – City Corporation,Karnataka – City Corporation,S27,verifications_total,6084,
+2026-10-03,B01,department,Property Chain,Property Chain,Karnataka – Revenue Department,Karnataka – Revenue Department,S26,documents,21149850,
+2026-10-03,B01,department,Property Chain,Property Chain,Karnataka – Revenue Department,Karnataka – Revenue Department,S26,verifications_current_month,1211074,month-to-date on the data date
+2026-10-03,B01,department,Property Chain,Property Chain,Karnataka – Revenue Department,Karnataka – Revenue Department,S26,verifications_total,468854209,
+2026-10-03,B01,department,Property Chain,Property Chain,Karnataka – Town Municipal Council,Karnataka – Town Municipal Council,S27,documents,9,
+2026-10-03,B01,department,SSLC & PUC,Certificate Chain,Karnataka – School Examination and Assessment Board,Karnataka – Karnataka School Examination and Assessment Board,S25,documents,14397704,
+2026-10-03,B01,department,SSLC & PUC,Certificate Chain,Karnataka – School Examination and Assessment Board,Karnataka – Karnataka School Examination and Assessment Board,S25,verifications_current_month,0,month-to-date on the data date Dashboard lists these verifications under 'Karnataka Examination Authority' (labelling quirk).
+2026-10-03,B01,department,SSLC & PUC,Certificate Chain,Karnataka – School Examination and Assessment Board,Karnataka – Karnataka School Examination and Assessment Board,S25,verifications_total,1258,Dashboard lists these verifications under 'Karnataka Examination Authority' (labelling quirk).
+2026-10-14,B11,platform,,,,,C01,departments,22,
+2026-10-14,B11,platform,,,,,C01,documents,113110631,
+2026-10-14,B11,platform,,,,,C01,organisations_states,12,
+2026-10-14,B11,platform,,,,,C01,products,6,
+2026-10-14,B11,platform,,,,,C01,verifications_total,477636605,
+2026-10-14,B11,application,Central Board of Secondary Education,Certificate Chain,,,,documents,21071556,
+2026-10-14,B11,application,Central Board of Secondary Education,Certificate Chain,,,,verifications_current_month,0,month-to-date on the data date
+2026-10-14,B11,application,Central Board of Secondary Education,Certificate Chain,,,,verifications_total,85261,
+2026-10-14,B11,application,Certificate Chain,Certificate Chain,,,,documents,306954,
+2026-10-14,B11,application,Certificate Chain,Certificate Chain,,,,verifications_current_month,159,month-to-date on the data date
+2026-10-14,B11,application,Certificate Chain,Certificate Chain,,,,verifications_total,17405,
+2026-10-14,B11,application,Document Chain,Document Chain,,,,documents,50500245,
+2026-10-14,B11,application,Document Chain,Document Chain,,,,verifications_current_month,2521,month-to-date on the data date
+2026-10-14,B11,application,Document Chain,Document Chain,,,,verifications_total,156589,
+2026-10-14,B11,application,Drug logistics,Logistics Chain,,,,documents,3538745,
+2026-10-14,B11,application,ICJS Chain,ICJS Chain,,,,documents,1741654,
+2026-10-14,B11,application,ICJS Chain,ICJS Chain,,,,verifications_current_month,82382,month-to-date on the data date
+2026-10-14,B11,application,ICJS Chain,ICJS Chain,,,,verifications_total,2162694,
+2026-10-14,B11,application,Judiciary Chain,Judiciary Chain,,,,documents,447,
+2026-10-14,B11,application,Judiciary Chain,Judiciary Chain,,,,verifications_current_month,4,month-to-date on the data date
+2026-10-14,B11,application,Judiciary Chain,Judiciary Chain,,,,verifications_total,987,
+2026-10-14,B11,application,Property Chain,Property Chain,,,,documents,21553326,
+2026-10-14,B11,application,Property Chain,Property Chain,,,,verifications_current_month,7420935,month-to-date on the data date
+2026-10-14,B11,application,Property Chain,Property Chain,,,,verifications_total,475212411,
+2026-10-14,B11,application,SSLC & PUC,Certificate Chain,,,,documents,14397704,
+2026-10-14,B11,application,SSLC & PUC,Certificate Chain,,,,verifications_current_month,0,month-to-date on the data date
+2026-10-14,B11,application,SSLC & PUC,Certificate Chain,,,,verifications_total,1258,
+2026-10-14,B11,department,Central Board of Secondary Education,Certificate Chain,Central Board of Secondary Education,Central Board of Secondary Education,O14,documents,21071556,application total (single department)
+2026-10-14,B11,department,Central Board of Secondary Education,Certificate Chain,Central Board of Secondary Education,Central Board of Secondary Education,O14,verifications_current_month,0,month-to-date on the data date
+2026-10-14,B11,department,Central Board of Secondary Education,Certificate Chain,Central Board of Secondary Education,Central Board of Secondary Education,O14,verifications_total,85261,Listed on the dashboard under 'Karnataka Examination Authority' (labelling quirk); value equals the CBSE verification total.
+2026-10-14,B11,department,Certificate Chain,Certificate Chain,"Chhattisgarh – Indira Gandhi Krishi Vishwavidyalaya, Raipur","Chhattisgarh – Indira Gandhi Krishi Vishwavidyalaya, Raipur",S12,documents,7277,
+2026-10-14,B11,department,Certificate Chain,Certificate Chain,"Chhattisgarh – Indira Gandhi Krishi Vishwavidyalaya, Raipur","Chhattisgarh – Indira Gandhi Krishi Vishwavidyalaya, Raipur",S12,verifications_current_month,0,month-to-date on the data date
+2026-10-14,B11,department,Certificate Chain,Certificate Chain,"Chhattisgarh – Indira Gandhi Krishi Vishwavidyalaya, Raipur","Chhattisgarh – Indira Gandhi Krishi Vishwavidyalaya, Raipur",S12,verifications_total,103,
+2026-10-14,B11,department,Certificate Chain,Certificate Chain,Maharashtra – Maharashtra University of Health Sciences,Maharashtra – Maharashtra University Health Sciences,S40,documents,31760,
+2026-10-14,B11,department,Certificate Chain,Certificate Chain,Maharashtra – Maharashtra University of Health Sciences,Maharashtra – Maharashtra University Health Sciences,S40,verifications_current_month,159,month-to-date on the data date
+2026-10-14,B11,department,Certificate Chain,Certificate Chain,Maharashtra – Maharashtra University of Health Sciences,Maharashtra – Maharashtra University Health Sciences,S40,verifications_total,6460,
+2026-10-14,B11,department,Certificate Chain,Certificate Chain,Maharashtra – State Board of Nursing & Paramedical Education,Maharashtra – MAHARASHTRA STATE BOARD OF NURSING AND PARAMEDICAL EDUCATION,S41,documents,202444,
+2026-10-14,B11,department,Certificate Chain,Certificate Chain,Maharashtra – State Board of Nursing & Paramedical Education,Maharashtra – MAHARASHTRA STATE BOARD OF NURSING AND PARAMEDICAL EDUCATION,S41,verifications_current_month,0,month-to-date on the data date
+2026-10-14,B11,department,Certificate Chain,Certificate Chain,Maharashtra – State Board of Nursing & Paramedical Education,Maharashtra – MAHARASHTRA STATE BOARD OF NURSING AND PARAMEDICAL EDUCATION,S41,verifications_total,10783,
+2026-10-14,B11,department,Certificate Chain,Certificate Chain,Manipur – Council of Higher Secondary Education,Manipur – Council of Higher Secondary Education Manipur,S48,documents,79614,
+2026-10-14,B11,department,Certificate Chain,Certificate Chain,Manipur – Council of Higher Secondary Education,Manipur – Council of Higher Secondary Education Manipur,S48,verifications_current_month,0,month-to-date on the data date
+2026-10-14,B11,department,Certificate Chain,Certificate Chain,Manipur – Council of Higher Secondary Education,Manipur – Council of Higher Secondary Education Manipur,S48,verifications_total,59,
+2026-10-14,B11,department,Document Chain,Document Chain,Delhi – Revenue Department,Delhi – Revenue Department,S74,documents,816773,
+2026-10-14,B11,department,Document Chain,Document Chain,Delhi – Revenue Department,Delhi – Revenue Department,S74,verifications_current_month,828,month-to-date on the data date
+2026-10-14,B11,department,Document Chain,Document Chain,Delhi – Revenue Department,Delhi – Revenue Department,S74,verifications_total,153915,
+2026-10-14,B11,department,Document Chain,Document Chain,Karnataka – Directorate of Economics & Statistics,Karnataka – Directorate of economics and statistics,S23,documents,6820431,
+2026-10-14,B11,department,Document Chain,Document Chain,Karnataka – Directorate of Economics & Statistics,Karnataka – Directorate of economics and statistics,S23,verifications_current_month,0,month-to-date on the data date
+2026-10-14,B11,department,Document Chain,Document Chain,Karnataka – Directorate of Economics & Statistics,Karnataka – Directorate of economics and statistics,S23,verifications_total,37,
+2026-10-14,B11,department,Document Chain,Document Chain,Karnataka – Revenue Department,Karnataka – Revenue Department,S24,documents,42482055,
+2026-10-14,B11,department,Document Chain,Document Chain,Karnataka – Revenue Department,Karnataka – Revenue Department,S24,verifications_current_month,0,month-to-date on the data date
+2026-10-14,B11,department,Document Chain,Document Chain,Karnataka – Revenue Department,Karnataka – Revenue Department,S24,verifications_total,2,
+2026-10-14,B11,department,Document Chain,Document Chain,Maharashtra – General Administration Department,Maharashtra – General Administrative Department,S42,documents,1005,
+2026-10-14,B11,department,Document Chain,Document Chain,Maharashtra – General Administration Department,Maharashtra – General Administrative Department,S42,verifications_current_month,1,month-to-date on the data date
+2026-10-14,B11,department,Document Chain,Document Chain,Maharashtra – General Administration Department,Maharashtra – General Administrative Department,S42,verifications_total,73,
+2026-10-14,B11,department,Document Chain,Document Chain,Ministry of Consumer Affairs – Department of Consumer Affairs,Ministry of Consumer Affairs – Department of Consumer Affairs,C11,documents,23047,
+2026-10-14,B11,department,Document Chain,Document Chain,Ministry of Consumer Affairs – Department of Consumer Affairs,Ministry of Consumer Affairs – Department of Consumer Affairs,C11,verifications_current_month,0,month-to-date on the data date
+2026-10-14,B11,department,Document Chain,Document Chain,Ministry of Consumer Affairs – Department of Consumer Affairs,Ministry of Consumer Affairs – Department of Consumer Affairs,C11,verifications_total,16,
+2026-10-14,B11,department,Document Chain,Document Chain,Ministry of Rural Development – Rural Skills Division,Ministry of Rural Development – Rural Skills Division,C12,documents,4553,
+2026-10-14,B11,department,Document Chain,Document Chain,Ministry of Rural Development – Rural Skills Division,Ministry of Rural Development – Rural Skills Division,C12,verifications_current_month,1692,month-to-date on the data date
+2026-10-14,B11,department,Document Chain,Document Chain,Ministry of Rural Development – Rural Skills Division,Ministry of Rural Development – Rural Skills Division,C12,verifications_total,1702,
+2026-10-14,B11,department,Document Chain,Document Chain,Puducherry – Department of Civil Supplies & Consumer Affairs,Puducherry – Department of Civil Supplies and Consumer Affairs,S78,documents,387616,
+2026-10-14,B11,department,Document Chain,Document Chain,Puducherry – Department of Civil Supplies & Consumer Affairs,Puducherry – Department of Civil Supplies and Consumer Affairs,S78,verifications_current_month,0,month-to-date on the data date
+2026-10-14,B11,department,Document Chain,Document Chain,Puducherry – Department of Civil Supplies & Consumer Affairs,Puducherry – Department of Civil Supplies and Consumer Affairs,S78,verifications_total,828,
+2026-10-14,B11,department,Document Chain,Document Chain,Puducherry – Revenue Department,Puducherry – Revenue Department,S77,verifications_current_month,0,month-to-date on the data date
+2026-10-14,B11,department,Document Chain,Document Chain,Puducherry – Revenue Department,Puducherry – Revenue Department,S77,verifications_total,15,
+2026-10-14,B11,department,Document Chain,Document Chain,"Uttarakhand – Department of IT, Good Governance & Science and Technology","Uttarakhand – Department of IT, Good Governance & Science and Technology, Government of Uttarakhand",S70,documents,3465,
+2026-10-14,B11,department,Document Chain,Document Chain,"Uttarakhand – Department of IT, Good Governance & Science and Technology","Uttarakhand – Department of IT, Good Governance & Science and Technology, Government of Uttarakhand",S70,verifications_current_month,0,month-to-date on the data date
+2026-10-14,B11,department,Document Chain,Document Chain,"Uttarakhand – Department of IT, Good Governance & Science and Technology","Uttarakhand – Department of IT, Good Governance & Science and Technology, Government of Uttarakhand",S70,verifications_total,1,
+2026-10-14,B11,department,Drug logistics,Logistics Chain,Karnataka – State Medical Supplies Corporation Ltd,Drug logistics,S22,documents,3538745,application total (single department)
+2026-10-14,B11,department,ICJS Chain,ICJS Chain,Ministry of Law & Justice – High Court of Karnataka,Ministry of Justice – High Court of Karnataka,C09,documents,1741654,
+2026-10-14,B11,department,ICJS Chain,ICJS Chain,Ministry of Law & Justice – High Court of Karnataka,Ministry of Justice – High Court of Karnataka,C09,verifications_current_month,82382,month-to-date on the data date
+2026-10-14,B11,department,ICJS Chain,ICJS Chain,Ministry of Law & Justice – High Court of Karnataka,Ministry of Justice – High Court of Karnataka,C09,verifications_total,2162694,
+2026-10-14,B11,department,Judiciary Chain,Judiciary Chain,Ministry of Law & Justice – Supreme Court of India,Ministry of Justice – Supreme Court,C08,documents,447,
+2026-10-14,B11,department,Judiciary Chain,Judiciary Chain,Ministry of Law & Justice – Supreme Court of India,Ministry of Justice – Supreme Court,C08,verifications_current_month,4,month-to-date on the data date
+2026-10-14,B11,department,Judiciary Chain,Judiciary Chain,Ministry of Law & Justice – Supreme Court of India,Ministry of Justice – Supreme Court,C08,verifications_total,987,
+2026-10-14,B11,department,Property Chain,Property Chain,Andhra Pradesh – Department of Revenue,Andhra Pradesh – Department of Revenue,S06,documents,0,
+2026-10-14,B11,department,Property Chain,Property Chain,Andhra Pradesh – Department of Revenue,Andhra Pradesh – Department of Revenue,S06,verifications_current_month,18098,month-to-date on the data date
+2026-10-14,B11,department,Property Chain,Property Chain,Andhra Pradesh – Department of Revenue,Andhra Pradesh – Department of Revenue,S06,verifications_total,160183,
+2026-10-14,B11,department,Property Chain,Property Chain,Andhra Pradesh – Department of Survey,Andhra Pradesh – Department of Survey,S06,documents,316434,
+2026-10-14,B11,department,Property Chain,Property Chain,Andhra Pradesh – Department of Survey,Andhra Pradesh – Department of Survey,S06,verifications_current_month,44,month-to-date on the data date
+2026-10-14,B11,department,Property Chain,Property Chain,Andhra Pradesh – Department of Survey,Andhra Pradesh – Department of Survey,S06,verifications_total,185,
+2026-10-14,B11,department,Property Chain,Property Chain,Jharkhand – Department of Revenue,Jharkhand – Department of Revenue,S21,documents,4474,
+2026-10-14,B11,department,Property Chain,Property Chain,Jharkhand – Department of Revenue,Jharkhand – Department of Revenue,S21,verifications_current_month,0,month-to-date on the data date
+2026-10-14,B11,department,Property Chain,Property Chain,Jharkhand – Department of Revenue,Jharkhand – Department of Revenue,S21,verifications_total,31,
+2026-10-14,B11,department,Property Chain,Property Chain,Karnataka – City Corporation,Karnataka – City Corporation,S27,documents,43556,
+2026-10-14,B11,department,Property Chain,Property Chain,Karnataka – City Corporation,Karnataka – City Corporation,S27,verifications_current_month,0,month-to-date on the data date
+2026-10-14,B11,department,Property Chain,Property Chain,Karnataka – City Corporation,Karnataka – City Corporation,S27,verifications_total,6084,
+2026-10-14,B11,department,Property Chain,Property Chain,Karnataka – Revenue Department,Karnataka – Revenue Department,S26,documents,21188847,
+2026-10-14,B11,department,Property Chain,Property Chain,Karnataka – Revenue Department,Karnataka – Revenue Department,S26,verifications_current_month,7402793,month-to-date on the data date
+2026-10-14,B11,department,Property Chain,Property Chain,Karnataka – Revenue Department,Karnataka – Revenue Department,S26,verifications_total,475045928,
+2026-10-14,B11,department,Property Chain,Property Chain,Karnataka – Town Municipal Council,Karnataka – Town Municipal Council,S27,documents,9,
+2026-10-14,B11,department,SSLC & PUC,Certificate Chain,Karnataka – School Examination and Assessment Board,Karnataka – Karnataka School Examination and Assessment Board,S25,verifications_current_month,0,month-to-date on the data date
+2026-10-14,B11,department,SSLC & PUC,Certificate Chain,Karnataka – School Examination and Assessment Board,Karnataka – Karnataka School Examination and Assessment Board,S25,verifications_total,1258,
+2026-10-14,B11,department,SSLC & PUC,Certificate Chain,Karnataka – School Examination and Assessment Board,SSLC & PUC,S25,documents,14397704,application total (single department)

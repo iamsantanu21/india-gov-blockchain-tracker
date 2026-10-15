@@ -1,0 +1,501 @@
+project_id,source_id,role
+C01,B01,citation
+C01,D01,citation
+C01,R01,citation
+C01,R34,citation
+C01,R02,additional
+C01,W001,additional
+C01,W002,additional
+C02,R01,citation
+C02,R34,event evidence
+C02,W001,additional
+C02,W003,additional
+C03,N12,citation
+C03,R01,citation
+C03,R34,event evidence
+C03,W001,additional
+C03,W004,additional
+C04,N12,citation
+C04,N52,citation
+C04,N63,citation
+C04,W003,additional
+C04,W005,additional
+C04,W006,additional
+C04,W007,additional
+C05,B01,citation
+C05,B07,citation
+C05,D01,citation
+C05,R01,citation
+C05,R16,citation
+C05,R31,citation
+C05,R34,event evidence
+C05,W008,event evidence
+C05,W009,event evidence
+C05,W010,challenge evidence
+C06,R01,citation
+C06,B01,event evidence
+C06,W191,event evidence
+C06,B05,additional
+C06,R16,additional
+C06,R31,additional
+C06,R32,additional
+C07,R01,citation
+C07,B01,event evidence
+C07,R02,additional
+C07,R32,additional
+C07,W011,additional
+C07,W191,additional
+C08,B01,citation
+C08,B08,citation
+C08,N12,citation
+C08,R16,citation
+C08,B11,event evidence
+C08,R31,additional
+C09,B01,citation
+C09,R01,citation
+C09,B11,event evidence
+C09,W192,event evidence
+C10,B01,citation
+C10,B09,citation
+C10,R01,citation
+C10,R31,additional
+C10,W010,additional
+C10,W012,additional
+C10,W013,additional
+C11,B01,citation
+C11,R16,citation
+C11,R31,citation
+C11,B11,event evidence
+C12,B01,citation
+C12,B11,event evidence
+C12,W193,additional
+C12,W194,additional
+C13,N43,citation
+C13,N44,citation
+C13,N55,citation
+C13,R05,citation
+C14,R02,citation
+C15,N46,citation
+C15,W199,event evidence
+C15,R02,additional
+C15,W001,additional
+C15,W195,additional
+C15,W196,additional
+C15,W197,additional
+C15,W198,additional
+C16,N47,citation
+C16,W014,event evidence
+C16,W015,event evidence
+C16,W016,event evidence
+C16,W017,additional
+C17,N50,citation
+C17,W018,event evidence
+C17,W019,event evidence
+C18,R03,citation
+C18,W020,event evidence
+C19,N53,citation
+C19,R03,event evidence
+C19,W021,event evidence
+C20,R04,citation
+C20,W022,event evidence
+C20,W023,event evidence
+O01,N71,citation
+O01,R06,citation
+O01,R07,citation
+O01,W024,event evidence
+O01,W026,event evidence
+O01,W028,challenge evidence
+O01,W029,challenge evidence
+O01,W025,additional
+O01,W027,additional
+O02,N49,citation
+O02,N54,citation
+O02,W030,event evidence
+O02,W031,additional
+O02,W032,additional
+O03,N48,citation
+O03,W033,event evidence
+O03,W034,event evidence
+O03,W035,additional
+O04,R04,citation
+O04,W036,event evidence
+O04,W038,event evidence
+O04,W039,event evidence
+O04,W037,additional
+O05,D01,citation
+O05,R01,citation
+O05,R08,citation
+O05,R09,citation
+O05,W041,event evidence
+O05,W044,event evidence
+O05,W040,additional
+O05,W042,additional
+O05,W043,additional
+O06,R01,citation
+O06,W044,event evidence
+O06,W045,event evidence
+O06,W046,event evidence
+O06,W047,additional
+O06,W048,additional
+O07,B04,citation
+O07,N51,citation
+O07,W049,event evidence
+O07,W054,event evidence
+O07,W050,challenge evidence
+O07,W052,challenge evidence
+O07,W051,additional
+O07,W053,additional
+O07,W055,additional
+O07,W056,additional
+O08,N56,citation
+O08,W060,event evidence
+O08,W057,additional
+O08,W058,additional
+O08,W059,additional
+O08,W061,additional
+O09,N57,citation
+O09,N58,citation
+O09,N59,citation
+O09,N85,citation
+O09,W064,event evidence
+O09,W062,challenge evidence
+O09,W063,additional
+O10,D01,citation
+O10,N69,citation
+O10,N70,citation
+O10,N71,citation
+O10,W065,event evidence
+O10,W066,event evidence
+O10,W068,event evidence
+O10,W067,additional
+O10,W069,additional
+O10,W070,additional
+O11,D01,citation
+O11,N72,citation
+O11,W071,event evidence
+O11,W072,event evidence
+O11,W073,event evidence
+O11,W074,event evidence
+O11,W077,event evidence
+O11,W075,challenge evidence
+O11,W076,challenge evidence
+O12,D01,citation
+O12,N73,citation
+O12,N74,citation
+O12,W078,event evidence
+O12,W079,event evidence
+O12,W080,additional
+O13,D01,citation
+O13,N64,citation
+O13,W081,event evidence
+O14,B01,citation
+O14,B02,citation
+O14,R01,citation
+O14,B11,event evidence
+O14,W082,event evidence
+O14,R02,additional
+O14,W083,additional
+O15,D01,citation
+O15,N47,citation
+O15,W084,event evidence
+O15,W088,event evidence
+O15,W085,additional
+O15,W086,additional
+O15,W087,additional
+O15,W089,additional
+O16,R10,citation
+O16,R11,citation
+O17,N82,citation
+O17,R12,citation
+O18,R02,citation
+O19,R02,citation
+S01,R13,citation
+S01,R35,citation
+S01,W090,event evidence
+S01,W091,event evidence
+S01,W092,additional
+S01,W093,additional
+S02,R13,citation
+S03,R15,citation
+S03,W094,event evidence
+S04,B01,citation
+S04,R16,citation
+S05,N33,citation
+S06,B01,citation
+S06,N31,citation
+S06,N32,citation
+S06,B11,event evidence
+S06,W097,event evidence
+S06,W095,challenge evidence
+S06,W096,challenge evidence
+S07,R14,citation
+S08,B01,citation
+S08,N01,citation
+S08,N02,citation
+S08,R16,additional
+S09,N03,citation
+S09,N83,citation
+S10,N04,citation
+S11,N05,citation
+S11,W101,event evidence
+S11,W098,additional
+S11,W099,additional
+S11,W100,additional
+S12,B01,citation
+S12,R16,citation
+S12,B11,event evidence
+S12,W191,event evidence
+S12,W102,additional
+S13,N06,citation
+S13,N54,citation
+S13,W103,additional
+S14,N07,citation
+S14,R16,citation
+S14,W104,event evidence
+S15,N08,citation
+S15,W105,event evidence
+S16,R16,citation
+S16,W106,event evidence
+S16,W107,event evidence
+S16,W108,additional
+S16,W109,additional
+S17,N09,citation
+S17,W200,additional
+S18,D01,citation
+S18,N10,citation
+S18,N76,citation
+S18,W110,event evidence
+S18,W111,event evidence
+S18,W112,event evidence
+S18,W114,event evidence
+S18,W113,additional
+S19,R16,citation
+S20,N11,citation
+S20,N54,citation
+S20,W119,event evidence
+S20,W115,additional
+S20,W116,additional
+S20,W117,additional
+S20,W118,additional
+S21,B01,citation
+S21,R02,citation
+S21,B11,event evidence
+S21,B12,event evidence
+S22,B01,citation
+S22,B06,citation
+S22,N12,citation
+S22,R01,citation
+S22,R32,citation
+S22,B11,event evidence
+S22,W201,event evidence
+S22,W191,additional
+S23,B01,citation
+S23,B05,citation
+S23,R16,citation
+S23,B11,event evidence
+S24,B01,citation
+S24,B05,citation
+S24,R16,citation
+S24,B11,event evidence
+S25,B01,citation
+S25,B10,citation
+S25,R16,citation
+S25,B11,event evidence
+S25,R32,additional
+S26,B01,citation
+S26,B03,citation
+S26,R02,citation
+S26,B11,event evidence
+S26,B12,event evidence
+S26,R32,additional
+S26,W120,additional
+S26,W121,additional
+S26,W122,additional
+S26,W123,additional
+S26,W125,additional
+S27,B01,citation
+S27,B03,citation
+S27,B11,event evidence
+S27,B12,event evidence
+S27,W120,additional
+S27,W124,additional
+S28,D01,citation
+S28,N13,citation
+S28,W125,event evidence
+S28,W128,event evidence
+S28,W126,additional
+S28,W127,additional
+S28,W129,additional
+S29,D01,citation
+S29,N75,citation
+S29,W130,event evidence
+S30,R18,citation
+S30,W131,event evidence
+S30,W132,event evidence
+S31,N17,citation
+S31,R18,citation
+S31,W133,event evidence
+S31,W134,event evidence
+S31,W135,additional
+S32,N16,citation
+S32,W136,additional
+S33,N15,citation
+S33,W137,event evidence
+S33,W138,additional
+S33,W139,additional
+S34,N18,citation
+S35,N12,citation
+S35,W202,additional
+S35,W203,additional
+S36,N09,citation
+S36,W200,additional
+S37,N19,citation
+S37,N20,citation
+S38,N78,citation
+S38,R19,citation
+S38,R20,citation
+S39,N79,citation
+S39,R20,citation
+S40,B01,citation
+S40,B02,citation
+S40,B11,event evidence
+S40,W204,additional
+S41,B01,citation
+S41,B02,citation
+S41,B11,event evidence
+S41,W140,event evidence
+S41,W141,event evidence
+S41,W142,additional
+S42,B01,citation
+S42,B11,event evidence
+S42,W142,event evidence
+S42,W143,additional
+S43,R21,citation
+S43,R22,citation
+S43,W144,event evidence
+S43,W145,event evidence
+S44,D01,citation
+S44,N65,citation
+S44,N66,citation
+S44,W146,event evidence
+S44,W147,challenge evidence
+S44,W148,additional
+S45,D01,citation
+S45,N67,citation
+S45,N68,citation
+S45,W149,event evidence
+S45,W152,challenge evidence
+S45,W150,additional
+S45,W151,additional
+S46,D01,citation
+S46,N77,citation
+S46,W153,event evidence
+S47,N21,citation
+S48,B01,citation
+S48,R16,citation
+S48,B11,event evidence
+S48,W142,event evidence
+S48,W143,additional
+S49,N22,citation
+S50,N25,citation
+S50,R16,event evidence
+S51,N23,citation
+S52,N24,citation
+S53,N26,citation
+S54,N27,citation
+S54,R16,citation
+S55,N28,citation
+S56,D01,citation
+S56,N34,citation
+S56,R23,citation
+S56,R24,citation
+S56,W154,event evidence
+S56,W155,additional
+S56,W156,additional
+S57,N35,citation
+S57,W159,event evidence
+S57,W160,event evidence
+S57,W157,additional
+S57,W158,additional
+S58,N36,citation
+S58,W159,event evidence
+S58,W160,event evidence
+S58,W161,additional
+S59,R25,citation
+S59,R26,citation
+S59,W162,event evidence
+S59,W165,event evidence
+S59,W163,additional
+S59,W164,additional
+S60,N40,citation
+S60,W164,event evidence
+S60,W166,event evidence
+S60,W168,event evidence
+S60,W167,additional
+S60,W169,additional
+S61,N61,citation
+S61,R25,citation
+S61,W170,event evidence
+S61,W171,event evidence
+S61,W205,additional
+S62,N62,citation
+S62,R25,event evidence
+S63,R27,citation
+S63,R25,additional
+S64,N29,citation
+S64,R16,event evidence
+S65,N39,citation
+S65,R16,citation
+S66,N80,citation
+S66,R28,citation
+S66,W172,event evidence
+S66,W173,additional
+S67,N37,citation
+S67,R16,citation
+S68,N38,citation
+S68,W206,event evidence
+S69,N30,citation
+S69,N54,citation
+S69,R16,additional
+S70,B01,citation
+S70,B11,event evidence
+S71,N81,citation
+S71,R16,citation
+S71,R28,citation
+S71,W174,event evidence
+S71,W177,event evidence
+S71,W175,additional
+S71,W176,additional
+S71,W178,additional
+S71,W179,additional
+S72,R29,citation
+S72,R16,event evidence
+S72,W180,additional
+S72,W181,additional
+S72,W182,additional
+S73,N41,citation
+S73,N42,citation
+S73,W184,event evidence
+S73,W188,event evidence
+S73,W185,additional
+S73,W186,additional
+S73,W187,additional
+S74,B01,citation
+S74,B02,citation
+S74,B11,event evidence
+S74,B12,event evidence
+S74,W184,event evidence
+S74,W185,additional
+S75,D01,citation
+S75,N60,citation
+S76,N45,citation
+S77,B01,citation
+S77,R16,citation
+S77,W189,additional
+S78,B01,citation
+S78,R16,citation
+S78,B11,event evidence
+S78,W189,additional
+S78,W190,additional
+S79,W181,citation
+S79,W183,citation

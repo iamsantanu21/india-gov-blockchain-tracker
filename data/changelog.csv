@@ -1,0 +1,155 @@
+version,date,change_type,record,description,source
+1.1.0,2026-10-15,source corrected,R11,"date ""2021"" -> ""2019-11-21"" (article date checked)",
+1.1.0,2026-10-15,source corrected,R15,"date ""2019"" -> ""2017-06-28"" (article date checked)",
+1.1.0,2026-10-15,added,S79,"New project: NKDA blockchain birth certificate (Dec 2018), found during stage-date research.",WEBEL newsletter Jan 2019
+1.1.0,2026-10-15,stage changed,C19,Unclear (no recent update) -> Pilot completed: NITI Aayog's Jan 2020 draft strategy reports the drug track-and-trace pilot as executed and draws lessons from it.,
+1.1.0,2026-10-15,status text updated,C19,"""Pilot announced; no outcome published"" -> ""Pilot executed (reported in NITI Aayog draft strategy, Jan 2020); no follow-up found""",
+1.1.0,2026-10-15,note updated,C19,"""Vendor press release only"" -> ""v1.1: official PIB release (Sep 2018) and NITI Aayog draft strategy (Jan 2020) found; the strategy reports the pilot as executed.""",
+1.1.0,2026-10-15,note updated,S04,"""Dropped from dashboard – check"" -> ""Listed in the NIC statistics file of Jul 2024 (12 documents, Water Resource Dept); no longer listed in Oct 2026.""",
+1.1.0,2026-10-15,stage changed,S16,Unclear (no recent update) -> Proposed / Planned: Feb 2026 report: Gujarat e-Notary DPR sent to Union Ministry of Law; proposal still being finalised (vendor source).,
+1.1.0,2026-10-15,status text updated,S16,"""Reported in 2024 eBook only"" -> ""DPR sent to Union Ministry of Law; proposal being finalised (Feb 2026, vendor source)""",
+1.1.0,2026-10-15,note updated,S16,"""Find official source"" -> ""No official source yet; the Feb 2026 status update comes from the vendor (Naapbooks).""",
+1.1.0,2026-10-15,stage changed,S17,Implemented -> Unclear (no recent update): Only source is the June 2023 agreement (future tense); no evidence any certificate was issued; 3-year term ended ~Jun 2026.,
+1.1.0,2026-10-15,status text updated,S17,"""3-year agreement in force"" -> ""Agreement with CRISP signed Jun 2023 (3-year term); no evidence of certificates issued""",
+1.1.0,2026-10-15,field corrected,S17,"Tech partner: ""CRISP (MP)"" -> ""CRISP Bhopal (Madhya Pradesh govt society)""",
+1.1.0,2026-10-15,stage changed,S28,"Proposed / Planned -> In progress: Dated Dec 2021 report of a running Tumakuru pilot (781 smartcards, 310 transactions); described as under development in Dec 2025.",
+1.1.0,2026-10-15,note updated,S28,"""Date unclear – verify"" -> ""v1.1: Tumakuru pilot dated Dec 2021 found; no full rollout date found.""",
+1.1.0,2026-10-15,note updated,S33,"""Weak source – find official release"" -> ""v1.1: official Kerala PSC page on the launch found.""",
+1.1.0,2026-10-15,stage changed,S36,Implemented -> Unclear (no recent update): Same June 2023 agreement as S17 (provider side); no dated evidence of certificates issued.,
+1.1.0,2026-10-15,status text updated,S36,"""In use"" -> ""Provider side of the S17 agreement (Jun 2023); no evidence of certificates issued""",
+1.1.0,2026-10-15,note added,S36,Same June 2023 agreement as S17 (CRISP is the provider; BSEH is the client). Kept as a separate row for continuity with v1.0.0; exclude one of the two when counting distinct initiatives.,
+1.1.0,2026-10-15,record merged,S36,"Marked merged: same June 2023 agreement as S17 (CRISP is the provider). Kept in the file for traceability, excluded from counts.",
+1.1.0,2026-10-15,note updated,S46,"""Only deck + vendor sources – verify"" -> ""Unverified blockchain claim: the only news source does not mention blockchain and the vendor page was offline in Oct 2026 (deck + vendor sources only).""",
+1.1.0,2026-10-15,stage changed,S61,Implemented -> Unclear (no recent update): All dated sources (2019 Lok Sabha reply; Dec 2021 National Strategy) describe only a Shamshabad pilot; no later rollout found.,
+1.1.0,2026-10-15,status text updated,S61,"""Implemented and deployed at Shamshabad (MeitY portal)"" -> ""Piloted at Shamshabad SRO (Dec 2021); no later update found""",
+1.1.0,2026-10-15,stage changed,S62,"In progress -> Pilot completed: Telangana ITE&C reports a completed dry run (Khammam, Oct 2021); no use in an actual election found.",
+1.1.0,2026-10-15,status text updated,S62,"""Under user acceptance testing (MeitY portal)"" -> ""Dry run completed (Khammam, Oct 2021); not used in an actual election""",
+1.1.0,2026-10-15,status text updated,S68,"""Approved by UPERC"" -> ""Pilot trading under way (first trades Feb 2026; 1,164 trades to Jul 2026); pilot extended to 31 Mar 2027""",
+1.1.0,2026-10-15,field corrected,S71,"Scale / numbers: ""27,000 acres; 5,00,000 NFTs (CXO Today) vs 50,000 (ORF)"" -> ""27,000 acres; 5,00,000 NFTs planned (Forkast, Crypto Times, YourStory 2023)"". Three 2023 sources give 500,000 NFTs; ORF's 50,000 appears to be an error.",
+1.1.0,2026-10-15,field corrected,O04,"Tech partner: ""Infosys, IBM"" -> ""MonetaGo (with NPCI and banks)"". Research found MonetaGo was the PoC technology partner; Infosys and IBM were in the white-paper working group.",
+1.1.0,2026-10-15,note added,O05,"Cognizant case study (data as of 28 Nov 2024) reports 4,291 issuers and 6,368 secured ISINs, higher than the deck figures.",
+1.1.0,2026-10-15,event corrected,C09,"live 2025-10: evidence -> Live by this date: eCommittee newsletter says Karnataka HC judgment verifications on blockchain are counted from Oct 2025 (7,55,945 by 2 Apr 2026); the counter start is not a stated go-live date.",
+1.1.0,2026-10-15,event corrected,S55,latest_update 2018-09-13: evidence -> Vendor says it launched an EHR on blockchain onboarding over 53 million people; land-record rollout still forthcoming (page dated 13 Sep 2018; metadata 10 Oct 2018).,
+1.1.0,2026-10-15,event corrected,S61,announced 2017-06: event_type -> pilot_started,
+1.1.0,2026-10-15,event corrected,S68,"announced 2026-02: date -> 2026-02-18, prec -> day",
+1.1.0,2026-10-15,event added,S68,"pilot_started 2026-02: First pilot trades in Feb 2026, regular trading from Mar 2026 (1,164 trades Feb–Jul 2026).",
+1.1.0,2026-10-15,event added,S68,latest_update 2026-09-07: UPERC extended the interstate P2P renewable trading pilot to 31 Mar 2027 after trading under the pilot.,
+1.1.0,2026-10-15,status date updated,C06,status_as_of 2025-10-21 -> 2026-10-03 (newer dated evidence found),
+1.1.0,2026-10-15,status date updated,C07,status_as_of 2025-10-21 -> 2026-10-03 (newer dated evidence found),
+1.1.0,2026-10-15,status date updated,C15,status_as_of 2024-08-06 -> 2026-08-06 (newer dated evidence found),
+1.1.0,2026-10-15,status date updated,C16,status_as_of 2022-01 -> 2022-01-24 (newer dated evidence found),
+1.1.0,2026-10-15,status date updated,C17,status_as_of 2023-07 -> 2023-07-11 (newer dated evidence found),
+1.1.0,2026-10-15,status date updated,C19,status_as_of 2018-09 -> 2020-01 (newer dated evidence found),
+1.1.0,2026-10-15,status date updated,C20,status_as_of 2018 -> 2022-10-18 (newer dated evidence found),
+1.1.0,2026-10-15,status date updated,S01,status_as_of 2018 -> 2019-12-16 (newer dated evidence found),
+1.1.0,2026-10-15,status date updated,S02,status_as_of 2018 -> 2018-03-05 (newer dated evidence found),
+1.1.0,2026-10-15,status date updated,S09,status_as_of 2025-07-18 -> 2025-07-21 (newer dated evidence found),
+1.1.0,2026-10-15,status date updated,S11,status_as_of 2025-03-06 -> 2026-01-13 (newer dated evidence found),
+1.1.0,2026-10-15,status date updated,S16,status_as_of 2024 -> 2026-02-28 (newer dated evidence found),
+1.1.0,2026-10-15,status date updated,S20,status_as_of 2022-08-19 -> 2026-06-14 (newer dated evidence found),
+1.1.0,2026-10-15,status date updated,S32,status_as_of 2018 -> 2020-01-09 (newer dated evidence found),
+1.1.0,2026-10-15,status date updated,S34,status_as_of 2025-11 -> 2025-11-14 (newer dated evidence found),
+1.1.0,2026-10-15,status date updated,S43,status_as_of 2025-10-31 -> 2025-11-01 (newer dated evidence found),
+1.1.0,2026-10-15,status date updated,S44,status_as_of 2021 -> 2021-08-12 (newer dated evidence found),
+1.1.0,2026-10-15,status date updated,S45,status_as_of 2025-12-04 -> 2026-09-11 (newer dated evidence found),
+1.1.0,2026-10-15,status date updated,S50,status_as_of 2023-12-14 -> 2025-02-13 (newer dated evidence found),
+1.1.0,2026-10-15,status date updated,S54,status_as_of 2024-02-23 -> 2025-02-13 (newer dated evidence found),
+1.1.0,2026-10-15,status date updated,S55,status_as_of 2018-09 -> 2018-09-13 (newer dated evidence found),
+1.1.0,2026-10-15,status date updated,S57,status_as_of 2022-12-23 -> 2023-01-13 (newer dated evidence found),
+1.1.0,2026-10-15,status date updated,S58,status_as_of 2022-12-05 -> 2023-01-13 (newer dated evidence found),
+1.1.0,2026-10-15,status date updated,S60,status_as_of 2020-02-16 -> 2021-12-17 (newer dated evidence found),
+1.1.0,2026-10-15,status date updated,S63,status_as_of 2018 -> 2018-08-07 (newer dated evidence found),
+1.1.0,2026-10-15,status date updated,S64,status_as_of 2023-08-12 -> 2025-02 (newer dated evidence found),
+1.1.0,2026-10-15,status date updated,S65,status_as_of 2024 -> 2025-02 (newer dated evidence found),
+1.1.0,2026-10-15,status date updated,S66,status_as_of 2022-10 -> 2023-11-27 (newer dated evidence found),
+1.1.0,2026-10-15,status date updated,S67,status_as_of 2019-11-26 -> 2025-02 (newer dated evidence found),
+1.1.0,2026-10-15,status date updated,S68,status_as_of 2026-02-18 -> 2026-09-07 (newer dated evidence found),
+1.1.0,2026-10-15,status date updated,S69,status_as_of 2022-02-28 -> 2024-12-30 (newer dated evidence found),
+1.1.0,2026-10-15,status date updated,S71,status_as_of 2023-07 -> 2023-08-09 (newer dated evidence found),
+1.1.0,2026-10-15,status date updated,S72,status_as_of 2018 -> 2025-02-13 (newer dated evidence found),
+1.1.0,2026-10-15,status date updated,O01,status_as_of 2026-10 -> 2026-10-01 (newer dated evidence found),
+1.1.0,2026-10-15,status date updated,O02,status_as_of 2022-06-23 -> 2024-12-30 (newer dated evidence found),
+1.1.0,2026-10-15,status date updated,O08,status_as_of 2022-09 -> 2025-12-19 (newer dated evidence found),
+1.1.0,2026-10-15,status date updated,O09,status_as_of 2025-11-07 -> 2026-01-22 (newer dated evidence found),
+1.1.0,2026-10-15,status date updated,O11,status_as_of 2025-12 -> 2026-09-21 (newer dated evidence found),
+1.1.0,2026-10-15,status date updated,S79,status_as_of 2019-01 -> 2018-12-20 (newer dated evidence found),
+1.1.0,2026-10-15,challenge reworded,O09,"T4: Court warned that inaccurate, incomplete or disputed legacy land records would be carried into a digital version; petitioners said Bihar surveys were incomplete.",
+1.1.0,2026-10-15,challenge reworded,O11,"O3: Alleged retention of references to the original developer (Dataevolve) after it was replaced, reported in a 2024 investigation; a Delhi HC dispute over platform IP followed.",
+1.1.0,2026-10-15,evidence score changed,C16,3 -> 4 (new sources linked in v1.1 research),
+1.1.0,2026-10-15,evidence score changed,C17,2 -> 3 (new sources linked in v1.1 research),
+1.1.0,2026-10-15,evidence score changed,C19,1 -> 4 (new sources linked in v1.1 research),
+1.1.0,2026-10-15,evidence score changed,S03,2 -> 3 (new sources linked in v1.1 research),
+1.1.0,2026-10-15,evidence score changed,S11,2 -> 3 (new sources linked in v1.1 research),
+1.1.0,2026-10-15,evidence score changed,S14,2 -> 3 (new sources linked in v1.1 research),
+1.1.0,2026-10-15,evidence score changed,S16,2 -> 3 (new sources linked in v1.1 research),
+1.1.0,2026-10-15,evidence score changed,S28,2 -> 4 (new sources linked in v1.1 research),
+1.1.0,2026-10-15,evidence score changed,S33,2 -> 4 (new sources linked in v1.1 research),
+1.1.0,2026-10-15,evidence score changed,S43,2 -> 3 (new sources linked in v1.1 research),
+1.1.0,2026-10-15,evidence score changed,S46,2 -> 1 (new sources linked in v1.1 research),
+1.1.0,2026-10-15,evidence score changed,S56,3 -> 4 (new sources linked in v1.1 research),
+1.1.0,2026-10-15,evidence score changed,S58,2 -> 3 (new sources linked in v1.1 research),
+1.1.0,2026-10-15,evidence score changed,S63,3 -> 4 (new sources linked in v1.1 research),
+1.1.0,2026-10-15,evidence score changed,S71,3 -> 4 (new sources linked in v1.1 research),
+1.1.0,2026-10-15,evidence score changed,S72,2 -> 3 (new sources linked in v1.1 research),
+1.1.0,2026-10-15,evidence score changed,O02,2 -> 4 (new sources linked in v1.1 research),
+1.1.0,2026-10-15,evidence score changed,O03,3 -> 4 (new sources linked in v1.1 research),
+1.1.0,2026-10-15,evidence score changed,O10,3 -> 4 (new sources linked in v1.1 research),
+1.1.0,2026-10-15,evidence score changed,O11,3 -> 4 (new sources linked in v1.1 research),
+1.1.0,2026-10-15,evidence score changed,O15,3 -> 4 (new sources linked in v1.1 research),
+1.1.0,2026-10-15,event added,C12,live-by event 2026-10-03 from NIC snapshot (409 documents),B01
+1.1.0,2026-10-15,event added,S06,"live-by event 2026-10-03 from NIC snapshot (149,781 documents)",B01
+1.1.0,2026-10-15,event added,S21,"live-by event 2024-07-23 from NIC snapshot (4,185 documents)",B12
+1.1.0,2026-10-15,event added,S26,"live-by event 2024-07-23 from NIC snapshot (19,620,723 documents)",B12
+1.1.0,2026-10-15,event added,S27,"live-by event 2024-07-23 from NIC snapshot (34,169 documents)",B12
+1.1.0,2026-10-15,event added,S40,"live-by event 2026-10-03 from NIC snapshot (31,749 documents)",B01
+1.1.0,2026-10-15,event added,S70,"live-by event 2026-10-03 from NIC snapshot (3,465 documents)",B01
+1.1.0,2026-10-15,event added,S74,"live-by event 2024-07-23 from NIC snapshot (121,810 documents)",B12
+1.1.0,2026-10-15,status date updated,C08,status_as_of 2026-10-03 -> 2026-10-14 (NIC snapshot),B11
+1.1.0,2026-10-15,status date updated,C09,status_as_of 2026-10-03 -> 2026-10-14 (NIC snapshot),B11
+1.1.0,2026-10-15,status date updated,C11,status_as_of 2026-10-03 -> 2026-10-14 (NIC snapshot),B11
+1.1.0,2026-10-15,status date updated,C12,status_as_of 2026-10-03 -> 2026-10-14 (NIC snapshot),B11
+1.1.0,2026-10-15,status date updated,O14,status_as_of 2026-10-03 -> 2026-10-14 (NIC snapshot),B11
+1.1.0,2026-10-15,status date updated,S06,status_as_of 2026-10-03 -> 2026-10-14 (NIC snapshot),B11
+1.1.0,2026-10-15,status date updated,S12,status_as_of 2026-10-03 -> 2026-10-14 (NIC snapshot),B11
+1.1.0,2026-10-15,status date updated,S21,status_as_of 2026-10-03 -> 2026-10-14 (NIC snapshot),B11
+1.1.0,2026-10-15,status date updated,S22,status_as_of 2026-10-03 -> 2026-10-14 (NIC snapshot),B11
+1.1.0,2026-10-15,status date updated,S23,status_as_of 2026-10-03 -> 2026-10-14 (NIC snapshot),B11
+1.1.0,2026-10-15,status date updated,S24,status_as_of 2026-10-03 -> 2026-10-14 (NIC snapshot),B11
+1.1.0,2026-10-15,status date updated,S25,status_as_of 2026-10-03 -> 2026-10-14 (NIC snapshot),B11
+1.1.0,2026-10-15,status date updated,S26,status_as_of 2026-10-03 -> 2026-10-14 (NIC snapshot),B11
+1.1.0,2026-10-15,status date updated,S27,status_as_of 2026-10-03 -> 2026-10-14 (NIC snapshot),B11
+1.1.0,2026-10-15,status date updated,S40,status_as_of 2026-10-03 -> 2026-10-14 (NIC snapshot),B11
+1.1.0,2026-10-15,status date updated,S41,status_as_of 2026-10-03 -> 2026-10-14 (NIC snapshot),B11
+1.1.0,2026-10-15,status date updated,S42,status_as_of 2026-10-03 -> 2026-10-14 (NIC snapshot),B11
+1.1.0,2026-10-15,status date updated,S48,status_as_of 2026-10-03 -> 2026-10-14 (NIC snapshot),B11
+1.1.0,2026-10-15,status date updated,S70,status_as_of 2026-10-03 -> 2026-10-14 (NIC snapshot),B11
+1.1.0,2026-10-15,status date updated,S74,status_as_of 2026-10-03 -> 2026-10-14 (NIC snapshot),B11
+1.1.0,2026-10-15,status date updated,S78,status_as_of 2026-10-03 -> 2026-10-14 (NIC snapshot),B11
+1.1.0,2026-10-15,scale updated,C08,"scale_text ""442 documents; 983 verifications"" -> ""447 documents; 987 verifications (NIC statistics, 2026-10-14)""",B11
+1.1.0,2026-10-15,scale updated,C09,"scale_text ""17,37,549 documents; 20,95,354 verifications"" -> ""17,41,654 documents; 21,62,694 verifications (NIC statistics, 2026-10-14)""",B11
+1.1.0,2026-10-15,scale updated,C11,"scale_text ""22,709 documents; 16 verifications"" -> ""23,047 documents; 16 verifications (NIC statistics, 2026-10-14)""",B11
+1.1.0,2026-10-15,scale updated,C12,"scale_text ""409 documents; 24 verifications"" -> ""4,553 documents; 1,702 verifications (NIC statistics, 2026-10-14)""",B11
+1.1.0,2026-10-15,scale updated,O14,"scale_text ""2,10,71,556 documents; 85,261 verifications"" -> ""2,10,71,556 documents; 85,261 verifications (NIC statistics, 2026-10-14)""",B11
+1.1.0,2026-10-15,scale updated,S06,"scale_text ""Survey Dept 1,49,781 documents; Revenue Dept 1,44,471 verifications"" -> ""3,16,434 documents; 1,60,368 verifications (NIC statistics, 2026-10-14)""",B11
+1.1.0,2026-10-15,scale updated,S12,"scale_text ""7,277 documents; 103 verifications"" -> ""7,277 documents; 103 verifications (NIC statistics, 2026-10-14)""",B11
+1.1.0,2026-10-15,scale updated,S21,"scale_text ""4,474 documents; 31 verifications"" -> ""4,474 documents; 31 verifications (NIC statistics, 2026-10-14)""",B11
+1.1.0,2026-10-15,scale updated,S22,"scale_text ""34,93,771 documents"" -> ""35,38,745 documents (NIC statistics, 2026-10-14)""",B11
+1.1.0,2026-10-15,scale updated,S23,"scale_text ""67,66,802 documents; 37 verifications"" -> ""68,20,431 documents; 37 verifications (NIC statistics, 2026-10-14)""",B11
+1.1.0,2026-10-15,scale updated,S24,"scale_text ""4,22,30,722 documents"" -> ""4,24,82,055 documents; 2 verifications (NIC statistics, 2026-10-14)""",B11
+1.1.0,2026-10-15,scale updated,S25,"scale_text ""1,43,97,704 documents; 1,258 verifications"" -> ""1,43,97,704 documents; 1,258 verifications (NIC statistics, 2026-10-14)""",B11
+1.1.0,2026-10-15,scale updated,S26,"scale_text ""2,11,49,850 documents; 46,88,54,209 verifications (12.1 lakh this month)"" -> ""2,11,88,847 documents; 47,50,45,928 verifications (NIC statistics, 2026-10-14)""",B11
+1.1.0,2026-10-15,scale updated,S27,"scale_text ""43,565 documents; 6,084 verifications"" -> ""43,565 documents; 6,084 verifications (NIC statistics, 2026-10-14)""",B11
+1.1.0,2026-10-15,scale updated,S40,"scale_text ""31,749 documents; 6,324 verifications"" -> ""31,760 documents; 6,460 verifications (NIC statistics, 2026-10-14)""",B11
+1.1.0,2026-10-15,scale updated,S41,"scale_text ""2,02,444 documents; 10,783 verifications"" -> ""2,02,444 documents; 10,783 verifications (NIC statistics, 2026-10-14)""",B11
+1.1.0,2026-10-15,scale updated,S42,"scale_text ""968 documents; 72 verifications"" -> ""1,005 documents; 73 verifications (NIC statistics, 2026-10-14)""",B11
+1.1.0,2026-10-15,scale updated,S48,"scale_text ""79,614 documents; 59 verifications"" -> ""79,614 documents; 59 verifications (NIC statistics, 2026-10-14)""",B11
+1.1.0,2026-10-15,scale updated,S70,"scale_text ""3,465 documents; 1 verification"" -> ""3,465 documents; 1 verifications (NIC statistics, 2026-10-14)""",B11
+1.1.0,2026-10-15,scale updated,S74,"scale_text ""8,16,543 documents; 1,53,834 verifications (747 this month)"" -> ""8,16,773 documents; 1,53,915 verifications (NIC statistics, 2026-10-14)""",B11
+1.1.0,2026-10-15,scale updated,S78,"scale_text ""3,87,616 documents; 828 verifications"" -> ""3,87,616 documents; 828 verifications (NIC statistics, 2026-10-14)""",B11
+1.1.0,2026-10-15,structure,*,"Dataset restructured as a Frictionless Data Package: normalised tables (jurisdictions, bodies, projects, stage_events, challenges, sources, project_sources, nic_snapshots, vocabularies) with keys and controlled vocabularies.",
+1.1.0,2026-10-15,added,stage_events,"314 dated stage events (announced, pilot, live, scaled, latest update) with sources.",
+1.1.0,2026-10-15,added,challenges,39 source-reported challenges coded on a TOE scheme (12 codes).,
+1.1.0,2026-10-15,added,nic_snapshots,"NIC platform time series: 23 Jul 2024 (Internet Archive), 14 Dec 2025 (totals), 3 Oct 2026, 14 Oct 2026.",
+1.1.0,2026-10-15,added,jurisdictions,ISO 3166-2:IN codes (2023 revision) and LGD state codes for all 36 States/UTs.,
+1.1.0,2026-10-15,added,sources,208 new sources found in v1.1 research.,
+1.1.0,2026-10-15,note updated,IN-JK,"""Only an unverified claim in an opinion article"" -> ""DOVE domicile-certificate verification (C-DAC, MeitY success story); a land-registry claim remains unverified.""",

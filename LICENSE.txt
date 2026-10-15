@@ -1,0 +1,13 @@
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+Copyright (c) 2026 Santanu Mondal
+
+You are free to share (copy and redistribute) and adapt (remix, transform and build upon) this dataset for any purpose, including commercially, provided you give appropriate credit, provide a link to the licence, and indicate if changes were made.
+
+Full legal code: https://creativecommons.org/licenses/by/4.0/legalcode
+
+Note: Source URLs in references.csv point to third-party pages that remain under their owners' terms. This dataset contains only facts, short descriptions written by the author, and citations — not copies of those pages.
+
+Third-party data included:
+- geo/india_states.json is derived (simplified) from "India States" by the DataMeet India community (https://github.com/datameet/maps), licensed CC BY 4.0.
+- raw/nic/*.json are copies of the public statistics file published by the National Informatics Centre (blockchain.gov.in), kept for provenance.

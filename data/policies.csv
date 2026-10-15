@@ -1,0 +1,15 @@
+id,issued_by,document,date,level,citation_ref_id,source_url
+D01,NITI Aayog,Blockchain: The India Strategy – Part I,Jan 2020,Central,R03,https://www.niti.gov.in/sites/default/files/2020-01/Blockchain_The_India_Strategy_Part_I.pdf
+D02,MeitY,National Strategy on Blockchain,2021,Central,R01,https://www.pib.gov.in/PressReleasePage.aspx?PRID=2182023
+D03,MeitY / PIB,"Launch of Vishvasya Stack, NBFLite, Praamaanik, National Blockchain Portal",4 Sep 2024,Central,R34,https://www.pib.gov.in/PressReleasePage.aspx?PRID=2051934
+D04,SEBI,DLT circular & operational guidelines for covenant monitoring,Aug 2021 / Mar 2022,Regulator,R09,https://www.business-standard.com/amp/article/markets/sebi-issues-operational-guidelines-for-covenant-monitoring-with-dlt-122032901511_1.html
+D05,Govt of Karnataka,Plan for a blockchain framework policy,Nov 2017,State,N14,https://www.deccanherald.com/india/karnataka/bengaluru/to-ensure-better-citizen-service-2034471
+D06,Govt of Tamil Nadu,Tamil Nadu Blockchain Policy 2020,Sep 2020,State,R23,https://www.business-standard.com/article/current-affairs/blockchain-policy-by-tn-govt-ensures-access-to-services-anywhere-anytime-120092000758_1.html
+D07,Govt of Telangana,Draft Telangana Blockchain Policy (Blockchain District),May 2019,State,R36,https://www.medianama.com/2019/05/223-summary-telanganas-draft-policy-for-a-blockchain-district-for-hyderabad/
+D08,Govt of West Bengal,West Bengal Blockchain Technology Promotion Guidelines 2020,2020,State,R16,https://lf-hyperledger.atlassian.net/wiki/spaces/HIRC/pages/19171362/Hyperledger+India+-+eBook
+D09,Govt of Uttar Pradesh,UP draft Blockchain Policy / blockchain architecture directive,2018,State,N39,https://www.business-standard.com/article/economy-policy/yogi-adityanath-govt-to-build-blockchain-architecture-for-data-security-118072200331_1.html
+D10,"Rajya Sabha (Raghav Chadha, MP)",Parliament speech proposing a National Blockchain Property Register,9 Feb 2026,Parliament,N84,https://thelogicalindian.com/raghav-chadha-pushes-for-national-blockchain-property-register-to-fix-indias-broken-land-records-system/
+D11,Supreme Court of India,Samiullah v. State of Bihar – recommendation to adopt blockchain in land registration,7 Nov 2025,Judiciary,N59,https://www.lawcurb.in/judgements/samiullah-vs-the-state-of-bihar-&-ors-2025-insc-1292
+D12,"e-Committee, Supreme Court",eCourts Phase III vision document (blockchain for authentication),23 Sep 2022,Judiciary,N56,https://cdnbbsr.s3waas.gov.in/s35d6646aad9bcc0be55b2c82f69750387/uploads/2024/07/202407161620804267.pdf
+D13,Govt of Odisha (OCAC),RFP – Blockchain-as-a-Service platform for Odisha,14 Dec 2023,State,N25,https://odisha.gov.in/sites/default/files/2023-12/RFP-23123_14.12.2023.pdf
+D14,Govt of Madhya Pradesh (MPSEDC),RFP – Blockchain-as-a-Service platform for MP,22 Sep 2025,State,N18,https://tenderdekho.com/tender-detail/td-1br73DkHir

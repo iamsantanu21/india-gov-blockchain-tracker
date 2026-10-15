@@ -1,0 +1,12 @@
+{
+ "profile": "tabular-data-package",
+ "name": "india-gov-blockchain-projects",
+ "title": "Blockchain in Indian Government Administration: A Project-Level Dataset (2017–2026)",
+ "version": "1.1.0",
+ "created": "2026-10-15T00:00:00Z",
+ "description": "Coded, source-linked inventory of blockchain / distributed-ledger initiatives by Indian public bodies (Union, all 28 States and 8 Union Territories, regulators, courts, statutory bodies), with dated lifecycle events, source-reported challenges (TOE-coded), evidence scores and a time series of the NIC blockchain platform. Structured as normalised tables with controlled vocabularies so new projects, events and snapshots can be added and validated.",
+ "keywords": ["blockchain", "distributed ledger technology", "e-governance", "India", "public sector", "National Blockchain Framework", "NIC", "digital government", "TOE framework", "COFOG"],
+ "licenses": [{"name": "CC-BY-4.0", "title": "Creative Commons Attribution 4.0", "path": "https://creativecommons.org/licenses/by/4.0/"}],
+ "contributors": [{"title": "Santanu Mondal", "role": "author", "organization": "Pondicherry University", "path": "https://orcid.org/0009-0001-6243-1709"}],
+ "sources": [{"title": "See sources.csv (339 public sources: PIB, NIC, MeitY, State portals, courts, news)"}]
+}

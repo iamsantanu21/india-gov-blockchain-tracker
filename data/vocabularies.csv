@@ -1,0 +1,138 @@
+vocabulary,code,label,definition,maps_to
+stage,Implemented,Implemented,"In production use with real users, documents or transactions, per the latest dated source.",Live
+stage,In progress,In progress,"Development, procurement or a pilot is under way.",In development
+stage,Proposed / Planned,Proposed / Planned,"Announced, approved or planned; no pilot or development evidenced yet.",Planned
+stage,Pilot completed,Pilot completed,"A pilot or proof of concept was reported finished, with no production rollout found.",Pilot completed
+stage,Unclear (no recent update),Unclear (no recent update),No public update found to establish the current stage. Not evidence of failure.,Unclear
+stage,Discontinued,Discontinued,A source explicitly reports the project stopped or was replaced.,Discontinued
+event_type,announced,Announced,"First public announcement, MoU, policy, tender or directive.",
+event_type,pilot_started,Pilot started,A pilot or proof of concept actually began.,
+event_type,pilot_completed,Pilot completed,A pilot or proof of concept was reported finished.,
+event_type,live,Live,"First production use or public launch (real users, documents or transactions). Some are ""live by"" dates: the earliest dated proof of use.",
+event_type,scaled,Scaled,A major expansion after going live.,
+event_type,discontinued,Discontinued,"Explicitly stopped or replaced, per a source.",
+event_type,latest_update,Latest update,The most recent dated public evidence about the project status.,
+challenge_code,T1,Interoperability & integration with legacy or other systems,"TOE dimension: Technology. Suggested DOI attribute (analytical mapping, not empirical): Compatibility.",Technology|Compatibility
+challenge_code,T2,Scalability & performance,"TOE dimension: Technology. Suggested DOI attribute (analytical mapping, not empirical): Complexity.",Technology|Complexity
+challenge_code,T3,Security & privacy concerns,"TOE dimension: Technology. Suggested DOI attribute (analytical mapping, not empirical): Perceived risk (extension).",Technology|Perceived risk (extension)
+challenge_code,T4,Data quality / digitisation of legacy records,"TOE dimension: Technology. Suggested DOI attribute (analytical mapping, not empirical): Compatibility.",Technology|Compatibility
+challenge_code,O1,Funding & cost,"TOE dimension: Organisation. Suggested DOI attribute (analytical mapping, not empirical): Relative advantage.",Organisation|Relative advantage
+challenge_code,O2,Skills & technical capacity,"TOE dimension: Organisation. Suggested DOI attribute (analytical mapping, not empirical): Complexity.",Organisation|Complexity
+challenge_code,O3,Vendor dependence / lock-in / partner exit,"TOE dimension: Organisation. Suggested DOI attribute (analytical mapping, not empirical): Perceived risk (extension).",Organisation|Perceived risk (extension)
+challenge_code,O4,Inter-departmental coordination & governance / institutional ownership,"TOE dimension: Organisation. Suggested DOI attribute (analytical mapping, not empirical): Compatibility.",Organisation|Compatibility
+challenge_code,E1,Legal & regulatory recognition,"TOE dimension: Environment. Suggested DOI attribute (analytical mapping, not empirical): Compatibility.",Environment|Compatibility
+challenge_code,E2,User adoption & awareness,"TOE dimension: Environment. Suggested DOI attribute (analytical mapping, not empirical): Observability.",Environment|Observability
+challenge_code,E3,Policy discontinuity / political or leadership change,"TOE dimension: Environment. Suggested DOI attribute (analytical mapping, not empirical): —.",Environment|—
+challenge_code,E4,Ecosystem immaturity / lack of standards,"TOE dimension: Environment. Suggested DOI attribute (analytical mapping, not empirical): Trialability.",Environment|Trialability
+tier,Union government,Union government,"Union ministries, departments and attached offices",
+tier,State / UT government,State / UT government,"State and Union Territory departments, agencies, districts and municipal bodies",
+tier,Other public body,Other public body,"Regulators, central bank, courts, Election Commission, statutory boards, PSUs, public institutes",
+domain,Land & Property,Land & Property,Author-defined policy domain,COFOG 01 General public services
+domain,Platform & Infrastructure,Platform & Infrastructure,Author-defined policy domain,COFOG 01 General public services
+domain,Certificates & Identity,Certificates & Identity,Author-defined policy domain,COFOG 01 General public services
+domain,Grievance & Records,Grievance & Records,Author-defined policy domain,COFOG 01 General public services
+domain,Elections,Elections,Author-defined policy domain,COFOG 01 General public services
+domain,Justice & Police,Justice & Police,Author-defined policy domain,COFOG 03 Public order and safety
+domain,Finance & Payments,Finance & Payments,Author-defined policy domain,COFOG 04 Economic affairs
+domain,Agriculture & Trade,Agriculture & Trade,Author-defined policy domain,COFOG 04 Economic affairs
+domain,Telecom & Cyber,Telecom & Cyber,Author-defined policy domain,COFOG 04 Economic affairs
+domain,Transport,Transport,Author-defined policy domain,COFOG 04 Economic affairs
+domain,Energy,Energy,Author-defined policy domain,COFOG 04 Economic affairs
+domain,Health & Supply Chain,Health & Supply Chain,Author-defined policy domain,COFOG 07 Health
+domain,Education & Skills,Education & Skills,Author-defined policy domain,COFOG 09 Education
+domain,Welfare & Subsidy,Welfare & Subsidy,Author-defined policy domain,COFOG 10 Social protection
+cofog_division,01,General public services,"UN Classification of the Functions of Government (COFOG), division level; approximate, assigned from domain.",
+cofog_division,03,Public order and safety,"UN Classification of the Functions of Government (COFOG), division level; approximate, assigned from domain.",
+cofog_division,04,Economic affairs,"UN Classification of the Functions of Government (COFOG), division level; approximate, assigned from domain.",
+cofog_division,07,Health,"UN Classification of the Functions of Government (COFOG), division level; approximate, assigned from domain.",
+cofog_division,09,Education,"UN Classification of the Functions of Government (COFOG), division level; approximate, assigned from domain.",
+cofog_division,10,Social protection,"UN Classification of the Functions of Government (COFOG), division level; approximate, assigned from domain.",
+chain_type,Permissioned,Permissioned,,
+chain_type,Public,Public,,
+chain_type,Hybrid (private + public anchor),Hybrid (private + public anchor),,
+chain_type,CBDC (DLT not confirmed),CBDC (DLT not confirmed),,
+chain_type,Not disclosed,Not disclosed,,
+scale_tier,Large (≥10 lakh),Large (≥10 lakh),"Counts actual users, documents or transactions only; targets and budgets are not counted.",
+scale_tier,"Medium (10,000–10 lakh)","Medium (10,000–10 lakh)","Counts actual users, documents or transactions only; targets and budgets are not counted.",
+scale_tier,"Small (<10,000)","Small (<10,000)","Counts actual users, documents or transactions only; targets and budgets are not counted.",
+scale_tier,Not reported,Not reported,"Counts actual users, documents or transactions only; targets and budgets are not counted.",
+service_type,G2C,Government-to-citizen,,
+service_type,G2B,Government-to-business,,
+service_type,G2G,Government-to-government,,
+use_case,Authentication & anti-fraud,Authentication & anti-fraud,,
+use_case,CBDC / digital payments,CBDC / digital payments,,
+use_case,Certificates & identity,Certificates & identity,,
+use_case,E-voting,E-voting,,
+use_case,Energy trading,Energy trading,,
+use_case,Financial infrastructure,Financial infrastructure,,
+use_case,Land / property registry,Land / property registry,,
+use_case,Platform / ecosystem,Platform / ecosystem,,
+use_case,Public procurement,Public procurement,,
+use_case,Records & audit trail,Records & audit trail,,
+use_case,Supply-chain traceability,Supply-chain traceability,,
+use_case,Tokenisation / NFTs,Tokenisation / NFTs,,
+use_case,Welfare delivery,Welfare delivery,,
+platform,5ire,5ire,,
+platform,Avalanche,Avalanche,,
+platform,Corda / IBM,Corda / IBM,,
+platform,Depository / regulator DLT,Depository / regulator DLT,,
+platform,Ethereum,Ethereum,,
+platform,Hyperledger (other),Hyperledger (other),,
+platform,Hyperledger Fabric,Hyperledger Fabric,,
+platform,IIT Kanpur NBP,IIT Kanpur NBP,,
+platform,Internet Computer (ICP),Internet Computer (ICP),,
+platform,NIC chains (Hyperledger-based),NIC chains (Hyperledger-based),,
+platform,Not disclosed,Not disclosed,,
+platform,Oracle Blockchain,Oracle Blockchain,,
+platform,Polygon,Polygon,,
+platform,Polygon Edge,Polygon Edge,,
+platform,Power Ledger,Power Ledger,,
+platform,RBI CBDC infrastructure,RBI CBDC infrastructure,,
+level,Agency / foundation,Agency / foundation,,
+level,Central institute,Central institute,,
+level,Central ministry / dept,Central ministry / dept,,
+level,Constitutional body,Constitutional body,,
+level,District,District,,
+level,Judiciary,Judiciary,,
+level,Municipal body,Municipal body,,
+level,PSU,PSU,,
+level,Regulator / central bank,Regulator / central bank,,
+level,State,State,,
+level,Statutory / autonomous body,Statutory / autonomous body,,
+level,Union Territory,Union Territory,,
+problem,Asset liquidity / digital ownership,Asset liquidity / digital ownership,,
+problem,Capacity & shared infrastructure,Capacity & shared infrastructure,,
+problem,Digital souvenirs / ownership,Digital souvenirs / ownership,,
+problem,Forgery / fake documents,Forgery / fake documents,,
+problem,Fraud / spam / fake apps,Fraud / spam / fake apps,,
+problem,Identity verification & privacy,Identity verification & privacy,,
+problem,Lack of traceability / counterfeits,Lack of traceability / counterfeits,,
+problem,Land fraud & disputes,Land fraud & disputes,,
+problem,Leakage / beneficiary fraud,Leakage / beneficiary fraud,,
+problem,Market access for prosumers,Market access for prosumers,,
+problem,Market transparency & settlement risk,Market transparency & settlement risk,,
+problem,Payment efficiency & programmability,Payment efficiency & programmability,,
+problem,Supplier fraud & opacity in procurement,Supplier fraud & opacity in procurement,,
+problem,Tampering of records,Tampering of records,,
+problem,Verification of public works,Verification of public works,,
+problem,Voter access & vote integrity,Voter access & vote integrity,,
+evidence_score,5,5 – Official source with live/current data,"Row score = score of the strongest linked source, capped at 1 if flagged unverified and at 2 if only vendor or slide-deck sources exist.",
+evidence_score,4,"4 – Official document (govt site, PIB, tender, court)","Row score = score of the strongest linked source, capped at 1 if flagged unverified and at 2 if only vendor or slide-deck sources exist.",
+evidence_score,3,3 – Mainstream news,"Row score = score of the strongest linked source, capped at 1 if flagged unverified and at 2 if only vendor or slide-deck sources exist.",
+evidence_score,2,"2 – Trade/crypto press or secondary (eBook, deck, blog)","Row score = score of the strongest linked source, capped at 1 if flagged unverified and at 2 if only vendor or slide-deck sources exist.",
+evidence_score,1,"1 – Vendor-only, opinion or unverified claim","Row score = score of the strongest linked source, capped at 1 if flagged unverified and at 2 if only vendor or slide-deck sources exist.",
+source_type,Official,Official,,
+source_type,News,News,,
+source_type,Secondary,Secondary,,
+source_type,Vendor,Vendor,,
+source_role,citation,citation,Cited for the project row itself,
+source_role,event evidence,event evidence,Supports a dated stage event,
+source_role,challenge evidence,challenge evidence,Supports a coded challenge,
+source_role,additional,additional,Other useful source found during research,
+nic_metric,documents,documents,Cumulative documents/transactions recorded on the chain,
+nic_metric,verifications_total,verifications_total,Cumulative verifications (reads),
+nic_metric,verifications_current_month,verifications_current_month,Verifications in the current month up to the data date,
+nic_metric,products,products,Blockchain products listed,
+nic_metric,organisations_states,organisations_states,Central organisations and States onboarded,
+nic_metric,departments,departments,Departments onboarded,
+nic_metric,pocs,pocs,Proofs of concept listed,

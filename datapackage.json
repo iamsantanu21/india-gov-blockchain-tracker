@@ -1,0 +1,1407 @@
+{
+ "profile": "tabular-data-package",
+ "name": "india-gov-blockchain-projects",
+ "title": "Blockchain in Indian Government Administration: A Project-Level Dataset (2017–2026)",
+ "version": "1.1.0",
+ "created": "2026-10-15T00:00:00Z",
+ "description": "Coded, source-linked inventory of blockchain / distributed-ledger initiatives by Indian public bodies (Union, all 28 States and 8 Union Territories, regulators, courts, statutory bodies), with dated lifecycle events, source-reported challenges (TOE-coded), evidence scores and a time series of the NIC blockchain platform. Structured as normalised tables with controlled vocabularies so new projects, events and snapshots can be added and validated.",
+ "keywords": [
+  "blockchain",
+  "distributed ledger technology",
+  "e-governance",
+  "India",
+  "public sector",
+  "National Blockchain Framework",
+  "NIC",
+  "digital government",
+  "TOE framework",
+  "COFOG"
+ ],
+ "licenses": [
+  {
+   "name": "CC-BY-4.0",
+   "title": "Creative Commons Attribution 4.0",
+   "path": "https://creativecommons.org/licenses/by/4.0/"
+  }
+ ],
+ "contributors": [
+  {
+   "title": "Santanu Mondal",
+   "role": "author",
+   "organization": "Pondicherry University",
+   "path": "https://orcid.org/0009-0001-6243-1709"
+  }
+ ],
+ "sources": [
+  {
+   "title": "See sources.csv (339 public sources: PIB, NIC, MeitY, State portals, courts, news)"
+  }
+ ],
+ "resources": [
+  {
+   "name": "jurisdictions",
+   "path": "data/jurisdictions.csv",
+   "profile": "tabular-data-resource",
+   "format": "csv",
+   "mediatype": "text/csv",
+   "encoding": "utf-8",
+   "description": "Countries, States and Union Territories (ISO 3166-2 keyed). One row per jurisdiction searched.",
+   "schema": {
+    "fields": [
+     {
+      "name": "jurisdiction_id",
+      "type": "string",
+      "description": "ISO 3166-1 alpha-2 country code (IN) or ISO 3166-2 subdivision code (2023 revision, e.g. IN-KA)",
+      "constraints": {
+       "required": true,
+       "pattern": "^[A-Z]{2}(-[A-Z]{2})?$"
+      }
+     },
+     {
+      "name": "name",
+      "type": "string",
+      "description": "Official English name",
+      "constraints": {
+       "required": true
+      }
+     },
+     {
+      "name": "type",
+      "type": "string",
+      "description": "Country, State or Union Territory",
+      "constraints": {
+       "required": true,
+       "enum": [
+        "Country",
+        "State",
+        "Union Territory"
+       ]
+      }
+     },
+     {
+      "name": "lgd_code",
+      "type": "integer",
+      "description": "Local Government Directory (LGD) state code, Govt of India"
+     },
+     {
+      "name": "parent_id",
+      "type": "string",
+      "description": "Parent jurisdiction"
+     },
+     {
+      "name": "search_result",
+      "type": "string",
+      "description": "Outcome of the systematic search for this jurisdiction"
+     },
+     {
+      "name": "search_note",
+      "type": "string",
+      "description": "Notes from the search"
+     },
+     {
+      "name": "last_searched",
+      "type": "string",
+      "description": "Date of the latest systematic search (ISO 8601)",
+      "constraints": {
+       "pattern": "^\\d{4}(-\\d{2}(-\\d{2})?)?$"
+      }
+     }
+    ],
+    "missingValues": [
+     ""
+    ],
+    "primaryKey": [
+     "jurisdiction_id"
+    ]
+   }
+  },
+  {
+   "name": "bodies",
+   "path": "data/bodies.csv",
+   "profile": "tabular-data-resource",
+   "format": "csv",
+   "mediatype": "text/csv",
+   "encoding": "utf-8",
+   "description": "Public bodies (organisations) that implement, fund or mandate projects.",
+   "schema": {
+    "fields": [
+     {
+      "name": "body_id",
+      "type": "string",
+      "description": "Stable identifier (ORGnnn)",
+      "constraints": {
+       "required": true,
+       "pattern": "^ORG\\d{3,}$"
+      }
+     },
+     {
+      "name": "name",
+      "type": "string",
+      "description": "Name as reported",
+      "constraints": {
+       "required": true
+      }
+     },
+     {
+      "name": "jurisdiction_id",
+      "type": "string",
+      "description": "Jurisdiction of the body (IN for Union-level bodies)",
+      "constraints": {
+       "required": true
+      }
+     },
+     {
+      "name": "body_type",
+      "type": "string",
+      "description": "Type of body as reported"
+     },
+     {
+      "name": "level",
+      "type": "string",
+      "description": "Coded tier of government",
+      "constraints": {
+       "enum": [
+        "Agency / foundation",
+        "Central institute",
+        "Central ministry / dept",
+        "Constitutional body",
+        "District",
+        "Judiciary",
+        "Municipal body",
+        "PSU",
+        "Regulator / central bank",
+        "State",
+        "Statutory / autonomous body",
+        "Union Territory"
+       ]
+      }
+     },
+     {
+      "name": "parent",
+      "type": "string",
+      "description": "Parent ministry or State"
+     }
+    ],
+    "missingValues": [
+     ""
+    ],
+    "primaryKey": [
+     "body_id"
+    ],
+    "foreignKeys": [
+     {
+      "fields": "jurisdiction_id",
+      "reference": {
+       "resource": "jurisdictions",
+       "fields": "jurisdiction_id"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "name": "projects",
+   "path": "data/projects.csv",
+   "profile": "tabular-data-resource",
+   "format": "csv",
+   "mediatype": "text/csv",
+   "encoding": "utf-8",
+   "description": "One row per blockchain/DLT initiative by one implementing public body (unit of analysis).",
+   "schema": {
+    "fields": [
+     {
+      "name": "project_id",
+      "type": "string",
+      "description": "Stable identifier: C = Union, S = State/UT, O = other public body",
+      "constraints": {
+       "required": true,
+       "pattern": "^[CSO]\\d{2,}$"
+      }
+     },
+     {
+      "name": "record_status",
+      "type": "string",
+      "description": "active, merged or withdrawn",
+      "constraints": {
+       "required": true,
+       "enum": [
+        "active",
+        "merged",
+        "withdrawn"
+       ]
+      }
+     },
+     {
+      "name": "country",
+      "type": "string",
+      "description": "ISO 3166-1 alpha-2 country code",
+      "constraints": {
+       "required": true,
+       "pattern": "^[A-Z]{2}$"
+      }
+     },
+     {
+      "name": "tier",
+      "type": "string",
+      "description": "Tier of government",
+      "constraints": {
+       "required": true,
+       "enum": [
+        "Union government",
+        "State / UT government",
+        "Other public body"
+       ]
+      }
+     },
+     {
+      "name": "jurisdiction_id",
+      "type": "string",
+      "description": "Implementing jurisdiction",
+      "constraints": {
+       "required": true
+      }
+     },
+     {
+      "name": "body_id",
+      "type": "string",
+      "description": "Implementing body",
+      "constraints": {
+       "required": true
+      }
+     },
+     {
+      "name": "level",
+      "type": "string",
+      "description": "Coded level of the implementing body",
+      "constraints": {
+       "enum": [
+        "Agency / foundation",
+        "Central institute",
+        "Central ministry / dept",
+        "Constitutional body",
+        "District",
+        "Judiciary",
+        "Municipal body",
+        "PSU",
+        "Regulator / central bank",
+        "State",
+        "Statutory / autonomous body",
+        "Union Territory"
+       ]
+      }
+     },
+     {
+      "name": "title",
+      "type": "string",
+      "description": "Project name",
+      "constraints": {
+       "required": true
+      }
+     },
+     {
+      "name": "domain",
+      "type": "string",
+      "description": "Policy domain (author-defined)",
+      "constraints": {
+       "required": true,
+       "enum": [
+        "Land & Property",
+        "Platform & Infrastructure",
+        "Certificates & Identity",
+        "Grievance & Records",
+        "Elections",
+        "Justice & Police",
+        "Finance & Payments",
+        "Agriculture & Trade",
+        "Telecom & Cyber",
+        "Transport",
+        "Energy",
+        "Health & Supply Chain",
+        "Education & Skills",
+        "Welfare & Subsidy"
+       ]
+      }
+     },
+     {
+      "name": "cofog_division",
+      "type": "string",
+      "description": "UN COFOG division (2-digit), assigned from domain",
+      "constraints": {
+       "enum": [
+        "01",
+        "03",
+        "04",
+        "07",
+        "09",
+        "10"
+       ]
+      }
+     },
+     {
+      "name": "description",
+      "type": "string",
+      "description": "What the project does"
+     },
+     {
+      "name": "platform_reported",
+      "type": "string",
+      "description": "Blockchain platform as reported in sources"
+     },
+     {
+      "name": "tech_partner",
+      "type": "string",
+      "description": "Technology partner(s) as reported"
+     },
+     {
+      "name": "started_text",
+      "type": "string",
+      "description": "Start or announcement as reported (free text)"
+     },
+     {
+      "name": "start_year",
+      "type": "integer",
+      "description": "Coded start year",
+      "constraints": {
+       "minimum": 2015,
+       "maximum": 2035
+      }
+     },
+     {
+      "name": "stage",
+      "type": "string",
+      "description": "Current lifecycle stage, from the latest dated source",
+      "constraints": {
+       "required": true,
+       "enum": [
+        "Implemented",
+        "In progress",
+        "Proposed / Planned",
+        "Pilot completed",
+        "Unclear (no recent update)",
+        "Discontinued"
+       ]
+      }
+     },
+     {
+      "name": "status_text",
+      "type": "string",
+      "description": "Current status as reported"
+     },
+     {
+      "name": "status_as_of",
+      "type": "string",
+      "description": "Date of the latest dated evidence on status (ISO 8601 partial date)",
+      "constraints": {
+       "pattern": "^\\d{4}(-\\d{2}(-\\d{2})?)?$"
+      }
+     },
+     {
+      "name": "scale_text",
+      "type": "string",
+      "description": "Scale as reported (documents, users, transactions)"
+     },
+     {
+      "name": "scale_tier",
+      "type": "string",
+      "description": "Coded scale tier",
+      "constraints": {
+       "enum": [
+        "Large (≥10 lakh)",
+        "Medium (10,000–10 lakh)",
+        "Small (<10,000)",
+        "Not reported"
+       ]
+      }
+     },
+     {
+      "name": "use_case",
+      "type": "string",
+      "description": "Coded use-case type",
+      "constraints": {
+       "enum": [
+        "Authentication & anti-fraud",
+        "CBDC / digital payments",
+        "Certificates & identity",
+        "E-voting",
+        "Energy trading",
+        "Financial infrastructure",
+        "Land / property registry",
+        "Platform / ecosystem",
+        "Public procurement",
+        "Records & audit trail",
+        "Supply-chain traceability",
+        "Tokenisation / NFTs",
+        "Welfare delivery"
+       ]
+      }
+     },
+     {
+      "name": "chain_type",
+      "type": "string",
+      "description": "Coded chain type",
+      "constraints": {
+       "enum": [
+        "Permissioned",
+        "Public",
+        "Hybrid (private + public anchor)",
+        "CBDC (DLT not confirmed)",
+        "Not disclosed"
+       ]
+      }
+     },
+     {
+      "name": "platform",
+      "type": "string",
+      "description": "Normalised platform",
+      "constraints": {
+       "enum": [
+        "5ire",
+        "Avalanche",
+        "Corda / IBM",
+        "Depository / regulator DLT",
+        "Ethereum",
+        "Hyperledger (other)",
+        "Hyperledger Fabric",
+        "IIT Kanpur NBP",
+        "Internet Computer (ICP)",
+        "NIC chains (Hyperledger-based)",
+        "Not disclosed",
+        "Oracle Blockchain",
+        "Polygon",
+        "Polygon Edge",
+        "Power Ledger",
+        "RBI CBDC infrastructure"
+       ]
+      }
+     },
+     {
+      "name": "service_type",
+      "type": "string",
+      "description": "G2C, G2B or G2G",
+      "constraints": {
+       "enum": [
+        "G2C",
+        "G2B",
+        "G2G"
+       ]
+      }
+     },
+     {
+      "name": "problem",
+      "type": "string",
+      "description": "Main problem addressed",
+      "constraints": {
+       "enum": [
+        "Asset liquidity / digital ownership",
+        "Capacity & shared infrastructure",
+        "Digital souvenirs / ownership",
+        "Forgery / fake documents",
+        "Fraud / spam / fake apps",
+        "Identity verification & privacy",
+        "Lack of traceability / counterfeits",
+        "Land fraud & disputes",
+        "Leakage / beneficiary fraud",
+        "Market access for prosumers",
+        "Market transparency & settlement risk",
+        "Payment efficiency & programmability",
+        "Supplier fraud & opacity in procurement",
+        "Tampering of records",
+        "Verification of public works",
+        "Voter access & vote integrity"
+       ]
+      }
+     },
+     {
+      "name": "evidence_score",
+      "type": "integer",
+      "description": "Evidence score 1-5 (strongest linked source, capped by verify note)",
+      "constraints": {
+       "minimum": 1,
+       "maximum": 5
+      }
+     },
+     {
+      "name": "evidence_basis",
+      "type": "string",
+      "description": "How the evidence score was derived"
+     },
+     {
+      "name": "verify_note",
+      "type": "string",
+      "description": "Conflicts, caveats or verification flags"
+     },
+     {
+      "name": "related_projects",
+      "type": "string",
+      "description": "IDs of closely related rows (e.g. two sides of one agreement)"
+     },
+     {
+      "name": "last_reviewed",
+      "type": "string",
+      "description": "Date the row was last reviewed",
+      "constraints": {
+       "pattern": "^\\d{4}(-\\d{2}(-\\d{2})?)?$"
+      }
+     }
+    ],
+    "missingValues": [
+     ""
+    ],
+    "primaryKey": [
+     "project_id"
+    ],
+    "foreignKeys": [
+     {
+      "fields": "jurisdiction_id",
+      "reference": {
+       "resource": "jurisdictions",
+       "fields": "jurisdiction_id"
+      }
+     },
+     {
+      "fields": "body_id",
+      "reference": {
+       "resource": "bodies",
+       "fields": "body_id"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "name": "stage_events",
+   "path": "data/stage_events.csv",
+   "profile": "tabular-data-resource",
+   "format": "csv",
+   "mediatype": "text/csv",
+   "encoding": "utf-8",
+   "description": "Dated lifecycle events per project (long format). Supports stage dates, time-to-live and pilot-to-production analysis.",
+   "schema": {
+    "fields": [
+     {
+      "name": "event_id",
+      "type": "string",
+      "description": "Stable identifier (<project_id>-Enn)",
+      "constraints": {
+       "required": true
+      }
+     },
+     {
+      "name": "project_id",
+      "type": "string",
+      "description": "Project",
+      "constraints": {
+       "required": true
+      }
+     },
+     {
+      "name": "event_type",
+      "type": "string",
+      "description": "Type of event",
+      "constraints": {
+       "required": true,
+       "enum": [
+        "announced",
+        "pilot_started",
+        "pilot_completed",
+        "live",
+        "scaled",
+        "discontinued",
+        "latest_update"
+       ]
+      }
+     },
+     {
+      "name": "date",
+      "type": "string",
+      "description": "Event date, ISO 8601 partial date (YYYY, YYYY-MM or YYYY-MM-DD)",
+      "constraints": {
+       "required": true,
+       "pattern": "^\\d{4}(-\\d{2}(-\\d{2})?)?$"
+      }
+     },
+     {
+      "name": "date_precision",
+      "type": "string",
+      "description": "year, month or day",
+      "constraints": {
+       "required": true,
+       "enum": [
+        "year",
+        "month",
+        "day"
+       ]
+      }
+     },
+     {
+      "name": "source_id",
+      "type": "string",
+      "description": "Source supporting the event",
+      "constraints": {
+       "required": true
+      }
+     },
+     {
+      "name": "evidence",
+      "type": "string",
+      "description": "Short paraphrase of what the source says (no quotation)"
+     },
+     {
+      "name": "recorded_by",
+      "type": "string",
+      "description": "Who recorded the event"
+     },
+     {
+      "name": "recorded_on",
+      "type": "string",
+      "description": "Date recorded",
+      "constraints": {
+       "pattern": "^\\d{4}(-\\d{2}(-\\d{2})?)?$"
+      }
+     }
+    ],
+    "missingValues": [
+     ""
+    ],
+    "primaryKey": [
+     "event_id"
+    ],
+    "foreignKeys": [
+     {
+      "fields": "project_id",
+      "reference": {
+       "resource": "projects",
+       "fields": "project_id"
+      }
+     },
+     {
+      "fields": "source_id",
+      "reference": {
+       "resource": "sources",
+       "fields": "source_id"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "name": "challenges",
+   "path": "data/challenges.csv",
+   "profile": "tabular-data-resource",
+   "format": "csv",
+   "mediatype": "text/csv",
+   "encoding": "utf-8",
+   "description": "Challenges reported by sources for a specific project, coded on a TOE (technology-organisation-environment) scheme.",
+   "schema": {
+    "fields": [
+     {
+      "name": "challenge_id",
+      "type": "string",
+      "description": "Stable identifier (<project_id>-Cnn)",
+      "constraints": {
+       "required": true
+      }
+     },
+     {
+      "name": "project_id",
+      "type": "string",
+      "description": "Project",
+      "constraints": {
+       "required": true
+      }
+     },
+     {
+      "name": "challenge_code",
+      "type": "string",
+      "description": "Challenge code (see vocabularies: challenge_code)",
+      "constraints": {
+       "required": true,
+       "enum": [
+        "T1",
+        "T2",
+        "T3",
+        "T4",
+        "O1",
+        "O2",
+        "O3",
+        "O4",
+        "E1",
+        "E2",
+        "E3",
+        "E4"
+       ]
+      }
+     },
+     {
+      "name": "description",
+      "type": "string",
+      "description": "Project-specific description"
+     },
+     {
+      "name": "source_id",
+      "type": "string",
+      "description": "Source reporting the challenge",
+      "constraints": {
+       "required": true
+      }
+     },
+     {
+      "name": "evidence",
+      "type": "string",
+      "description": "Short paraphrase of the source"
+     },
+     {
+      "name": "recorded_by",
+      "type": "string",
+      "description": "Who coded it"
+     },
+     {
+      "name": "recorded_on",
+      "type": "string",
+      "description": "Date coded",
+      "constraints": {
+       "pattern": "^\\d{4}(-\\d{2}(-\\d{2})?)?$"
+      }
+     }
+    ],
+    "missingValues": [
+     ""
+    ],
+    "primaryKey": [
+     "challenge_id"
+    ],
+    "foreignKeys": [
+     {
+      "fields": "project_id",
+      "reference": {
+       "resource": "projects",
+       "fields": "project_id"
+      }
+     },
+     {
+      "fields": "source_id",
+      "reference": {
+       "resource": "sources",
+       "fields": "source_id"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "name": "sources",
+   "path": "data/sources.csv",
+   "profile": "tabular-data-resource",
+   "format": "csv",
+   "mediatype": "text/csv",
+   "encoding": "utf-8",
+   "description": "Bibliographic sources with type and evidence score.",
+   "schema": {
+    "fields": [
+     {
+      "name": "source_id",
+      "type": "string",
+      "description": "Stable identifier (R/N/B/D = v1.0 references; W = added in v1.1)",
+      "constraints": {
+       "required": true
+      }
+     },
+     {
+      "name": "author",
+      "type": "string",
+      "description": "Author or issuing body"
+     },
+     {
+      "name": "date",
+      "type": "string",
+      "description": "Publication date (ISO 8601 partial date)",
+      "constraints": {
+       "pattern": "^\\d{4}(-\\d{2}(-\\d{2})?)?$"
+      }
+     },
+     {
+      "name": "date_precision",
+      "type": "string",
+      "description": "year, month or day",
+      "constraints": {
+       "enum": [
+        "year",
+        "month",
+        "day"
+       ]
+      }
+     },
+     {
+      "name": "title",
+      "type": "string",
+      "description": "Title",
+      "constraints": {
+       "required": true
+      }
+     },
+     {
+      "name": "publisher",
+      "type": "string",
+      "description": "Publisher"
+     },
+     {
+      "name": "url",
+      "type": "string",
+      "description": "URL"
+     },
+     {
+      "name": "note",
+      "type": "string",
+      "description": "Access note when no URL"
+     },
+     {
+      "name": "source_type",
+      "type": "string",
+      "description": "Official, News, Secondary or Vendor",
+      "constraints": {
+       "required": true,
+       "enum": [
+        "Official",
+        "News",
+        "Secondary",
+        "Vendor"
+       ]
+      }
+     },
+     {
+      "name": "evidence_score",
+      "type": "integer",
+      "description": "Evidence score of this source (1-5)",
+      "constraints": {
+       "required": true,
+       "minimum": 1,
+       "maximum": 5
+      }
+     },
+     {
+      "name": "accessed",
+      "type": "string",
+      "description": "Date accessed",
+      "constraints": {
+       "pattern": "^\\d{4}(-\\d{2}(-\\d{2})?)?$"
+      }
+     },
+     {
+      "name": "added_in",
+      "type": "string",
+      "description": "Dataset version that added the source"
+     }
+    ],
+    "missingValues": [
+     ""
+    ],
+    "primaryKey": [
+     "source_id"
+    ]
+   }
+  },
+  {
+   "name": "project_sources",
+   "path": "data/project_sources.csv",
+   "profile": "tabular-data-resource",
+   "format": "csv",
+   "mediatype": "text/csv",
+   "encoding": "utf-8",
+   "description": "Links between projects and sources, with the role each source plays.",
+   "schema": {
+    "fields": [
+     {
+      "name": "project_id",
+      "type": "string",
+      "description": "Project",
+      "constraints": {
+       "required": true
+      }
+     },
+     {
+      "name": "source_id",
+      "type": "string",
+      "description": "Source",
+      "constraints": {
+       "required": true
+      }
+     },
+     {
+      "name": "role",
+      "type": "string",
+      "description": "Role of the source",
+      "constraints": {
+       "required": true,
+       "enum": [
+        "citation",
+        "event evidence",
+        "challenge evidence",
+        "additional"
+       ]
+      }
+     }
+    ],
+    "missingValues": [
+     ""
+    ],
+    "primaryKey": [
+     "project_id",
+     "source_id"
+    ],
+    "foreignKeys": [
+     {
+      "fields": "project_id",
+      "reference": {
+       "resource": "projects",
+       "fields": "project_id"
+      }
+     },
+     {
+      "fields": "source_id",
+      "reference": {
+       "resource": "sources",
+       "fields": "source_id"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "name": "nic_snapshots",
+   "path": "data/nic_snapshots.csv",
+   "profile": "tabular-data-resource",
+   "format": "csv",
+   "mediatype": "text/csv",
+   "encoding": "utf-8",
+   "description": "Time series of the NIC (National Informatics Centre) blockchain platform: documents and verifications by platform, application and department.",
+   "schema": {
+    "fields": [
+     {
+      "name": "snapshot_date",
+      "type": "string",
+      "description": "Data date of the snapshot",
+      "constraints": {
+       "required": true,
+       "pattern": "^\\d{4}(-\\d{2}(-\\d{2})?)?$"
+      }
+     },
+     {
+      "name": "source_id",
+      "type": "string",
+      "description": "Source of the snapshot",
+      "constraints": {
+       "required": true
+      }
+     },
+     {
+      "name": "level",
+      "type": "string",
+      "description": "platform, application or department",
+      "constraints": {
+       "required": true,
+       "enum": [
+        "platform",
+        "application",
+        "department"
+       ]
+      }
+     },
+     {
+      "name": "application",
+      "type": "string",
+      "description": "Application/chain as listed by NIC"
+     },
+     {
+      "name": "chain_product",
+      "type": "string",
+      "description": "NIC blockchain product family"
+     },
+     {
+      "name": "unit",
+      "type": "string",
+      "description": "Canonical organisation – department label (stable across snapshots)"
+     },
+     {
+      "name": "unit_as_published",
+      "type": "string",
+      "description": "Name as published in that snapshot"
+     },
+     {
+      "name": "project_id",
+      "type": "string",
+      "description": "Matching project row, if any"
+     },
+     {
+      "name": "metric",
+      "type": "string",
+      "description": "Metric",
+      "constraints": {
+       "required": true,
+       "enum": [
+        "documents",
+        "verifications_total",
+        "verifications_current_month",
+        "products",
+        "organisations_states",
+        "departments",
+        "pocs"
+       ]
+      }
+     },
+     {
+      "name": "value",
+      "type": "integer",
+      "description": "Value",
+      "constraints": {
+       "required": true,
+       "minimum": 0
+      }
+     },
+     {
+      "name": "note",
+      "type": "string",
+      "description": "Notes"
+     }
+    ],
+    "missingValues": [
+     ""
+    ],
+    "foreignKeys": [
+     {
+      "fields": "source_id",
+      "reference": {
+       "resource": "sources",
+       "fields": "source_id"
+      }
+     },
+     {
+      "fields": "project_id",
+      "reference": {
+       "resource": "projects",
+       "fields": "project_id"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "name": "vocabularies",
+   "path": "data/vocabularies.csv",
+   "profile": "tabular-data-resource",
+   "format": "csv",
+   "mediatype": "text/csv",
+   "encoding": "utf-8",
+   "description": "Controlled vocabularies, definitions and mappings (TOE/DOI for challenges, COFOG for domains, generic lifecycle for stages).",
+   "schema": {
+    "fields": [
+     {
+      "name": "vocabulary",
+      "type": "string",
+      "description": "Vocabulary name",
+      "constraints": {
+       "required": true
+      }
+     },
+     {
+      "name": "code",
+      "type": "string",
+      "description": "Code",
+      "constraints": {
+       "required": true
+      }
+     },
+     {
+      "name": "label",
+      "type": "string",
+      "description": "Label"
+     },
+     {
+      "name": "definition",
+      "type": "string",
+      "description": "Definition"
+     },
+     {
+      "name": "maps_to",
+      "type": "string",
+      "description": "Mapping to another standard"
+     }
+    ],
+    "missingValues": [
+     ""
+    ],
+    "primaryKey": [
+     "vocabulary",
+     "code"
+    ]
+   }
+  },
+  {
+   "name": "reliability",
+   "path": "data/reliability.csv",
+   "profile": "tabular-data-resource",
+   "format": "csv",
+   "mediatype": "text/csv",
+   "encoding": "utf-8",
+   "description": "Coding consistency check: agreement and Cohen kappa on a 30% sample (v1.0.0).",
+   "schema": {
+    "fields": [
+     {
+      "name": "variable",
+      "type": "string"
+     },
+     {
+      "name": "n",
+      "type": "string"
+     },
+     {
+      "name": "observed_agreement",
+      "type": "string"
+     },
+     {
+      "name": "cohen_s_kappa",
+      "type": "string"
+     },
+     {
+      "name": "interpretation_landis_koch",
+      "type": "string"
+     }
+    ],
+    "missingValues": [
+     ""
+    ]
+   }
+  },
+  {
+   "name": "policies",
+   "path": "data/policies.csv",
+   "profile": "tabular-data-resource",
+   "format": "csv",
+   "mediatype": "text/csv",
+   "encoding": "utf-8",
+   "description": "Policies, frameworks, tenders, judgments and parliamentary items.",
+   "schema": {
+    "fields": [
+     {
+      "name": "id",
+      "type": "string"
+     },
+     {
+      "name": "issued_by",
+      "type": "string"
+     },
+     {
+      "name": "document",
+      "type": "string"
+     },
+     {
+      "name": "date",
+      "type": "string"
+     },
+     {
+      "name": "level",
+      "type": "string"
+     },
+     {
+      "name": "citation_ref_id",
+      "type": "string"
+     },
+     {
+      "name": "source_url",
+      "type": "string"
+     }
+    ],
+    "missingValues": [
+     ""
+    ]
+   }
+  },
+  {
+   "name": "literature",
+   "path": "data/literature.csv",
+   "profile": "tabular-data-resource",
+   "format": "csv",
+   "mediatype": "text/csv",
+   "encoding": "utf-8",
+   "description": "Related academic and practitioner literature.",
+   "schema": {
+    "fields": [
+     {
+      "name": "id",
+      "type": "string"
+     },
+     {
+      "name": "authors",
+      "type": "string"
+     },
+     {
+      "name": "year",
+      "type": "string"
+     },
+     {
+      "name": "title",
+      "type": "string"
+     },
+     {
+      "name": "venue",
+      "type": "string"
+     },
+     {
+      "name": "doi_url",
+      "type": "string"
+     },
+     {
+      "name": "type",
+      "type": "string"
+     },
+     {
+      "name": "india_focused",
+      "type": "string"
+     }
+    ],
+    "missingValues": [
+     ""
+    ]
+   }
+  },
+  {
+   "name": "context_stats",
+   "path": "data/context_stats.csv",
+   "profile": "tabular-data-resource",
+   "format": "csv",
+   "mediatype": "text/csv",
+   "encoding": "utf-8",
+   "description": "National context figures with sources.",
+   "schema": {
+    "fields": [
+     {
+      "name": "statistic_for_paper_introduction_discussion",
+      "type": "string"
+     },
+     {
+      "name": "value",
+      "type": "string"
+     },
+     {
+      "name": "as_of",
+      "type": "string"
+     },
+     {
+      "name": "source",
+      "type": "string"
+     }
+    ],
+    "missingValues": [
+     ""
+    ]
+   }
+  },
+  {
+   "name": "excluded_items",
+   "path": "data/excluded_items.csv",
+   "profile": "tabular-data-resource",
+   "format": "csv",
+   "mediatype": "text/csv",
+   "encoding": "utf-8",
+   "description": "Items checked and excluded, with reasons.",
+   "schema": {
+    "fields": [
+     {
+      "name": "item",
+      "type": "string"
+     },
+     {
+      "name": "body",
+      "type": "string"
+     },
+     {
+      "name": "why_excluded",
+      "type": "string"
+     },
+     {
+      "name": "source_url",
+      "type": "string"
+     }
+    ],
+    "missingValues": [
+     ""
+    ]
+   }
+  },
+  {
+   "name": "rti_drafts",
+   "path": "data/rti_drafts.csv",
+   "profile": "tabular-data-resource",
+   "format": "csv",
+   "mediatype": "text/csv",
+   "encoding": "utf-8",
+   "description": "Draft Right to Information applications for projects with unclear status.",
+   "schema": {
+    "fields": [
+     {
+      "name": "public_authority_send_to_its_pio",
+      "type": "string"
+     },
+     {
+      "name": "level",
+      "type": "string"
+     },
+     {
+      "name": "projects_covered",
+      "type": "string"
+     },
+     {
+      "name": "where_how_to_file",
+      "type": "string"
+     },
+     {
+      "name": "draft_rti_application_copy_fill_send",
+      "type": "string"
+     }
+    ],
+    "missingValues": [
+     ""
+    ]
+   }
+  },
+  {
+   "name": "changelog",
+   "path": "data/changelog.csv",
+   "profile": "tabular-data-resource",
+   "format": "csv",
+   "mediatype": "text/csv",
+   "encoding": "utf-8",
+   "description": "Changes by version.",
+   "schema": {
+    "fields": [
+     {
+      "name": "version",
+      "type": "string"
+     },
+     {
+      "name": "date",
+      "type": "string"
+     },
+     {
+      "name": "change_type",
+      "type": "string"
+     },
+     {
+      "name": "record",
+      "type": "string"
+     },
+     {
+      "name": "description",
+      "type": "string"
+     },
+     {
+      "name": "source",
+      "type": "string"
+     }
+    ],
+    "missingValues": [
+     ""
+    ]
+   }
+  }
+ ]
+}

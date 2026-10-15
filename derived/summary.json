@@ -1,0 +1,25 @@
+{
+ "version": "1.1.0",
+ "n_projects": 117,
+ "by_stage": {
+  "Implemented": 50,
+  "In progress": 16,
+  "Proposed / Planned": 13,
+  "Pilot completed": 11,
+  "Unclear (no recent update)": 27
+ },
+ "by_tier": {
+  "Union government": 20,
+  "State / UT government": 78,
+  "Other public body": 19
+ },
+ "pilot_to_production": 0.5682,
+ "permissioned_share_of_disclosed": 0.7231,
+ "jurisdictions_with_projects": 27,
+ "n_records_merged_or_withdrawn": 1,
+ "n_sources": 339,
+ "n_events": 314,
+ "n_challenges": 39,
+ "evidence_mean": 3.85,
+ "evidence_official_share": 0.6154
+}

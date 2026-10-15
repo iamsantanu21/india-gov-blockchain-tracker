@@ -1,0 +1,13 @@
+{"_source": "https://web.archive.org/web/20240725002654id_/https://blockchain.gov.in/Statistics/statistics.json", "_retrieved": "2026-10-15", "_method": "Internet Archive capture of 25 Jul 2024 (00:26:54 UTC) of the NIC statistics file; data date field 23-07-2024; read in Chrome",
+"Blockchain": {"date": "23-07-2024", "length": "5"},
+"dept": {"date": "23-07-2024", "length": "19"},
+"deptname": ["Central Board of Secondary Education", "KARNATAKA - Board Pre University Exam", "KARNATAKA - Secondary Education Examination Board", "KARNATAKA - State Drug Logistic and WareHousing Society", "CHHATTISGARH - Agriculture Department", "MANIPUR - Pre-University Board", "KARNATAKA - Revenue Department", "KARNATAKA - Town Municipal Council", "PUDUCHERRY - UT - Revenue Department", "Ministry of Consumer Affairs - Department of Consumer Affairs", "ANDHRA PRADESH - Water Resource Department", "KARNATAKA - Revenue Department", "DELHI - Revenue Department", "PUDUCHERRY - UT - Department of Civil Supplies and Consumer Affairs", "KARNATAKA - Directorate of economics and statistics", "PUDUCHERRY - UT - Revenue Department", "KARNATAKA - City Corporation", "JHARKHAND - Department of Revenue", "Ministry of Justice - Supreme Court"],
+"state": {"date": "23-07-2024", "length": "9"},
+"statename": ["Central Board of Secondary Education", "ANDHRA PRADESH", "CHHATTISGARH", "DELHI", "KARNATAKA", "MANIPUR", "Ministry of Consumer Affairs", "Ministry of Justice", "PUDUCHERRY - UT"],
+"txn": {"date": "23-07-2024", "length": "8,11,92,971"},
+"txn_applications": ["Central Board of Secondary Education - 1,71,24,672", "Drug logistics - 26,75,479", "SSLC & PUC - 1,26,20,500", "Certificate Chain - 29,733", "Document Chain - 2,90,83,400", "Property Chain - 1,96,59,090", "Judiciary Chain - 97"],
+"txn_cert_applications": ["CHHATTISGARH $ Indira Gandhi Krishi Vishwavidyalaya, Raipur$ 1349", "MANIPUR $ Council of Higher Secondary Education Manipur$ 28384"],
+"txn_doc_applications": ["ANDHRA PRADESH $ Water Resource Department $ 12", "DELHI $ Revenue Department $ 121810", "KARNATAKA $ Revenue Department $ 25201556", "KARNATAKA $ Directorate of economics and statistics $ 3368429", "Ministry of Consumer Affairs $ Department of Consumer Affairs $ 5225", "PUDUCHERRY - UT $ Revenue Department $ 1", "PUDUCHERRY - UT $ Department of Civil Supplies and Consumer Affairs $ 386363"],
+"txn_jud_applications": ["Ministry of Justice $ Supreme Court $ 97"],
+"txn_property_applications": ["JHARKHAND $ Department of Revenue $ 4185", "KARNATAKA $ Revenue Department $ 19620723", "KARNATAKA $ Town Municipal Council $ 9", "KARNATAKA $ City Corporation $ 34169", "PUDUCHERRY - UT $ Revenue Department $ 4"]
+}

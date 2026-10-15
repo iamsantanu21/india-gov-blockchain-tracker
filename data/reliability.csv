@@ -1,0 +1,18 @@
+variable,n,observed_agreement,cohen_s_kappa,interpretation_landis_koch
+Stage,35,0.971428571428571,0.959862385321101,Almost perfect (0.81–1.00)
+Use-case type,35,0.914285714285714,0.899232245681382,Almost perfect (0.81–1.00)
+Chain type,35,0.971428571428571,0.957678355501814,Almost perfect (0.81–1.00)
+Service type,35,0.914285714285714,0.861660079051383,Almost perfect (0.81–1.00)
+Scale tier,35,0.942857142857143,0.897510980966325,Almost perfect (0.81–1.00)
+Disagreements and final (adjudicated) code,,,,
+ID,Variable,Project,Coder A,Coder B
+S21,Stage,Property records on NIC Property Chain (NBF p,Implemented,In progress
+C13,Use-case type,CBDC-based DBT for food subsidy (PMGKAY),CBDC / digital payments,Welfare delivery
+C14,Use-case type,Blockchain solutions with NIC (details not pu,Records & audit trail,Platform / ecosystem
+S56,Use-case type,Nambikkai Inaiyam blockchain backbone + e-Pet,Certificates & identity,Platform / ecosystem
+C16,Chain type,PM Rashtriya Bal Puraskar certificates on blo,Permissioned,Not disclosed
+C02,Service type,NBFLite – blockchain sandbox,G2G,G2B
+S59,Service type,"Blockchain District, Hyderabad",G2G,G2B
+S60,Service type,T-Block Accelerator,G2G,G2B
+C13,Scale tier,CBDC-based DBT for food subsidy (PMGKAY),Large (≥10 lakh),Not reported
+S38,Scale tier,Caste certificates on Polygon,"Medium (10,000–10 lakh)",Not reported
