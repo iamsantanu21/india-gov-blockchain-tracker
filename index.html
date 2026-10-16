@@ -141,13 +141,6 @@ button{font:inherit;color:inherit;cursor:pointer}
   .cue svg{animation:nudge 1.8s ease-in-out 1.2s 3}
   @keyframes nudge{0%,100%{transform:none}50%{transform:translateY(3px)}}
 }
-/* key numbers: in the end banner */
-.endband .stats{padding-bottom:22px;margin-bottom:4px;border-bottom:1px solid var(--hero-line)}
-.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px 28px}
-@media (max-width:900px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.stat .v{font-family:var(--display);font-weight:500;font-size:1.75rem;line-height:1.1;color:var(--hero-text)}
-.stat .v small{font-family:var(--body);font-size:.95rem;color:var(--hero-text-2);font-weight:500}
-.stat .l{font-size:.86rem;color:var(--hero-text-2);margin-top:4px}
 
 /* ---------- tabs + filters ---------- */
 .bar{position:relative;z-index:30;background:color-mix(in srgb, var(--paper) 94%, transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
@@ -430,7 +423,6 @@ dialog#detail::backdrop{background:rgba(14,11,40,.55)}
 
 <footer class="endband gut">
   <div class="wrap">
-    <div class="stats" id="stats" aria-label="Key numbers"></div>
     <p id="foot"></p>
   </div>
 </footer>
@@ -533,16 +525,7 @@ function buildFilters() {
 }
 const setJur = id => { F.jur = F.jur === id ? null : id; render(); };
 
-// ---------- hero: stats + block map ----------
-function renderStats(P) {
-  const impl = P.filter(p => p.stage === 'Implemented').length, pil = P.filter(p => p.stage === 'Pilot completed').length, unc = P.filter(p => p.stage === 'Unclear (no recent update)').length;
-  const jurs = new Set(P.map(p => p.jurisdiction_id).filter(j => j !== 'IN')).size;
-  $('#stats').innerHTML = [
-    [impl, `<small>of ${P.length}</small>`, 'projects are implemented and in use'],
-    [pct(impl, impl + pil + unc), '', 'of tested or announced projects reached production'],
-    [jurs, '<small>of 36</small>', 'States and UTs run at least one project'],
-  ].map(([v, s, l]) => `<div class="stat"><div class="v">${v} ${s}</div><div class="l">${l}</div></div>`).join('');
-}
+// ---------- hero: block map ----------
 let MAP = null;
 const SHORT = {'IN-AN': 'Andaman & Nicobar', 'IN-DH': 'Dadra & Nagar Haveli and Daman & Diu', 'IN-JK': 'Jammu & Kashmir', 'IN-AR': 'Arunachal Pradesh'};
 // small States/UTs get a callout: [dx, dy, side of the label]; the dot marks the real place
@@ -920,7 +903,7 @@ function render() {
   for (const [k, , sel] of SEL) $(sel).value = F[k];
   document.querySelectorAll('#f-stages [data-stage]').forEach(b => b.setAttribute('aria-pressed', F.stages.has(b.dataset.stage)));
   $('#f-jur').innerHTML = F.jur ? `<button type="button" class="chip place" data-clearjur aria-label="Remove place filter">${esc(F.jur === 'IN' ? 'Union and national' : D.J[F.jur].name)} ×</button>` : '';
-  renderStats(P); renderMap(); renderProfile(P); renderWaffle(P);
+  renderMap(); renderProfile(P); renderWaffle(P);
   whoBars('#who-level', 'government_level', 'level', P); whoBars('#who-impl', 'implementation_model', 'impl', P); whoBars('#who-cat', 'body_category', 'cat', P); whoBars('#who-region', 'region', 'region', P);
   renderStartYears(P); renderTable(P); renderLanes(P); renderTTL(P); renderChallenges(P); renderEvidence(P); renderCoverage();
 }
@@ -938,7 +921,7 @@ document.addEventListener('keydown', e => { if ((e.key === 'Enter' || e.key === 
 
 load().then(() => {
   VER = (D.changelog.at(-1) || {}).version || '';
-  $('#foot').innerHTML = `<span>Data: <a href="https://iamsantanu21.github.io/" target="_blank" rel="noopener">Santanu Mondal</a> and T. Chithralekha (Pondicherry University), CC BY 4.0, <a href="https://doi.org/10.5281/zenodo.23136332" target="_blank" rel="noopener">doi.org/10.5281/zenodo.23136332</a>. Map boundaries: DataMeet India (CC BY 4.0), following the Survey of India outline, simplified.</span>`;
+  $('#foot').innerHTML = `<span>Data: <a href="https://iamsantanu21.github.io/" target="_blank" rel="noopener">Santanu Mondal</a> and <a href="https://www.pondiuni.edu.in/faculy_profiles/dr-t-chithralekha/" target="_blank" rel="noopener">Dr. T. Chithralekha</a>, CC BY 4.0, <a href="https://doi.org/10.5281/zenodo.23136332" target="_blank" rel="noopener">doi.org/10.5281/zenodo.23136332</a>. Map boundaries: DataMeet India (CC BY 4.0), following the Survey of India outline, simplified.</span>`;
   buildFilters(); initMap(); renderNIC(); renderData();
   $('#loading').hidden = true; showTab(location.hash.slice(1) || 'overview');
   render();
