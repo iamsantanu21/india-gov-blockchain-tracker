@@ -60,16 +60,59 @@ button{font:inherit;color:inherit;cursor:pointer}
 .note{font-size:.85rem;color:var(--text-2)}
 .muted{color:var(--muted)}
 
-/* ---------- hero ---------- */
-.hero{background:var(--hero);color:var(--hero-text);padding-block:28px 22px;position:relative;overflow:hidden}
+/* ---------- hero: title, then the map as large as the screen allows ---------- */
+.hero{background:var(--hero);color:var(--hero-text);padding-top:max(18px, env(safe-area-inset-top, 0px));padding-bottom:14px;position:relative;overflow:hidden;height:100vh;height:100svh;min-height:560px;display:flex}
 .hero::before{content:"";position:absolute;inset:0;background:
-  radial-gradient(600px 380px at 78% 40%, rgba(122,98,255,.22), transparent 70%),
-  radial-gradient(420px 300px at 12% 0%, rgba(242,165,22,.10), transparent 70%);pointer-events:none}
-.hero .wrap{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:16px 40px;align-items:center}
-@media (max-width:900px){.hero .wrap{grid-template-columns:minmax(0,1fr)}}
-.hero h1{font-family:var(--display);font-weight:700;font-size:clamp(1.9rem, 1.2rem + 2.6vw, 3.1rem);line-height:1.04;letter-spacing:-.02em}
-.hero h1 span{display:block;font-weight:500;color:var(--hero-text-2);font-size:.52em;letter-spacing:0;margin-top:10px}
-.hstats{grid-column:1/-1;border-top:1px solid var(--hero-line);padding-top:22px;margin-top:10px}
+  radial-gradient(700px 480px at 55% 55%, rgba(122,98,255,.22), transparent 70%),
+  radial-gradient(420px 300px at 10% 0%, rgba(242,165,22,.10), transparent 70%);pointer-events:none}
+.herogrid{position:relative;display:flex;flex-direction:column;gap:6px;width:100%;height:100%}
+.hero h1{font-family:var(--display);font-weight:700;font-size:clamp(1.6rem, 1rem + 2.2vw, 2.7rem);line-height:1.08;letter-spacing:-.02em;text-align:center}
+.mapwrap{position:relative;flex:1;min-height:0}
+#heromap{position:absolute;inset:0}
+#heromap svg{width:100%;height:100%;display:block}
+.herofoot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 24px}
+@media (max-width:700px){
+  .hero{height:auto;min-height:0}
+  .mapwrap{flex:none}
+  #heromap{position:static}
+  #heromap svg{height:auto}
+  .herofoot{justify-content:center}
+}
+#heromap .st{fill:var(--hero-2);stroke:rgba(234,230,255,.30);stroke-width:.7;cursor:pointer;transition:fill .15s}
+#heromap .st.has{fill:var(--hero-3)}
+#heromap .st:hover{fill:#3a3380}
+#heromap .st.sel{stroke:var(--marigold);stroke-width:1.8;fill:#3a3380}
+#heromap rect.b{cursor:pointer;transition:opacity .2s;filter:url(#glow)}
+#heromap rect.b.dim{opacity:.16}
+#heromap rect.b:hover{stroke:#fff;stroke-width:1.2}
+#heromap text{font-family:var(--body)}
+#heromap .lb{cursor:pointer;paint-order:stroke;stroke:var(--hero);stroke-width:3px;stroke-linejoin:round;fill:var(--hero-text-2);font-weight:500}
+#heromap .lb.none{fill:var(--hero-muted);font-weight:400}
+#heromap .lb.sel{fill:var(--marigold);font-weight:700}
+#heromap .lb:hover{fill:var(--hero-text)}
+#heromap .ln{font-size:10px}
+#heromap .lc{display:none}
+#heromap .us{display:none}
+@media (max-width:700px){
+  #heromap .ln{display:none}
+  #heromap .lc{display:inline;font-size:15px;font-weight:600}
+  #heromap .ul{display:none}
+  #heromap .us{display:inline}
+}
+.hlegend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.8rem;color:var(--hero-text-2)}
+.hlegend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.cue{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(242,165,22,.7);background:rgba(242,165,22,.10);color:var(--hero-text);border-radius:999px;padding:8px 16px 8px 18px;font-weight:600;font-size:.88rem;white-space:nowrap}
+.cue:hover{background:rgba(242,165,22,.22)}
+.cue svg{flex:none}
+@media (prefers-reduced-motion: no-preference){
+  #heromap rect.b{animation:drop .5s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i) * 6ms)}
+  @keyframes drop{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+  .cue svg{animation:nudge 1.8s ease-in-out 1.2s 3}
+  @keyframes nudge{0%,100%{transform:none}50%{transform:translateY(3px)}}
+}
+/* key numbers band, right below the first screen */
+.statband{background:var(--hero);color:var(--hero-text);padding-block:24px 30px;scroll-margin-top:0}
+.statband .wrap{border-top:1px solid var(--hero-line);padding-top:22px}
 .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px 28px}
 @media (max-width:900px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .stat .v{font-family:var(--display);font-weight:500;font-size:1.75rem;line-height:1.1;color:var(--hero-text)}
@@ -81,22 +124,6 @@ button{font:inherit;color:inherit;cursor:pointer}
 .meta a.doi{border:1px solid var(--marigold);border-radius:999px;padding:3px 10px;font-size:.78rem;color:var(--hero-text);text-decoration:none}
 .meta a.doi:hover{background:rgba(242,165,22,.16)}
 .meta a.doi b{color:var(--marigold)}
-.mapwrap{position:relative}
-#heromap svg{width:100%;height:auto;display:block;max-height:78vh}
-#heromap .st{fill:var(--hero-2);stroke:var(--hero-line);stroke-width:.8;cursor:pointer;transition:fill .15s}
-#heromap .st.has{fill:var(--hero-3)}
-#heromap .st:hover{fill:#3a3380}
-#heromap .st.sel{stroke:var(--marigold);stroke-width:2;fill:#3a3380}
-#heromap rect.b{cursor:pointer;transition:opacity .2s;filter:url(#glow)}
-#heromap rect.b.dim{opacity:.16}
-#heromap rect.b:hover{stroke:#fff;stroke-width:1.2}
-#heromap text{font-family:var(--body)}
-.hlegend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.8rem;color:var(--hero-text-2);margin-top:6px}
-.hlegend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
-@media (prefers-reduced-motion: no-preference){
-  #heromap rect.b{animation:drop .5s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i) * 6ms)}
-  @keyframes drop{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
-}
 
 /* ---------- tabs + filters ---------- */
 .bar{position:relative;z-index:30;background:color-mix(in srgb, var(--paper) 94%, transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
@@ -258,19 +285,20 @@ dialog#detail::backdrop{background:rgba(14,11,40,.55)}
 </style>
 
 <header class="hero gut">
-  <div class="wrap">
-    <div>
-      <h1>India Government Blockchain Tracker</h1>
-    </div>
+  <div class="wrap herogrid">
+    <h1>India Government Blockchain Tracker</h1>
     <div class="mapwrap">
-      <div id="heromap" role="img" aria-label="Map of India with one square per blockchain project, coloured by stage"></div>
-      <div class="hlegend" id="hlegend"></div>
+      <div id="heromap" role="img" aria-label="Map of India with all 28 States and 8 Union Territories, and one square per blockchain project, coloured by stage"></div>
     </div>
-    <div class="hstats">
-      <div class="stats" id="stats"></div>
+    <div class="herofoot">
+      <div class="hlegend" id="hlegend"></div>
+      <button class="cue" type="button" id="cue"><span id="cue-t">Explore the data</span><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2.5 5l4.5 4.5L11.5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     </div>
   </div>
 </header>
+<section class="statband gut" id="details" aria-label="Key numbers">
+  <div class="wrap"><div class="stats" id="stats"></div></div>
+</section>
 
 <div class="bar gut">
   <div class="wrap">
@@ -498,36 +526,64 @@ function renderStats(P) {
   ].map(([v, s, l]) => `<div class="stat"><div class="v">${v} ${s}</div><div class="l">${l}</div></div>`).join('');
 }
 let MAP = null;
+const SHORT = {'IN-AN': 'Andaman & Nicobar', 'IN-DH': 'Dadra & Nagar Haveli and Daman & Diu', 'IN-JK': 'Jammu & Kashmir', 'IN-AR': 'Arunachal Pradesh'};
+// small States/UTs get a callout: [dx, dy, side of the label]; the dot marks the real place
+const CALL = {'IN-CH': [-70, -40, 'l'], 'IN-DL': [26, 4, 'r'], 'IN-GA': [-34, 4, 'l'], 'IN-DH': [-40, 12, 'l'], 'IN-LD': [-20, 0, 'l'],
+  'IN-KL': [-30, 4, 'l'], 'IN-PY': [36, 6, 'r'], 'IN-AN': [24, -6, 'r'], 'IN-SK': [0, -26, 't'], 'IN-ML': [-24, 16, 'b'], 'IN-TR': [-25, 21, 'b'],
+  'IN-MZ': [36, 22, 'r'], 'IN-MN': [38, 6, 'r'], 'IN-NL': [38, -8, 'r'], 'IN-WB': [7, 28, 'l', 0], 'IN-JH': [0, 0, 'l'],
+  'IN-HR': [0, 4, 'b'], 'IN-PB': [-4, 0, 'b'], 'IN-HP': [4, -2, 'b'], 'IN-UK': [6, 0, 'b']};
 function initMap() {
   const obj = D.geo.objects[Object.keys(D.geo.objects)[0]]; const fc = topojson.feature(D.geo, obj);
-  const W = 680, H = 680;
-  const proj = d3.geoMercator().fitExtent([[118, 8], [W - 8, H - 8]], fc); const path = d3.geoPath(proj);
+  const W = 780, H = 620;
+  const proj = d3.geoMercator().fitExtent([[150, 10], [664, 610]], fc); const path = d3.geoPath(proj);
   const anchor = f => { const g = f.geometry; if (g.type !== 'MultiPolygon') return path.centroid(f);
     let best = null, ba = -1; for (const c of g.coordinates) { const pf = {type: 'Feature', geometry: {type: 'Polygon', coordinates: c}}; const a = path.area(pf); if (a > ba) { ba = a; best = pf; } } return path.centroid(best); };
-  const NUDGE = {'IN-DL': [26, -8], 'IN-CH': [-14, -18], 'IN-GA': [-22, 6], 'IN-PY': [24, 4], 'IN-DH': [-26, 0], 'IN-HR': [-6, 4], 'IN-SK': [0, -14], 'IN-TR': [10, 10], 'IN-KL': [-6, 0]};
-  const states = fc.features.map(f => { const [cx, cy] = anchor(f); const n = NUDGE[f.id] || [0, 0]; return {id: f.id, name: f.properties.name, d: path(f), cx, cy, bx: cx + n[0], by: cy + n[1], nudged: !!NUDGE[f.id]}; });
-  MAP = {W, H, states, union: {x: 14, y: Math.round(proj([72, 16.2])[1])}};
-  $('#heromap').addEventListener('click', e => { const b = e.target.closest('rect[data-pid]'); if (b) { openDetail(b.dataset.pid); return; } const s = e.target.closest('path[data-id]'); if (s) setJur(s.dataset.id); });
-  $('#hlegend').innerHTML = `<span style="color:var(--hero-text)">1 square = 1 project</span>` + STAGES.filter(s => D.P.some(p => p.stage === s.k)).map(s => `<span><i style="background:var(${s.c})"></i>${esc(s.s)} ${D.P.filter(p => p.stage === s.k).length}</span>`).join('') + `<span><i style="background:transparent;border:1px solid var(--hero-text-2)"></i>Boxed in the sea: Union and national bodies</span>`;
+  const states = fc.features.map(f => { const [ax, ay] = anchor(f); const c = CALL[f.id]; const far = c && c[3] !== 0 && Math.hypot(c[0], c[1]) > 12;
+    return {id: f.id, name: (D.J[f.id] || {}).name || f.properties.name, d: path(f), ax, ay, bx: ax + (c ? c[0] : 0), by: ay + (c ? c[1] : 0), side: c ? c[2] : 'b', far}; });
+  MAP = {W, H, states, union: {x: 18, y: Math.round(proj([72, 15.6])[1])}, unionM: {x: 440, y: 470}, vbM: '160 8 535 606'};
+  $('#heromap').addEventListener('click', e => { const b = e.target.closest('rect[data-pid]'); if (b) { openDetail(b.dataset.pid); return; } const s = e.target.closest('[data-id]'); if (s) setJur(s.dataset.id); });
+  $('#hlegend').innerHTML = `<span style="color:var(--hero-text)">1 square = 1 project</span>` + STAGES.filter(s => D.P.some(p => p.stage === s.k)).map(s => `<span><i style="background:var(${s.c})"></i>${esc(s.s)} ${D.P.filter(p => p.stage === s.k).length}</span>`).join('') + `<span><i style="background:transparent;border:1px solid var(--hero-text-2)"></i>Box in the sea: Union and national bodies</span>`;
+  $('#cue').addEventListener('click', goDetails);
 }
+function goDetails() {
+  const smooth = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+  if (F.jur) { showTab('overview'); document.querySelector('.bar').scrollIntoView({behavior: smooth}); }
+  else $('#details').scrollIntoView({behavior: smooth});
+}
+document.addEventListener('keydown', e => { if (e.key === 'Enter' && (e.target === document.body || e.target === document.documentElement) && scrollY < innerHeight * .5) { e.preventDefault(); goDetails(); } });
 function renderMap() {
   const match = new Set(filtered().map(p => p.project_id));
   const byJ = d3.group(d3.sort(D.P, p => SIDX(p.stage), p => p.project_id), p => p.jurisdiction_id);
-  const S = 9, G = 2.5, step = S + G; let i = 0, out = '';
+  const S = 9, G = 2.5, step = S + G; let i = 0, out = '', marks = '', blocks = '', labels = '';
   const grid = (ps, x0, y0, cols, center) => { const rows = Math.ceil(ps.length / cols); const w = cols * step - G, h = rows * step - G;
     const ox = center ? x0 - w / 2 : x0, oy = center ? y0 - h / 2 : y0;
-    return ps.map((p, k) => `<rect class="b${match.has(p.project_id) ? '' : ' dim'}" style="--i:${i++}" data-pid="${p.project_id}" x="${ox + (k % cols) * step}" y="${oy + Math.floor(k / cols) * step}" width="${S}" height="${S}" rx="2" fill="${scol(p.stage)}" ${tipAttr(ptip(p))}></rect>`).join(''); };
-  out += MAP.states.map(s => { const n = (byJ.get(s.id) || []).length; const j = D.J[s.id] || {};
-    return `<path class="st${n ? ' has' : ''}${F.jur === s.id ? ' sel' : ''}" data-id="${s.id}" d="${s.d}" ${tipAttr(`<b>${esc(s.name)}</b> <span class="mono">${s.id}</span><br>${n ? `${n} project${n === 1 ? '' : 's'}` : esc(j.search_result || 'No project found')}<br><span class="muted">Select to filter</span>`)}></path>`; }).join('');
-  for (const s of MAP.states) { const ps = byJ.get(s.id); if (!ps) continue;
-    if (s.nudged) out += `<line x1="${s.cx}" y1="${s.cy}" x2="${s.bx}" y2="${s.by}" stroke="var(--hero-text-2)" stroke-opacity=".5" stroke-width=".8"/>`;
-    out += grid(ps, s.bx, s.by, Math.ceil(Math.sqrt(ps.length)), true); }
-  const un = byJ.get('IN') || []; const uc = 7;
-  out += `<text x="${MAP.union.x - 6}" y="${MAP.union.y - 32}" fill="var(--hero-text)" font-size="13.5" font-weight="600">Union and national bodies</text>
-          <text x="${MAP.union.x - 6}" y="${MAP.union.y - 15}" fill="var(--hero-muted)" font-size="12">${un.length} projects</text>`;
-  out += `<g class="ub${F.jur === 'IN' ? ' sel' : ''}">${grid(un, MAP.union.x, MAP.union.y, uc, false)}</g>`;
-  out += `<rect x="${MAP.union.x - 8}" y="${MAP.union.y - 8}" width="${uc * step - G + 16}" height="${Math.ceil(un.length / uc) * step - G + 16}" rx="8" fill="none" stroke="${F.jur === 'IN' ? 'var(--marigold)' : 'var(--hero-line)'}" stroke-width="${F.jur === 'IN' ? 2 : 1}" data-union style="cursor:pointer;pointer-events:stroke"/>`;
-  $('#heromap').innerHTML = `<svg viewBox="0 0 ${MAP.W} ${MAP.H}" aria-hidden="true"><defs><filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur in="SourceGraphic" stdDeviation="2.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>${out}</svg>`;
+    return ps.map((p, k) => `<rect class="b${match.has(p.project_id) ? '' : ' dim'}" style="--i:${i++}" data-pid="${p.project_id}" x="${(ox + (k % cols) * step).toFixed(1)}" y="${(oy + Math.floor(k / cols) * step).toFixed(1)}" width="${S}" height="${S}" rx="2" fill="${scol(p.stage)}" ${tipAttr(ptip(p))}></rect>`).join(''); };
+  const stTip = (s, n) => { const j = D.J[s.id] || {}; return tipAttr(`<b>${esc(s.name)}</b> <span class="mono">${s.id}</span><br>${n ? `${n} project${n === 1 ? '' : 's'}` : esc(j.search_result || 'No project found')}<br><span class="muted">Select to filter</span>`); };
+  out += MAP.states.map(s => { const n = (byJ.get(s.id) || []).length;
+    return `<path class="st${n ? ' has' : ''}${F.jur === s.id ? ' sel' : ''}" data-id="${s.id}" d="${s.d}" ${stTip(s, n)}></path>`; }).join('');
+  for (const s of MAP.states) {
+    const ps = byJ.get(s.id) || [], n = ps.length; const cols = Math.max(1, Math.ceil(Math.sqrt(n))), rows = Math.ceil(n / cols);
+    const w = n ? cols * step - G : 0, h = n ? rows * step - G : 0;
+    if (s.far) marks += `<line x1="${s.ax.toFixed(1)}" y1="${s.ay.toFixed(1)}" x2="${s.bx.toFixed(1)}" y2="${s.by.toFixed(1)}" stroke="var(--hero-text-2)" stroke-opacity=".55" stroke-width=".7"/><circle cx="${s.ax.toFixed(1)}" cy="${s.ay.toFixed(1)}" r="2" fill="var(--hero-text)"/>`;
+    if (n) blocks += grid(ps, s.bx, s.by, cols, true);
+    const gap = n ? 5 : (s.far ? 4 : 0);
+    let x = s.bx, y = s.by, anc = 'middle';
+    if (s.side === 'l') { x = s.bx - w / 2 - gap; y = s.by + 3.5; anc = 'end'; }
+    else if (s.side === 'r') { x = s.bx + w / 2 + gap; y = s.by + 3.5; anc = 'start'; }
+    else if (s.side === 't') { y = s.by - h / 2 - gap - 2; }
+    else { y = n ? s.by + h / 2 + 11 : s.by + 3.5; }
+    const cls = `lb${n ? '' : ' none'}${F.jur === s.id ? ' sel' : ''}`;
+    labels += `<text class="${cls}" data-id="${s.id}" x="${x.toFixed(1)}" y="${y.toFixed(1)}" text-anchor="${anc}" ${stTip(s, n)}><tspan class="ln">${esc(SHORT[s.id] || s.name)}</tspan><tspan class="lc">${s.id.slice(3)}</tspan></text>`;
+  }
+  const un = byJ.get('IN') || []; const uc = 7; const M = matchMedia('(max-width: 700px)').matches; MAP.mobile = M; const U = M ? MAP.unionM : MAP.union;
+  out += `<text class="ul" x="${U.x - 6}" y="${U.y - 30}" fill="var(--hero-text)" font-size="13" font-weight="600">Union and national bodies</text>
+          <text class="ul" x="${U.x - 6}" y="${U.y - 14}" fill="var(--hero-muted)" font-size="11.5">${un.length} projects</text>
+          <text class="us" x="${U.x - 6}" y="${U.y - 14}" fill="var(--hero-text)" font-size="17" font-weight="600">Union ${un.length}</text>`;
+  out += `<g class="ub${F.jur === 'IN' ? ' sel' : ''}">${grid(un, U.x, U.y, uc, false)}</g>`;
+  out += `<rect x="${U.x - 8}" y="${U.y - 8}" width="${uc * step - G + 16}" height="${Math.ceil(un.length / uc) * step - G + 16}" rx="8" fill="none" stroke="${F.jur === 'IN' ? 'var(--marigold)' : 'var(--hero-line)'}" stroke-width="${F.jur === 'IN' ? 2 : 1}" data-union style="cursor:pointer;pointer-events:stroke"/>`;
+  $('#heromap').innerHTML = `<svg viewBox="${M ? MAP.vbM : `0 0 ${MAP.W} ${MAP.H}`}" aria-hidden="true"><defs><filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur in="SourceGraphic" stdDeviation="2.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>${out}${marks}${blocks}${labels}</svg>`;
+  const j = F.jur && (F.jur === 'IN' ? {name: 'Union and national bodies'} : D.J[F.jur]); const nj = F.jur ? filtered().length : 0;
+  $('#cue-t').textContent = F.jur ? `See ${j.name}: ${nj} project${nj === 1 ? '' : 's'}` : 'Explore the data';
 }
 
 // ---------- overview ----------
@@ -834,7 +890,7 @@ function showTab(id, focus) {
   try { history.replaceState(null, '', '#' + id); } catch {}
   if (wasHidden && D.P) { if (id === 'overview') renderStartYears(filtered()); if (id === 'nic') renderNIC(); }
 }
-let rsz; addEventListener('resize', () => { clearTimeout(rsz); rsz = setTimeout(() => { if (!D.P) return; if (!$('#overview').hidden) renderStartYears(filtered()); if (!$('#nic').hidden) renderNIC(); }, 150); });
+let rsz; addEventListener('resize', () => { clearTimeout(rsz); rsz = setTimeout(() => { if (!D.P) return; if (MAP && MAP.mobile !== matchMedia('(max-width: 700px)').matches) renderMap(); if (!$('#overview').hidden) renderStartYears(filtered()); if (!$('#nic').hidden) renderNIC(); }, 150); });
 document.querySelector('.tabs').addEventListener('click', e => { const t = e.target.closest('[data-tab]'); if (t) showTab(t.dataset.tab); });
 document.querySelector('.tabs').addEventListener('keydown', e => { const i = TABS.indexOf(document.activeElement?.dataset?.tab); if (i < 0) return;
   if (e.key === 'ArrowRight') showTab(TABS[(i + 1) % TABS.length], true); if (e.key === 'ArrowLeft') showTab(TABS[(i + TABS.length - 1) % TABS.length], true); });
