@@ -8,335 +8,375 @@
 <body>
 <title>India Government Blockchain Tracker</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Project-level tracker of blockchain initiatives by Indian public bodies, with stage dates, evidence scores, challenges and NIC platform usage.">
+<meta name="description" content="Every blockchain project by Indian public bodies as a block on the map of India, with stage dates, evidence, challenges and NIC platform usage.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,650;12..96,750&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: registry-ledger dashboard. Sticky filter bar; map + side register; then explorer table and analysis sections, all driven by one filter state. */
+/* Layout: an ink-violet hero where every project is a square "block" placed on the map of India; below it a light ledger
+   area with tabs (Overview, Projects, Lifecycle, Challenges, NIC platform, Data). The block motif repeats in every chart. */
 :root{
-  --bg:#f4f6f8; --surface:#ffffff; --surface-2:#eef1f5; --ink:#12161b; --ink-2:#465061; --muted:#768092;
-  --line:#dbe0e7; --line-strong:#c3cad4; --accent:#1d5fae; --accent-ink:#ffffff; --accent-soft:#e3edfa; --focus:#1d5fae;
-  --st-impl:#2a78d6; --st-pilot:#eb6834; --st-prog:#1baf7a; --st-plan:#eda100; --st-unclear:#a3a9b3; --st-disc:#e34948;
-  --map-0:#e9edf2; --seq-1:#cde2fb; --seq-2:#9ec5f4; --seq-3:#5598e7; --seq-4:#256abf; --seq-5:#104281;
-  --grid:#e4e8ee; --axis:#c3cad4; --warn-bg:#fff6e0; --warn-ink:#7a5200; --good:#0b7a0b;
-  --display:"Bricolage Grotesque", "Public Sans", system-ui, sans-serif;
-  --body:"Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
-  --r:6px; --shadow:0 1px 2px rgba(18,22,27,.06), 0 4px 16px rgba(18,22,27,.06);
+  /* hero: one fixed look in both themes (violet election-ink ground, marigold highlight) */
+  --hero:#1a1640; --hero-2:#241f55; --hero-3:#2e2869; --hero-line:rgba(234,230,255,.16); --hero-text:#f4f2ff; --hero-text-2:#c3bdea; --hero-muted:#948dc4;
+  --marigold:#f2a516;
+  /* page */
+  --paper:#f5f5fa; --surface:#ffffff; --surface-2:#efeef7; --text:#17152e; --text-2:#4a4767; --muted:#7c799a;
+  --line:#e3e1ef; --line-strong:#c9c6dd; --link:#4636c2; --focus:#4636c2; --hl:#fff4dc; --hl-line:#f2a516;
+  /* stages (validated set: adjacent CVD ΔE ≥ 19, ≥3:1 on white and on the hero) */
+  --st-impl:#14a077; --st-prog:#3a86e8; --st-pilot:#ec6638; --st-plan:#9a78ec; --st-unclear:#a3a7ba; --st-disc:#d64545;
+  --grid:#ebeaf3; --axis:#cfcde0; --empty-block:#e7e6f0; --good:#0d7a55; --warn-bg:#fff4dc; --warn-ink:#7a4d00;
+  --display:"Unbounded", "Instrument Sans", system-ui, sans-serif;
+  --body:"Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --r:10px; --r-sm:6px;
+  --shadow:0 1px 2px rgba(23,21,46,.05), 0 8px 24px rgba(23,21,46,.06);
 }
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
-  --bg:#0e1115; --surface:#161a20; --surface-2:#1d222a; --ink:#edf0f4; --ink-2:#b5bdc9; --muted:#8a94a3;
-  --line:#29303a; --line-strong:#3a424e; --accent:#6aa2ec; --accent-ink:#0e1115; --accent-soft:#1a2a40; --focus:#6aa2ec;
-  --st-impl:#3987e5; --st-pilot:#d95926; --st-prog:#199e70; --st-plan:#c98500; --st-unclear:#6b7380; --st-disc:#e66767;
-  --map-0:#232932; --seq-1:#16304f; --seq-2:#1c5cab; --seq-3:#3987e5; --seq-4:#86b6ef; --seq-5:#cde2fb;
-  --grid:#232931; --axis:#3a424e; --warn-bg:#2d2512; --warn-ink:#f1c463; --good:#3fbf3f;
-  --shadow:0 1px 2px rgba(0,0,0,.4), 0 4px 16px rgba(0,0,0,.3); color-scheme:dark; } }
+  --hero:#151233; --hero-2:#1f1a4a;
+  --paper:#0f0e1d; --surface:#171628; --surface-2:#201e36; --text:#eeedf8; --text-2:#bdb9d9; --muted:#8b88a9;
+  --line:#2a2844; --line-strong:#3b3860; --link:#b9acff; --focus:#b9acff; --hl:#2b2312; --hl-line:#f2a516;
+  --st-unclear:#6f7491; --grid:#24223a; --axis:#3b3860; --empty-block:#26243d; --good:#3fc79a; --warn-bg:#2b2312; --warn-ink:#f4c66b;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35); color-scheme:dark; } }
 :root[data-theme="dark"]{
-  --bg:#0e1115; --surface:#161a20; --surface-2:#1d222a; --ink:#edf0f4; --ink-2:#b5bdc9; --muted:#8a94a3;
-  --line:#29303a; --line-strong:#3a424e; --accent:#6aa2ec; --accent-ink:#0e1115; --accent-soft:#1a2a40; --focus:#6aa2ec;
-  --st-impl:#3987e5; --st-pilot:#d95926; --st-prog:#199e70; --st-plan:#c98500; --st-unclear:#6b7380; --st-disc:#e66767;
-  --map-0:#232932; --seq-1:#16304f; --seq-2:#1c5cab; --seq-3:#3987e5; --seq-4:#86b6ef; --seq-5:#cde2fb;
-  --grid:#232931; --axis:#3a424e; --warn-bg:#2d2512; --warn-ink:#f1c463; --good:#3fbf3f;
-  --shadow:0 1px 2px rgba(0,0,0,.4), 0 4px 16px rgba(0,0,0,.3); color-scheme:dark; }
+  --hero:#151233; --hero-2:#1f1a4a;
+  --paper:#0f0e1d; --surface:#171628; --surface-2:#201e36; --text:#eeedf8; --text-2:#bdb9d9; --muted:#8b88a9;
+  --line:#2a2844; --line-strong:#3b3860; --link:#b9acff; --focus:#b9acff; --hl:#2b2312; --hl-line:#f2a516;
+  --st-unclear:#6f7491; --grid:#24223a; --axis:#3b3860; --empty-block:#26243d; --good:#3fc79a; --warn-bg:#2b2312; --warn-ink:#f4c66b;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35); color-scheme:dark; }
 
 *{box-sizing:border-box}
-body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5;
-  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));padding-block:0 48px}
+body{background:var(--paper);color:var(--text);font-family:var(--body);font-size:15px;line-height:1.55;padding-block:0 56px}
+.gut{padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
 .wrap{max-width:1240px;margin:0 auto}
-h1,h2,h3{font-family:var(--display);font-weight:650;letter-spacing:-.01em;text-wrap:balance;margin:0}
-h1{font-size:clamp(1.7rem, 1.2rem + 2vw, 2.6rem);font-weight:750;line-height:1.08}
-h2{font-size:1.45rem;line-height:1.2}
-h3{font-size:1.05rem;font-weight:650}
+h1,h2,h3,h4{margin:0;text-wrap:balance}
+h2{font-family:var(--body);font-weight:700;font-size:1.35rem;letter-spacing:-.01em;line-height:1.25}
+h3{font-weight:650;font-size:1rem;line-height:1.3}
 p{margin:0}
-a{color:var(--accent)}
-a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:3px}
-.mono{font-family:var(--mono);font-size:.86em}
-.num{font-variant-numeric:tabular-nums}
-.muted{color:var(--muted)} .ink2{color:var(--ink-2)}
-.eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+a{color:var(--link)}
 button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:4px}
+.mono{font-family:var(--mono);font-size:.85em}
+.num{font-variant-numeric:tabular-nums}
+.note{font-size:.85rem;color:var(--text-2)}
+.muted{color:var(--muted)}
 
-/* header */
-header.top{padding-block:28px 18px;display:grid;gap:14px}
-.mast{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 24px}
-.mast .lede{max-width:66ch;color:var(--ink-2);margin-top:8px}
-.asof{display:flex;flex-wrap:wrap;gap:6px 14px;font-family:var(--mono);font-size:.78rem;color:var(--ink-2)}
-.asof b{color:var(--ink);font-weight:500}
-nav.sections{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:.88rem}
-nav.sections a{text-decoration:none;color:var(--ink-2);border-bottom:1px solid transparent}
-nav.sections a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+/* ---------- hero ---------- */
+.hero{background:var(--hero);color:var(--hero-text);padding-block:28px 22px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(600px 380px at 78% 40%, rgba(122,98,255,.22), transparent 70%),
+  radial-gradient(420px 300px at 12% 0%, rgba(242,165,22,.10), transparent 70%);pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:16px 40px;align-items:center}
+@media (max-width:900px){.hero .wrap{grid-template-columns:minmax(0,1fr)}}
+.hero h1{font-family:var(--display);font-weight:700;font-size:clamp(1.9rem, 1.2rem + 2.6vw, 3.1rem);line-height:1.04;letter-spacing:-.02em}
+.hero h1 span{display:block;font-weight:500;color:var(--hero-text-2);font-size:.52em;letter-spacing:0;margin-top:10px}
+.hstats{grid-column:1/-1;border-top:1px solid var(--hero-line);padding-top:22px;margin-top:10px}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px 28px}
+@media (max-width:900px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.stat .v{font-family:var(--display);font-weight:500;font-size:1.75rem;line-height:1.1;color:var(--hero-text)}
+.stat .v small{font-family:var(--body);font-size:.95rem;color:var(--hero-text-2);font-weight:500}
+.stat .l{font-size:.86rem;color:var(--hero-text-2);margin-top:4px;max-width:28ch}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.meta span{border:1px solid var(--hero-line);border-radius:999px;padding:3px 10px;font-size:.78rem;color:var(--hero-text-2)}
+.meta b{color:var(--hero-text);font-weight:600}
+.meta a.doi{border:1px solid var(--marigold);border-radius:999px;padding:3px 10px;font-size:.78rem;color:var(--hero-text);text-decoration:none}
+.meta a.doi:hover{background:rgba(242,165,22,.16)}
+.meta a.doi b{color:var(--marigold)}
+.mapwrap{position:relative}
+#heromap svg{width:100%;height:auto;display:block;max-height:78vh}
+#heromap .st{fill:var(--hero-2);stroke:var(--hero-line);stroke-width:.8;cursor:pointer;transition:fill .15s}
+#heromap .st.has{fill:var(--hero-3)}
+#heromap .st:hover{fill:#3a3380}
+#heromap .st.sel{stroke:var(--marigold);stroke-width:2;fill:#3a3380}
+#heromap rect.b{cursor:pointer;transition:opacity .2s;filter:url(#glow)}
+#heromap rect.b.dim{opacity:.16}
+#heromap rect.b:hover{stroke:#fff;stroke-width:1.2}
+#heromap text{font-family:var(--body)}
+.hlegend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.8rem;color:var(--hero-text-2);margin-top:6px}
+.hlegend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+@media (prefers-reduced-motion: no-preference){
+  #heromap rect.b{animation:drop .5s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i) * 6ms)}
+  @keyframes drop{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+}
 
-/* KPI strip */
-.kpis{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
-.kpi{background:var(--surface);padding:14px 16px;display:grid;gap:2px;align-content:start}
-.kpi .v{font-family:var(--body);font-weight:700;font-size:1.7rem;line-height:1.1}
-.kpi .v small{font-size:.9rem;font-weight:500;color:var(--ink-2)}
-.kpi .l{font-size:.82rem;color:var(--ink-2)}
-@media (max-width:900px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))} .kpi:last-child{grid-column:1/-1}}
-
-/* filter bar */
-.filters{position:relative;z-index:20;background:color-mix(in srgb, var(--bg) 92%, transparent);
-  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-bottom:1px solid var(--line);margin-inline:-4px;padding:10px 4px;
-  display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center}
-.filters input[type=search],.filters select{font:inherit;font-size:.88rem;color:var(--ink);background:var(--surface);border:1px solid var(--line-strong);
-  border-radius:var(--r);padding:6px 9px;min-width:0}
-.filters input[type=search]{width:min(240px,100%)}
-@media (min-width:900px){.filters{position:sticky;top:env(safe-area-inset-top, 0px)}}
-@media (max-width:620px){.filters input[type=search]{width:100%}.filters select{flex:1 1 45%}.count{margin-left:0}}
+/* ---------- tabs + filters ---------- */
+.bar{position:relative;z-index:30;background:color-mix(in srgb, var(--paper) 94%, transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+@media (min-width:900px){.bar{position:sticky;top:env(safe-area-inset-top, 0px)}}
+.tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;padding-top:8px}
+.tabs::-webkit-scrollbar{display:none}
+.tab{background:none;border:0;padding:10px 14px 11px;font-weight:600;font-size:.92rem;color:var(--text-2);border-bottom:3px solid transparent;white-space:nowrap}
+.tab:hover{color:var(--text)}
+.tab[aria-selected="true"]{color:var(--text);border-bottom-color:var(--marigold)}
+.filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding-block:10px 12px}
+.filters input[type=search],.filters select{font:inherit;font-size:.86rem;color:var(--text);background:var(--surface);border:1px solid var(--line-strong);border-radius:var(--r-sm);padding:6px 9px;min-width:0;max-width:100%}
+.filters input[type=search]{width:min(220px,100%)}
+@media (max-width:620px){.filters input[type=search]{width:100%}.filters select{flex:1 1 45%}}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line-strong);background:var(--surface);border-radius:999px;
-  padding:4px 10px 4px 8px;font-size:.82rem;line-height:1.2;color:var(--ink-2)}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line-strong);background:var(--surface);border-radius:999px;padding:4px 10px 4px 8px;font-size:.8rem;color:var(--text-2);line-height:1.2}
 .chip .sw{width:9px;height:9px;border-radius:2px;flex:none}
-.chip[aria-pressed="true"]{border-color:var(--ink);color:var(--ink);background:var(--surface)}
-.chip[aria-pressed="false"]{opacity:.55}
-.chip.jur{background:var(--accent-soft);border-color:var(--accent);color:var(--ink)}
-.count{margin-left:auto;font-size:.82rem;color:var(--ink-2)}
-.linkbtn{background:none;border:0;color:var(--accent);padding:2px 4px;font-size:.84rem;text-decoration:underline;text-underline-offset:2px}
+.chip[aria-pressed="false"]{opacity:.45}
+.chip.place{background:var(--hl);border-color:var(--hl-line);color:var(--text)}
+.linkbtn{background:none;border:0;color:var(--link);padding:2px 4px;font-size:.84rem;text-decoration:underline;text-underline-offset:2px}
+.count{margin-left:auto;font-size:.82rem;color:var(--text-2)}
 
-section.block{padding-top:34px;scroll-margin-top:72px}
-.bhead{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 16px;margin-bottom:14px}
-.bhead p{color:var(--ink-2);max-width:70ch;font-size:.92rem}
-.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px}
-.grid2{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:16px}
-.grid2b{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-@media (max-width:860px){.grid2,.grid2b{grid-template-columns:minmax(0,1fr)}}
+/* ---------- panels ---------- */
+main{padding-top:26px}
+.tabpanel{display:grid;gap:22px;grid-template-columns:minmax(0,1fr)}
+.tabpanel>*{min-width:0}
+.head{display:grid;gap:4px;max-width:78ch}
+.head p{color:var(--text-2)}
+.card{background:var(--surface);border-radius:var(--r);padding:18px 18px 16px;box-shadow:var(--shadow)}
+.card h3{margin-bottom:10px}
+.g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.g21{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:22px}
+@media (max-width:900px){.g2,.g21{grid-template-columns:minmax(0,1fr)}}
 
-/* map */
-.mapbox{position:relative}
-#map svg{width:100%;height:auto;display:block}
-#map path.st{stroke:var(--surface);stroke-width:.7;cursor:pointer;transition:opacity .15s}
-#map path.st:hover{stroke:var(--ink);stroke-width:1.2}
-#map path.sel{stroke:var(--ink);stroke-width:1.8}
-.legend{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:center;font-size:.78rem;color:var(--ink-2)}
-.legend .ramp{display:flex;gap:2px}
-.legend .ramp span{display:grid;place-items:center;min-width:30px;height:18px;border-radius:2px;font-family:var(--mono);font-size:.7rem}
-.smallut{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-.union-btn{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;margin-top:10px;padding:10px 12px;border:1px solid var(--line-strong);
-  border-radius:var(--r);background:var(--surface-2);text-align:left}
-.union-btn[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
-
-/* register side panel */
-.register h3{margin-bottom:4px}
-.reglist{display:grid;gap:0;margin-top:10px;max-height:560px;overflow:auto;border-top:1px solid var(--line)}
-.regitem{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:4px 10px;align-items:start;padding:9px 2px;border-bottom:1px solid var(--line);
-  background:none;border-left:0;border-right:0;border-top:0;text-align:left;width:100%}
-.regitem:hover{background:var(--surface-2)}
-.regitem .t{font-weight:600;font-size:.9rem;line-height:1.3}
-.regitem .b{font-size:.8rem;color:var(--ink-2)}
-.idchip{font-family:var(--mono);font-size:.74rem;color:var(--ink-2);border:1px solid var(--line-strong);border-radius:4px;padding:1px 5px;white-space:nowrap}
-.pill{display:inline-flex;align-items:center;gap:5px;font-size:.76rem;font-weight:600;white-space:nowrap;color:var(--ink)}
-.pill i{width:8px;height:8px;border-radius:50%;display:inline-block;flex:none}
-.bars{display:grid;gap:7px;margin-top:10px}
-.barrow{display:grid;grid-template-columns:minmax(110px,40%) minmax(0,1fr) 34px;gap:8px;align-items:center;font-size:.84rem}
-.barrow .track{height:12px;background:var(--surface-2);border-radius:2px;overflow:hidden}
-.barrow .fill{height:100%;border-radius:0 4px 4px 0}
-.barrow .n{text-align:right;font-variant-numeric:tabular-nums;color:var(--ink-2)}
-button.barrow{background:none;border:0;padding:2px 0;text-align:left;width:100%;color:inherit}
-button.barrow:hover .track{outline:1px solid var(--line-strong)}
+/* block (unit) charts */
+.blk{display:inline-block;width:13px;height:13px;border-radius:3px;margin:0 3px 3px 0;vertical-align:top;border:0;padding:0}
+button.blk{cursor:pointer}
+button.blk:hover{outline:2px solid var(--text);outline-offset:1px}
+.waffle{display:grid;gap:14px}
+.wrow{display:grid;grid-template-columns:150px minmax(0,1fr);gap:4px 16px;align-items:start}
+@media (max-width:620px){.wrow{grid-template-columns:minmax(0,1fr)}}
+.wrow .lab b{display:block;font-size:1.25rem;font-weight:700;line-height:1.1}
+.wrow .lab span{font-size:.84rem;color:var(--text-2)}
+.wrow .def{font-size:.8rem;color:var(--muted);margin-top:2px}
+.profile{border-left:4px solid var(--marigold)}
+.plist{display:grid;gap:0;margin-top:10px}
+.pitem{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:4px 10px;align-items:start;padding:9px 4px;border-top:1px solid var(--line);background:none;border-left:0;border-right:0;border-bottom:0;text-align:left;width:100%}
+.pitem:hover{background:var(--surface-2)}
+.pitem .t{font-weight:600;font-size:.9rem;line-height:1.3}
+.pitem .b{font-size:.8rem;color:var(--text-2)}
+.idc{font-family:var(--mono);font-size:.74rem;color:var(--text-2);background:var(--surface-2);border-radius:4px;padding:1px 6px;white-space:nowrap}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:600;white-space:nowrap}
+.pill i{width:9px;height:9px;border-radius:2px;flex:none}
+.srows{display:grid;gap:4px}
+button.srow{display:grid;grid-template-columns:minmax(0,1fr) 28px;gap:3px 8px;align-items:center;background:none;border:0;padding:5px 6px;text-align:left;width:100%;border-radius:6px;font-size:.86rem}
+button.srow:hover{background:var(--surface-2)}
+button.srow[aria-pressed="true"]{background:var(--hl);box-shadow:inset 3px 0 0 var(--marigold)}
+button.srow .lab{grid-column:1/-1}
+button.srow .n{text-align:right;color:var(--text-2);font-variant-numeric:tabular-nums}
+.stk{display:flex;height:10px;border-radius:3px;overflow:hidden;gap:2px}
+.stk span{display:block;height:100%}
 
 /* table */
-.tablewrap{overflow:auto;max-height:640px;border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
+.tablewrap{overflow:auto;max-height:70vh;border-radius:var(--r);background:var(--surface);box-shadow:var(--shadow)}
 table{border-collapse:collapse;width:100%;font-size:.86rem}
-th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
-thead th{position:sticky;top:0;background:var(--surface-2);font-weight:600;font-size:.78rem;color:var(--ink-2);white-space:nowrap;z-index:1}
-thead th button{background:none;border:0;padding:0;font:inherit;color:inherit;display:inline-flex;gap:4px;align-items:center}
-thead th[aria-sort="ascending"] button::after{content:"▲";font-size:.6rem}
-thead th[aria-sort="descending"] button::after{content:"▼";font-size:.6rem}
-tbody tr{cursor:pointer}
-tbody tr:hover{background:var(--surface-2)}
-td.tt{min-width:240px}
-td .t{font-weight:600;line-height:1.3}
-td .b{font-size:.8rem;color:var(--ink-2)}
+th,td{padding:10px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+thead th{position:sticky;top:0;background:var(--surface);font-weight:600;font-size:.78rem;color:var(--muted);white-space:nowrap;z-index:1;border-bottom:1px solid var(--line-strong)}
+thead th button{background:none;border:0;padding:0;font:inherit;color:inherit}
+thead th[aria-sort="ascending"] button::after{content:" ▲";font-size:.6rem}
+thead th[aria-sort="descending"] button::after{content:" ▼";font-size:.6rem}
+tbody tr[data-pid]{cursor:pointer}
+tbody tr[data-pid]:hover{background:var(--surface-2)}
+td .t{font-weight:600;line-height:1.3;min-width:240px}
+#ptable td:nth-child(3){min-width:150px}
+#ptable td:nth-child(6){min-width:150px}
+td .b{font-size:.8rem;color:var(--text-2)}
 .ev{display:inline-flex;gap:2px;vertical-align:middle}
-.ev i{width:8px;height:8px;border-radius:1px;background:var(--grid);display:block}
-.ev i.on{background:var(--ink-2)}
-.empty{padding:28px;text-align:center;color:var(--ink-2)}
+.ev i{width:8px;height:8px;border-radius:2px;background:var(--empty-block);display:block}
+.ev i.on{background:var(--text-2)}
+.empty{padding:26px;text-align:center;color:var(--text-2)}
 
 /* charts */
 .chart svg{width:100%;height:auto;display:block;overflow:visible}
-.chart text{fill:var(--ink-2);font-family:var(--body);font-size:11px}
-.chart .ax line,.chart .ax path{stroke:var(--axis)}
-.chart .gl{stroke:var(--grid)}
-.lanes{max-height:620px;overflow:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
+.chart text{fill:var(--text-2);font-family:var(--body);font-size:11px}
+.gl{stroke:var(--grid)}
+.lanes{max-height:66vh;overflow:auto;border-radius:var(--r);background:var(--surface);box-shadow:var(--shadow);padding:6px 4px}
 .lanes svg{display:block;width:100%;min-width:640px}
 .lanes .row:hover rect.hit{fill:var(--surface-2)}
-.keyrow{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.8rem;color:var(--ink-2);margin:8px 0}
-.keyrow svg{vertical-align:middle}
-.note{font-size:.84rem;color:var(--ink-2)}
-.callout{background:var(--warn-bg);color:var(--warn-ink);border-radius:var(--r);padding:10px 12px;font-size:.86rem}
-.toe h4{font-family:var(--mono);font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:12px 0 4px;font-weight:500}
-.chlist{display:grid;gap:8px;margin-top:12px;max-height:420px;overflow:auto}
-.chitem{border-left:3px solid var(--line-strong);padding:4px 10px;font-size:.86rem}
-.chitem .h{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-weight:600}
+.key{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:.82rem;color:var(--text-2)}
+.key svg{vertical-align:middle}
+.toe h4{font-size:.86rem;font-weight:700;margin:14px 0 6px;color:var(--text)}
+.toe h4:first-of-type{margin-top:0}
+.chrow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;align-items:center;background:none;border:0;padding:6px;text-align:left;width:100%;border-radius:6px}
+.chrow:hover{background:var(--surface-2)}
+.chrow[aria-pressed="true"]{background:var(--hl);box-shadow:inset 3px 0 0 var(--marigold)}
+.chrow .c{font-size:.86rem}
+.chrow .c .mono{color:var(--muted);margin-right:6px}
+.chrow .bl{grid-column:1/-1;line-height:0}
+.chrow .bl .blk{width:11px;height:11px;margin:0 2px 0 0}
+.chlist{display:grid;gap:10px;max-height:62vh;overflow:auto}
+.chitem{border-left:3px solid var(--line-strong);padding:2px 0 2px 12px;font-size:.88rem}
+.chitem .h{font-weight:600;line-height:1.35;margin-bottom:2px}
+.chitem .h .mono{margin-right:6px}
+.chitem .h .linkbtn{text-align:left;display:inline;padding:0;font-weight:600}
+.big{font-family:var(--display);font-weight:500;font-size:1.6rem;line-height:1.1}
+.bigrow{display:flex;flex-wrap:wrap;gap:14px 36px}
+.bigrow .l{font-size:.84rem;color:var(--text-2)}
+.treemap svg{width:100%;height:auto;display:block}
+.treemap text{font-family:var(--body);pointer-events:none}
 
-/* coverage tiles */
+/* coverage + data */
 .tiles{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
 @media (max-width:1000px){.tiles{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media (max-width:620px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.tile{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:9px 10px;display:grid;grid-template-rows:1fr auto auto;gap:4px;text-align:left}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:9px 10px;display:grid;grid-template-rows:1fr auto auto;gap:5px;text-align:left}
 .tile:hover{border-color:var(--line-strong)}
-.tile .nm{font-weight:600;font-size:.86rem;line-height:1.2}
-.tile .meta{display:flex;justify-content:space-between;gap:6px;font-size:.76rem;color:var(--ink-2)}
-.tile .stk{display:flex;height:6px;border-radius:2px;overflow:hidden;background:var(--surface-2);gap:1px}
+.tile .nm{font-weight:600;font-size:.85rem;line-height:1.2}
+.tile .meta2{display:flex;justify-content:space-between;gap:6px;font-size:.76rem;color:var(--text-2)}
+.tile .bl{line-height:0;min-height:9px}
+.tile .bl i{display:inline-block;width:9px;height:9px;border-radius:2px;margin:0 2px 0 0}
 .tile.zero{background:transparent;border-style:dashed}
-.tile.zero .nm{color:var(--ink-2)}
+.files{display:grid;gap:0}
+.file{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;align-items:center;padding:10px 0;border-top:1px solid var(--line)}
+.file .d{font-size:.82rem;color:var(--text-2)}
+.btn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line-strong);background:var(--surface);border-radius:var(--r-sm);padding:6px 11px;font-size:.84rem;font-weight:600}
+.btn:hover{border-color:var(--text-2)}
+.btn.primary{background:var(--text);border-color:var(--text);color:var(--surface)}
+pre.cite{white-space:pre-wrap;font-family:var(--mono);font-size:.8rem;background:var(--surface-2);border-radius:var(--r-sm);padding:10px 12px;margin:8px 0}
+ol.steps{margin:6px 0 0;padding-left:20px;display:grid;gap:5px;font-size:.9rem}
+.changes{display:grid;gap:6px;font-size:.85rem;max-height:300px;overflow:auto}
+.kt td,.kt th{padding:7px 10px}
 
-/* files */
-.files{display:grid;gap:0;border-top:1px solid var(--line)}
-.file{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)}
-.file .d{font-size:.82rem;color:var(--ink-2)}
-.btn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line-strong);background:var(--surface);border-radius:var(--r);padding:5px 10px;font-size:.82rem}
-.btn:hover{border-color:var(--ink-2)}
-.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
-pre.cite{white-space:pre-wrap;font-family:var(--mono);font-size:.8rem;background:var(--surface-2);border-radius:var(--r);padding:10px 12px;margin:8px 0}
-ol.steps{margin:6px 0 0;padding-left:20px;display:grid;gap:4px;font-size:.9rem}
-.changes{display:grid;gap:6px;font-size:.86rem;max-height:300px;overflow:auto}
-
-/* tooltip */
-#tip{position:fixed;z-index:60;pointer-events:none;max-width:300px;background:var(--surface);color:var(--ink);border:1px solid var(--line-strong);
-  border-radius:var(--r);box-shadow:var(--shadow);padding:8px 10px;font-size:.82rem;line-height:1.4}
-#tip b{font-weight:600}
-
-/* dialog */
-dialog#detail{overflow:auto;width:min(860px, calc(100vw - 24px));max-height:calc(100vh - 32px);border:1px solid var(--line-strong);border-radius:10px;padding:0;
-  background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
-dialog#detail::backdrop{background:rgba(10,14,20,.45)}
-.dhead{position:sticky;top:0;background:var(--surface);border-bottom:1px solid var(--line);padding:16px 18px 12px;display:grid;gap:6px;z-index:2}
-.dhead .x{position:absolute;right:10px;top:10px;border:0;background:var(--surface-2);border-radius:6px;width:32px;height:32px;font-size:18px;line-height:1}
-.dbody{padding:16px 18px 22px;display:grid;gap:18px}
-.facts{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px 18px}
-.fact .k{font-size:.74rem;color:var(--muted);font-family:var(--mono);letter-spacing:.03em}
+/* tooltip + dialog */
+#tip{position:fixed;z-index:80;pointer-events:none;max-width:300px;background:var(--surface);color:var(--text);border:1px solid var(--line-strong);border-radius:8px;box-shadow:var(--shadow);padding:8px 10px;font-size:.82rem;line-height:1.4}
+dialog#detail{overflow:auto;width:min(880px, calc(100vw - 24px));max-height:calc(100vh - 32px);border:0;border-radius:14px;padding:0;background:var(--surface);color:var(--text);box-shadow:0 24px 80px rgba(10,8,30,.45)}
+dialog#detail::backdrop{background:rgba(14,11,40,.55)}
+.dhead{position:sticky;top:0;z-index:2;background:var(--surface);padding:18px 20px 14px;display:grid;gap:8px;border-bottom:1px solid var(--line)}
+.dhead .band{position:absolute;left:0;top:0;bottom:0;width:6px}
+.dhead .x{position:absolute;right:12px;top:12px;border:0;background:var(--surface-2);border-radius:8px;width:34px;height:34px;font-size:18px;line-height:1}
+.dhead h2{padding-right:40px;font-size:1.3rem}
+.dbody{padding:18px 20px 24px;display:grid;gap:20px}
+.facts{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px 20px}
+.fact .k{font-size:.76rem;color:var(--muted);font-weight:600}
 .fact .v{font-size:.9rem}
-.events{display:grid;gap:0;border-top:1px solid var(--line)}
-.evrow{display:grid;grid-template-columns:110px 130px minmax(0,1fr);gap:4px 12px;padding:8px 0;border-bottom:1px solid var(--line);font-size:.86rem}
+.callout{background:var(--warn-bg);color:var(--warn-ink);border-radius:8px;padding:10px 12px;font-size:.86rem}
+.events{display:grid}
+.evrow{display:grid;grid-template-columns:110px 140px minmax(0,1fr);gap:4px 12px;padding:9px 0;border-top:1px solid var(--line);font-size:.86rem}
 @media (max-width:620px){.evrow{grid-template-columns:minmax(0,1fr)}}
-.srcs{display:grid;gap:6px;font-size:.84rem}
-.src{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px;align-items:start}
-.badge{font-family:var(--mono);font-size:.7rem;border:1px solid var(--line-strong);border-radius:4px;padding:1px 5px;white-space:nowrap;color:var(--ink-2)}
-.badge.o{border-color:var(--good);color:var(--good)}
-footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:.82rem;color:var(--ink-2);display:grid;gap:6px}
-.loading{padding:40px 0;color:var(--ink-2)}
-@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+.srcs{display:grid;gap:8px;font-size:.85rem}
+.src{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px}
+.badge{font-size:.72rem;font-weight:600;border-radius:4px;padding:1px 6px;white-space:nowrap;background:var(--surface-2);color:var(--text-2)}
+.badge.o{background:color-mix(in srgb, var(--st-impl) 16%, transparent);color:var(--good)}
+footer{margin-top:44px;padding-top:16px;border-top:1px solid var(--line);font-size:.82rem;color:var(--text-2);display:grid;gap:6px}
+.loading{padding:40px 0;color:var(--text-2)}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
 </style>
 
-<div class="wrap">
-<header class="top">
-  <div class="mast">
+<header class="hero gut">
+  <div class="wrap">
     <div>
-      <div class="eyebrow">Open research dataset · India · 2017–2026</div>
       <h1>India Government Blockchain Tracker</h1>
-      <p class="lede">Every publicly reported blockchain project run, funded or mandated by an Indian public body: Union ministries, all 28 States and 8 Union Territories, regulators, courts and statutory bodies. Each project carries its stage dates, an evidence score and the sources behind it.</p>
     </div>
-    <div class="asof" id="asof"><span>Loading data…</span></div>
+    <div class="mapwrap">
+      <div id="heromap" role="img" aria-label="Map of India with one square per blockchain project, coloured by stage"></div>
+      <div class="hlegend" id="hlegend"></div>
+    </div>
+    <div class="hstats">
+      <div class="stats" id="stats"></div>
+      <div class="meta" id="meta"></div>
+    </div>
   </div>
-  <nav class="sections" aria-label="Sections">
-    <a href="#map-sec">Map</a><a href="#projects">Projects</a><a href="#lifecycle">Lifecycle</a><a href="#challenges">Challenges</a>
-    <a href="#nic">NIC platform</a><a href="#evidence">Evidence</a><a href="#coverage">Coverage</a><a href="#data">Data &amp; method</a>
-  </nav>
-  <div class="kpis" id="kpis" aria-live="polite"></div>
 </header>
 
-<div class="filters" role="region" aria-label="Filters">
-  <input type="search" id="f-q" placeholder="Search projects, bodies, places" aria-label="Search projects">
-  <select id="f-tier" aria-label="Tier of government"><option value="">All tiers</option></select>
-  <select id="f-uc" aria-label="Use-case"><option value="">All use-cases</option></select>
-  <select id="f-ev" aria-label="Minimum evidence score">
-    <option value="1">Any evidence</option><option value="3">Evidence 3+ (news or better)</option><option value="4">Evidence 4+ (official)</option><option value="5">Evidence 5 (official, live data)</option>
-  </select>
-  <div class="chips" id="f-stages" role="group" aria-label="Stages"></div>
-  <span id="f-jur"></span>
-  <button class="linkbtn" id="f-reset" type="button">Reset</button>
-  <span class="count" id="f-count"></span>
+<div class="bar gut">
+  <div class="wrap">
+    <div class="tabs" role="tablist" aria-label="Sections">
+      <button class="tab" role="tab" id="tab-overview" aria-controls="overview" data-tab="overview">Overview</button>
+      <button class="tab" role="tab" id="tab-projects" aria-controls="projects" data-tab="projects">Projects</button>
+      <button class="tab" role="tab" id="tab-lifecycle" aria-controls="lifecycle" data-tab="lifecycle">Lifecycle</button>
+      <button class="tab" role="tab" id="tab-challenges" aria-controls="challenges" data-tab="challenges">Challenges</button>
+      <button class="tab" role="tab" id="tab-nic" aria-controls="nic" data-tab="nic">NIC platform</button>
+      <button class="tab" role="tab" id="tab-data" aria-controls="data" data-tab="data">Data &amp; method</button>
+    </div>
+    <div class="filters" role="region" aria-label="Filters">
+      <input type="search" id="f-q" placeholder="Search projects or places" aria-label="Search projects">
+      <select id="f-level" aria-label="Level of government"><option value="">All levels</option></select>
+      <select id="f-cat" aria-label="Type of body"><option value="">All body types</option></select>
+      <select id="f-region" aria-label="Region"><option value="">All regions</option></select>
+      <select id="f-impl" aria-label="Built by"><option value="">Built by anyone</option></select>
+      <select id="f-uc" aria-label="Use-case"><option value="">All use-cases</option></select>
+      <select id="f-ev" aria-label="Minimum evidence score">
+        <option value="1">Any evidence</option><option value="3">Evidence 3+ (news or better)</option><option value="4">Evidence 4+ (official)</option><option value="5">Evidence 5 (official, live data)</option>
+      </select>
+      <div class="chips" id="f-stages" role="group" aria-label="Stages"></div>
+      <span id="f-jur"></span>
+      <button class="linkbtn" id="f-reset" type="button">Reset</button>
+      <span class="count" id="f-count"></span>
+    </div>
+  </div>
 </div>
 
-<main id="main">
+<main class="gut">
+<div class="wrap">
   <p class="loading" id="loading">Loading the dataset…</p>
 
-  <section class="block" id="map-sec" hidden>
-    <div class="bhead"><h2>Where the projects are</h2><p>Colour shows the number of projects matching the filters in each State or UT. Select a State to list its projects; Union-level and national bodies are listed separately.</p></div>
-    <div class="grid2">
-      <div class="panel mapbox">
-        <div class="legend" id="map-legend"></div>
-        <div id="map" role="img" aria-label="Map of India showing projects per State and Union Territory"></div>
-        <div class="eyebrow" style="margin-top:6px">Small Union Territories and States</div>
-        <div class="smallut" id="smallut"></div>
-        <button class="union-btn" id="union-btn" type="button" aria-pressed="false"></button>
-        <p class="note" style="margin-top:8px">Boundaries: DataMeet India (CC BY 4.0), following the Survey of India outline, simplified for display.</p>
-      </div>
-      <div class="panel register" id="register" aria-live="polite"></div>
+  <section class="tabpanel" id="overview" role="tabpanel" aria-labelledby="tab-overview" hidden>
+    <div class="card profile" id="profile" hidden></div>
+    <div class="card">
+      <div class="head" style="margin-bottom:16px"><h2>Where each project stands</h2><p>One square per project, grouped by its current stage. Select a square to open the project.</p></div>
+      <div class="waffle" id="waffle"></div>
+    </div>
+    <div class="head"><h2>Who runs them and who builds them</h2><p>Bars are split by stage. Select a row to filter the whole tracker.</p></div>
+    <div class="g2">
+      <div class="card"><h3>Level of government</h3><div class="srows" id="who-level"></div></div>
+      <div class="card"><h3>Built by</h3><div class="srows" id="who-impl"></div></div>
+      <div class="card"><h3>Type of public body</h3><div class="srows" id="who-cat"></div></div>
+      <div class="card"><h3>Region</h3><div class="srows" id="who-region"></div><p class="note" style="margin-top:8px">Regions follow the Home Ministry's Zonal Councils and the North Eastern Council.</p></div>
+    </div>
+    <div class="card chart">
+      <div class="head" style="margin-bottom:10px"><h2>When they started</h2><p id="sy-note">Each square is a project, stacked in the year it was announced or started.</p></div>
+      <div id="startyears"></div>
     </div>
   </section>
 
-  <section class="block" id="projects" hidden>
-    <div class="bhead"><h2>Project register</h2><p>Select a row for the full record: stage dates, challenges and every source. Click a column heading to sort.</p></div>
+  <section class="tabpanel" id="projects" role="tabpanel" aria-labelledby="tab-projects" hidden>
+    <div class="head"><h2>Project register</h2><p>Select a row for the full record: stage dates, challenges and every source. Select a column heading to sort.</p></div>
     <div class="tablewrap"><table id="ptable"><thead></thead><tbody></tbody></table></div>
   </section>
 
-  <section class="block" id="lifecycle" hidden>
-    <div class="bhead"><h2>Lifecycle and stage dates</h2><p>Each line is one project, from its first dated event to its latest dated evidence, grouped by current stage. Dates with only a year or month are placed mid-period.</p></div>
-    <div class="keyrow" id="lane-key"></div>
+  <section class="tabpanel" id="lifecycle" role="tabpanel" aria-labelledby="tab-lifecycle" hidden>
+    <div class="head"><h2>Lifecycle and stage dates</h2><p>Each line runs from a project's first dated event to its latest dated evidence. Dates known only to the year or month sit mid-period.</p></div>
+    <div class="key" id="lane-key"></div>
     <div class="lanes" id="lanes"></div>
-    <div class="grid2b" style="margin-top:16px">
-      <div class="panel chart"><h3>Projects by start year and current stage</h3><p class="note" id="sy-note"></p><div id="startyears"></div></div>
-      <div class="panel chart"><h3>Months from first announcement or pilot to go-live</h3><p class="note" id="ttl-note"></p><div id="ttl"></div></div>
+    <div class="card chart"><h3>Months from first announcement or pilot to go-live</h3><p class="note" id="ttl-note" style="margin-bottom:8px"></p><div id="ttl"></div></div>
+  </section>
+
+  <section class="tabpanel" id="challenges" role="tabpanel" aria-labelledby="tab-challenges" hidden>
+    <div class="head"><h2>Reported challenges</h2><p>Coded only where a source reports the challenge for that project, on a technology, organisation and environment (TOE) scheme. Each square is a project, coloured by its stage.</p></div>
+    <div class="g21">
+      <div class="card toe" id="toe"></div>
+      <div class="card"><h3 id="ch-title">All reported challenges</h3><div class="chlist" id="chlist"></div></div>
     </div>
   </section>
 
-  <section class="block" id="challenges" hidden>
-    <div class="bhead"><h2>Reported challenges</h2><p>Coded only where a source reports the challenge for that specific project, on a technology–organisation–environment (TOE) scheme. Select a bar to read the evidence.</p></div>
-    <div class="grid2">
-      <div class="panel toe" id="toe"></div>
-      <div class="panel"><h3 id="ch-title">All reported challenges</h3><div class="chlist" id="chlist"></div></div>
+  <section class="tabpanel" id="nic" role="tabpanel" aria-labelledby="tab-nic" hidden>
+    <div class="head"><h2>NIC blockchain platform</h2><p>Official counts from the National Informatics Centre's blockchain platform at each snapshot. Figures use Indian digit grouping: 1 lakh = 100,000 and 1 crore = 10 million.</p></div>
+    <div class="card"><div class="bigrow" id="nic-big"></div></div>
+    <div class="g2">
+      <div class="card chart"><h3>Documents recorded (crore)</h3><div id="nic-docs"></div></div>
+      <div class="card chart"><h3>Verifications (crore)</h3><div id="nic-ver"></div></div>
     </div>
+    <div class="card treemap"><h3 id="tm-title">Who puts documents on the chain</h3><p class="note" id="tm-note" style="margin-bottom:10px"></p><div id="treemap"></div></div>
+    <div class="card"><h3>Departments on NIC chains</h3><p class="note" id="nic-tab-note" style="margin-bottom:10px"></p>
+      <div class="tablewrap" style="box-shadow:none;max-height:520px"><table id="nictable"><thead></thead><tbody></tbody></table></div></div>
   </section>
 
-  <section class="block" id="nic" hidden>
-    <div class="bhead"><h2>NIC blockchain platform usage</h2><p>Official counts from the National Informatics Centre (NIC) Centre of Excellence in Blockchain Technology, captured at each snapshot. Figures use Indian digit grouping; 1 crore = 10 million.</p></div>
-    <div class="grid2b">
-      <div class="panel chart"><h3>Documents recorded</h3><div id="nic-docs"></div></div>
-      <div class="panel chart"><h3>Verifications</h3><div id="nic-ver"></div></div>
+  <section class="tabpanel" id="data" role="tabpanel" aria-labelledby="tab-data" hidden>
+    <div class="g2">
+      <div class="card"><h3>How strong is the evidence?</h3><p class="note" style="margin-bottom:10px">A project's score is the score of its strongest source, capped when a claim is unverified or rests only on vendor or slide-deck material.</p><div class="waffle" id="evwaffle"></div><p class="note" id="ev-note" style="margin-top:12px"></p></div>
+      <div class="card"><h3>Coding consistency check</h3><p class="note" style="margin-bottom:10px">Cohen's kappa on a 30% random sample (35 rows). Both codings were made with the same AI assistant, so this checks consistency; it is not an independent inter-rater test.</p>
+        <table class="kt" id="kappa"><thead><tr><th>Variable</th><th>n</th><th>Agreement</th><th>Kappa</th></tr></thead><tbody></tbody></table></div>
     </div>
-    <div class="panel" style="margin-top:16px">
-      <h3 id="nic-tab-title">Departments on NIC chains</h3>
-      <p class="note" id="nic-tab-note" style="margin:4px 0 10px"></p>
-      <div class="tablewrap" style="max-height:520px"><table id="nictable"><thead></thead><tbody></tbody></table></div>
-    </div>
-  </section>
-
-  <section class="block" id="evidence" hidden>
-    <div class="bhead"><h2>Evidence and reliability</h2><p>Each row's score is the score of its strongest linked source, capped when a claim is unverified or rests only on vendor or slide-deck material.</p></div>
-    <div class="grid2b">
-      <div class="panel"><h3>Evidence score of matching projects</h3><div class="bars" id="evbars"></div><p class="note" id="ev-note" style="margin-top:10px"></p></div>
-      <div class="panel"><h3>Coding consistency check</h3><p class="note" style="margin:4px 0 8px">Cohen's kappa on a 30% random sample (35 rows), v1.0.0. Both codings were made with the same AI assistant, so this is a consistency check, not an independent inter-rater test.</p>
-        <div class="tablewrap" style="max-height:none"><table id="kappa"><thead><tr><th>Variable</th><th>n</th><th>Agreement</th><th>Kappa</th></tr></thead><tbody></tbody></table></div></div>
-    </div>
-  </section>
-
-  <section class="block" id="coverage" hidden>
-    <div class="bhead"><h2>Search coverage: all 36 States and UTs</h2><p>Every State and Union Territory was searched individually. Dashed tiles had no project matching the current filters.</p></div>
+    <div class="head"><h2>All 36 States and UTs were searched</h2><p>Dashed tiles had no project matching the current filters. Select a tile to filter by that place.</p></div>
     <div class="tiles" id="tiles"></div>
-  </section>
-
-  <section class="block" id="data" hidden>
-    <div class="bhead"><h2>Data &amp; method</h2><p>A Frictionless Data Package: normalised CSV tables with keys and controlled vocabularies, so new projects, stage events and snapshots can be added and validated. This dashboard reads the same files.</p></div>
-    <div class="grid2">
-      <div class="panel"><h3>Files</h3><p class="note" id="dl-note" style="margin:4px 0 8px">Download buttons appear when this viewer allows saving files.</p><div class="files" id="files"></div></div>
-      <div class="panel" style="display:grid;gap:16px;align-content:start">
-        <div><h3>How to cite</h3><pre class="cite" id="cite"></pre><button class="btn" type="button" id="copy-cite">Copy citation</button></div>
+    <div class="g21">
+      <div class="card"><h3>Files</h3><p class="note" id="dl-note" style="margin-bottom:6px">Download buttons appear when this viewer allows saving files.</p><div class="files" id="files"></div></div>
+      <div class="card" style="display:grid;gap:18px;align-content:start">
+        <div><h3>How to cite</h3><p class="note" style="margin-top:4px">Dataset DOI: <a href="https://doi.org/10.5281/zenodo.23136332" target="_blank" rel="noopener">https://doi.org/10.5281/zenodo.23136332</a>. It covers all versions and always opens the latest one. To cite version 1.1.0 exactly, use <a href="https://doi.org/10.5281/zenodo.23415599" target="_blank" rel="noopener">10.5281/zenodo.23415599</a>.</p><pre class="cite" id="cite"></pre><button class="btn" type="button" id="copy-cite">Copy citation</button></div>
         <div><h3>Adding data</h3><ol class="steps">
           <li>Add the body to <span class="mono">bodies.csv</span> if it is new, then a row to <span class="mono">projects.csv</span> with the next free ID.</li>
-          <li>Add each dated event to <span class="mono">stage_events.csv</span> and each source to <span class="mono">sources.csv</span> and <span class="mono">project_sources.csv</span>.</li>
-          <li>Run <span class="mono">python3 tools/build.py</span>. It checks types, codes and links, then rebuilds the derived files. The full steps are in <span class="mono">UPDATE_GUIDE.md</span> inside the .zip.</li>
-          <li>Publish the changed CSVs. The dashboard recalculates every chart from them.</li></ol></div>
+          <li>Add dated events to <span class="mono">stage_events.csv</span> and sources to <span class="mono">sources.csv</span> and <span class="mono">project_sources.csv</span>.</li>
+          <li>Run <span class="mono">python3 tools/build.py</span>. It checks every code, link and date, and rebuilds <span class="mono">all_projects.csv</span>, the combined table this tracker reads.</li>
+          <li>Publish the changed CSVs. Every chart recalculates from them.</li></ol></div>
         <div><h3>What changed in this version</h3><div class="changes" id="changes"></div></div>
       </div>
     </div>
   </section>
 
   <footer id="foot"></footer>
-</main>
 </div>
+</main>
 
 <div id="tip" hidden></div>
 <dialog id="detail" aria-labelledby="d-title"><div id="dcontent"></div></dialog>
@@ -347,422 +387,412 @@ footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-si
 (() => {
 'use strict';
 const STAGES = [
-  {k:'Implemented', s:'Implemented', c:'--st-impl'},
-  {k:'In progress', s:'In progress', c:'--st-prog'},
-  {k:'Pilot completed', s:'Pilot completed', c:'--st-pilot'},
-  {k:'Proposed / Planned', s:'Planned', c:'--st-plan'},
-  {k:'Unclear (no recent update)', s:'Unclear', c:'--st-unclear'},
-  {k:'Discontinued', s:'Discontinued', c:'--st-disc'},
+  {k:'Implemented', s:'Implemented', c:'--st-impl', d:'In use with real users or documents'},
+  {k:'In progress', s:'In progress', c:'--st-prog', d:'Pilot, build or procurement under way'},
+  {k:'Pilot completed', s:'Pilot completed', c:'--st-pilot', d:'Pilot finished, no rollout found'},
+  {k:'Proposed / Planned', s:'Planned', c:'--st-plan', d:'Announced or approved, not started'},
+  {k:'Unclear (no recent update)', s:'Unclear', c:'--st-unclear', d:'No public update found (not proof of failure)'},
+  {k:'Discontinued', s:'Discontinued', c:'--st-disc', d:'Reported as stopped'},
 ];
 const SMAP = Object.fromEntries(STAGES.map(s => [s.k, s]));
+const SIDX = k => Math.max(0, STAGES.findIndex(s => s.k === k));
 const scol = k => `var(${(SMAP[k] || STAGES[4]).c})`;
 const sshort = k => (SMAP[k] || {s:k}).s;
-const SMALL = ['IN-DL','IN-CH','IN-PY','IN-GA','IN-DH','IN-LD','IN-SK','IN-TR','IN-AN'];
-const FILES = ['projects','jurisdictions','bodies','stage_events','challenges','sources','project_sources','nic_snapshots','vocabularies','reliability','changelog'];
-const EXTRA = ['policies','literature','context_stats','excluded_items','rti_drafts'];
+const FILES = ['all_projects','jurisdictions','stage_events','challenges','sources','project_sources','nic_snapshots','vocabularies','reliability','changelog'];
+const EXTRA = ['projects','bodies','policies','literature','context_stats','excluded_items','rti_drafts'];
 const D = {};
-const F = {q:'', tier:'', uc:'', ev:1, stages:new Set(STAGES.map(s => s.k)), jur:null};
+const F = {q:'', level:'', cat:'', region:'', impl:'', uc:'', ev:1, stages:new Set(STAGES.map(s => s.k)), jur:null};
+const SEL = [['level', 'government_level', '#f-level'], ['cat', 'body_category', '#f-cat'], ['region', 'region', '#f-region'], ['impl', 'implementation_model', '#f-impl']];
 let SORT = {k:'project_id', dir:1};
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const fmtIN = n => new Intl.NumberFormat('en-IN').format(n);
-const crore = n => (n / 1e7).toLocaleString('en-IN', {maximumFractionDigits: 2}) + ' crore';
+const cr = (n, d = 2) => (n / 1e7).toLocaleString('en-IN', {maximumFractionDigits: d});
 const pct = (a, b) => b ? Math.round(100 * a / b) + '%' : '–';
-const dmy = iso => { if (!iso) return ''; const p = iso.split('-'); const M = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  return p.length === 3 ? `${+p[2]} ${M[+p[1]-1]} ${p[0]}` : p.length === 2 ? `${M[+p[1]-1]} ${p[0]}` : p[0]; };
-const asOnFmt = iso => { const p = (iso||'').split('-'); return p.length === 3 ? `${p[2]}-${p[1]}-${p[0]}` : iso; };
+const MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const dmy = iso => { if (!iso) return ''; const p = iso.split('-'); return p.length === 3 ? `${+p[2]} ${MON[+p[1]-1]} ${p[0]}` : p.length === 2 ? `${MON[+p[1]-1]} ${p[0]}` : p[0]; };
+const asOn = iso => { const p = (iso || '').split('-'); return p.length === 3 ? `${p[2]}-${p[1]}-${p[0]}` : iso; };
 const toDate = iso => { const p = iso.split('-').map(Number); return p.length === 3 ? new Date(p[0], p[1]-1, p[2]) : p.length === 2 ? new Date(p[0], p[1]-1, 15) : new Date(p[0], 6, 1); };
-const evBoxes = n => `<span class="ev" aria-label="Evidence ${n} of 5" title="Evidence ${n} of 5">${[1,2,3,4,5].map(i => `<i class="${i <= n ? 'on' : ''}"></i>`).join('')}</span>`;
+const evBoxes = n => `<span class="ev" role="img" aria-label="Evidence ${n} of 5" title="Evidence ${n} of 5">${[1,2,3,4,5].map(i => `<i class="${i <= n ? 'on' : ''}"></i>`).join('')}</span>`;
 const pill = st => `<span class="pill"><i style="background:${scol(st)}"></i>${esc(sshort(st))}</span>`;
 
 // ---------- tooltip ----------
 const tip = $('#tip');
-function showTip(html, ev) { tip.innerHTML = html; tip.hidden = false; moveTip(ev); }
-function moveTip(ev) { if (tip.hidden) return; const pad = 14; let x = ev.clientX + pad, y = ev.clientY + pad;
-  const r = tip.getBoundingClientRect(); if (x + r.width > innerWidth - 8) x = ev.clientX - r.width - pad; if (y + r.height > innerHeight - 8) y = ev.clientY - r.height - pad;
-  tip.style.left = Math.max(8, x) + 'px'; tip.style.top = Math.max(8, y) + 'px'; }
-function hideTip() { tip.hidden = true; }
 const TIPS = new Map(); let tipN = 0;
 const tipAttr = html => { const id = 't' + (tipN++); TIPS.set(id, html); return `data-tip="${id}"`; };
-document.addEventListener('pointerover', e => { const el = e.target.closest('[data-tip]'); if (el && TIPS.has(el.dataset.tip)) showTip(TIPS.get(el.dataset.tip), e); });
+function moveTip(ev) { if (tip.hidden) return; const pad = 14; let x = ev.clientX + pad, y = ev.clientY + pad; const r = tip.getBoundingClientRect();
+  if (x + r.width > innerWidth - 8) x = ev.clientX - r.width - pad; if (y + r.height > innerHeight - 8) y = ev.clientY - r.height - pad;
+  tip.style.left = Math.max(8, x) + 'px'; tip.style.top = Math.max(8, y) + 'px'; }
+const hideTip = () => { tip.hidden = true; };
+document.addEventListener('pointerover', e => { const el = e.target.closest('[data-tip]'); if (el && TIPS.has(el.dataset.tip)) { tip.innerHTML = TIPS.get(el.dataset.tip); tip.hidden = false; moveTip(e); } });
 document.addEventListener('pointermove', moveTip);
 document.addEventListener('pointerout', e => { const el = e.target.closest('[data-tip]'); if (el && !el.contains(e.relatedTarget)) hideTip(); });
 addEventListener('scroll', hideTip, {passive: true});
+const ptip = p => `<b>${p.project_id} · ${esc(p.title)}</b><br>${esc(p._body)}<br>${esc(p._jur)} · ${esc(sshort(p.stage))}`;
 
 // ---------- load ----------
 async function load() {
   const get = async n => { const r = await fetch(`data/${n}.csv`, {cache: 'no-cache'}); if (!r.ok) throw new Error(`${n}.csv: HTTP ${r.status}`); return d3.csvParse(await r.text()); };
   const ALL = [...FILES, ...EXTRA];
   const [geo, ...tabs] = await Promise.all([fetch('geo/india_states.json').then(r => { if (!r.ok) throw new Error('map file: HTTP ' + r.status); return r.json(); }), ...ALL.map(get)]);
-  ALL.forEach((n, i) => D[n] = tabs[i]);
-  D.geo = geo;
-  D.P = D.projects.filter(p => p.record_status === 'active');
-  D.P.forEach(p => { p.evidence_score = +p.evidence_score; p.start_year = p.start_year ? +p.start_year : null; });
+  ALL.forEach((n, i) => D[n] = tabs[i]); D.geo = geo;
+  D.P = D.all_projects.filter(p => p.record_status === 'active');
   D.J = Object.fromEntries(D.jurisdictions.map(j => [j.jurisdiction_id, j]));
-  D.B = Object.fromEntries(D.bodies.map(b => [b.body_id, b]));
   D.S = Object.fromEntries(D.sources.map(s => [s.source_id, s]));
-  D.EV = d3.group(D.stage_events, e => e.project_id);
-  D.CH = d3.group(D.challenges, c => c.project_id);
-  D.PS = d3.group(D.project_sources, x => x.project_id);
-  D.V = d3.group(D.vocabularies, v => v.vocabulary);
+  D.EV = d3.group(D.stage_events, e => e.project_id); D.CH = d3.group(D.challenges, c => c.project_id);
+  D.PS = d3.group(D.project_sources, x => x.project_id); D.V = d3.group(D.vocabularies, v => v.vocabulary);
   D.P.forEach(p => {
-    const ev = (D.EV.get(p.project_id) || []).slice().sort((a, b) => a.date.localeCompare(b.date));
-    p._ev = ev; p._live = (ev.find(e => e.event_type === 'live') || {}).date || '';
-    p._first = (ev.find(e => e.event_type !== 'latest_update') || ev[0] || {}).date || '';
-    p._last = ev.length ? ev[ev.length - 1].date : '';
-    p._body = (D.B[p.body_id] || {}).name || '';
-    p._jur = (D.J[p.jurisdiction_id] || {}).name || p.jurisdiction_id;
-    p._nsrc = (D.PS.get(p.project_id) || []).length;
-    p._hay = [p.project_id, p.title, p._body, p._jur, p.description, p.platform_reported, p.tech_partner, p.use_case, p.domain].join(' ').toLowerCase();
+    p.evidence_score = +p.evidence_score; p.start_year = p.start_year ? +p.start_year : null; p.title = p.project_name;
+    p._ev = (D.EV.get(p.project_id) || []).slice().sort((a, b) => a.date.localeCompare(b.date));
+    p._live = p.date_live; p._first = (p._ev.find(e => e.event_type !== 'latest_update') || p._ev[0] || {}).date || '';
+    p._body = p.implementing_body; p._jur = p.state_ut; p._nsrc = +p.n_sources;
+    p._hay = [p.project_id, p.title, p._body, p._jur, p.description, p.platform_reported, p.tech_partner, p.use_case, p.domain, p.body_category, p.region, p.implementation_model, p.parent_ministry_or_state].join(' ').toLowerCase();
   });
 }
 
 // ---------- filters ----------
 function filtered(ignoreJur = false) {
   const q = F.q.trim().toLowerCase();
-  return D.P.filter(p => F.stages.has(p.stage) && (!F.tier || p.tier === F.tier) && (!F.uc || p.use_case === F.uc) && p.evidence_score >= F.ev
-    && (!q || p._hay.includes(q)) && (ignoreJur || !F.jur || p.jurisdiction_id === F.jur));
+  return D.P.filter(p => F.stages.has(p.stage) && SEL.every(([k, col]) => !F[k] || p[col] === F[k]) && (!F.uc || p.use_case === F.uc)
+    && p.evidence_score >= F.ev && (!q || p._hay.includes(q)) && (ignoreJur || !F.jur || p.jurisdiction_id === F.jur));
 }
 function buildFilters() {
-  const tiers = [...new Set(D.P.map(p => p.tier))]; $('#f-tier').insertAdjacentHTML('beforeend', tiers.map(t => `<option>${esc(t)}</option>`).join(''));
-  const ucs = d3.sort([...new Set(D.P.map(p => p.use_case))]); $('#f-uc').insertAdjacentHTML('beforeend', ucs.map(t => `<option>${esc(t)}</option>`).join(''));
+  const vorder = (voc, vals) => { const o = (D.V.get(voc) || []).map(v => v.code); return [...vals].sort((a, b) => (o.indexOf(a) + 1 || 99) - (o.indexOf(b) + 1 || 99) || a.localeCompare(b)); };
+  for (const [k, col, sel] of SEL) {
+    $(sel).insertAdjacentHTML('beforeend', vorder(col, new Set(D.P.map(p => p[col]).filter(Boolean))).map(t => `<option>${esc(t)}</option>`).join(''));
+    $(sel).addEventListener('change', e => { F[k] = e.target.value; render(); });
+  }
+  $('#f-uc').insertAdjacentHTML('beforeend', d3.sort([...new Set(D.P.map(p => p.use_case))]).map(t => `<option>${esc(t)}</option>`).join(''));
   const present = new Set(D.P.map(p => p.stage));
   $('#f-stages').innerHTML = STAGES.filter(s => present.has(s.k)).map(s => `<button type="button" class="chip" data-stage="${esc(s.k)}" aria-pressed="true" title="Select to show only this stage, then add others"><span class="sw" style="background:var(${s.c})"></span>${esc(s.s)}</button>`).join('');
   $('#f-stages').addEventListener('click', e => { const b = e.target.closest('[data-stage]'); if (!b) return; const k = b.dataset.stage;
-    if (e.altKey || (F.stages.size === present.size)) { F.stages = new Set([k]); } else if (F.stages.has(k)) { F.stages.delete(k); if (!F.stages.size) F.stages = new Set(present); } else F.stages.add(k);
+    if (F.stages.size === present.size) F.stages = new Set([k]); else if (F.stages.has(k)) { F.stages.delete(k); if (!F.stages.size) F.stages = new Set(present); } else F.stages.add(k);
     render(); });
   $('#f-q').addEventListener('input', e => { F.q = e.target.value; render(); });
-  $('#f-tier').addEventListener('change', e => { F.tier = e.target.value; render(); });
   $('#f-uc').addEventListener('change', e => { F.uc = e.target.value; render(); });
   $('#f-ev').addEventListener('change', e => { F.ev = +e.target.value; render(); });
-  $('#f-reset').addEventListener('click', () => { F.q = ''; F.tier = ''; F.uc = ''; F.ev = 1; F.jur = null; F.stages = new Set(present);
-    $('#f-q').value = ''; $('#f-tier').value = ''; $('#f-uc').value = ''; $('#f-ev').value = '1'; render(); });
+  $('#f-reset').addEventListener('click', () => { Object.assign(F, {q:'', uc:'', ev:1, jur:null, level:'', cat:'', region:'', impl:''}); F.stages = new Set(present);
+    $('#f-q').value = ''; $('#f-uc').value = ''; $('#f-ev').value = '1'; render(); });
 }
-function setJur(id) { F.jur = (F.jur === id) ? null : id; render(); }
+const setJur = id => { F.jur = F.jur === id ? null : id; render(); };
 
-// ---------- KPIs ----------
-function renderKPIs(P) {
-  const n = P.length, impl = P.filter(p => p.stage === 'Implemented').length;
-  const pil = P.filter(p => p.stage === 'Pilot completed').length, unc = P.filter(p => p.stage === 'Unclear (no recent update)').length;
+// ---------- hero: stats + block map ----------
+function renderStats(P) {
+  const impl = P.filter(p => p.stage === 'Implemented').length, pil = P.filter(p => p.stage === 'Pilot completed').length, unc = P.filter(p => p.stage === 'Unclear (no recent update)').length;
   const jurs = new Set(P.map(p => p.jurisdiction_id).filter(j => j !== 'IN')).size;
-  const nic = D.nic_snapshots.filter(r => r.level === 'platform' && r.metric === 'verifications_total');
-  const lastNic = nic.sort((a, b) => a.snapshot_date.localeCompare(b.snapshot_date)).at(-1);
-  $('#kpis').innerHTML = [
-    [n, 'projects match the filters', `of ${D.P.length}`],
-    [impl, 'implemented and in use', pct(impl, n)],
-    [pct(impl, impl + pil + unc), 'pilot-to-production rate', '', 'Implemented ÷ (implemented + pilot completed + unclear)'],
-    [jurs, 'States and UTs with a project', 'of 36'],
-    [lastNic ? (+lastNic.value / 1e7).toLocaleString('en-IN', {maximumFractionDigits: 2}) : '–', `crore verifications on NIC chains, as on ${lastNic ? asOnFmt(lastNic.snapshot_date) : ''}`, ''],
-  ].map(([v, l, s, t]) => `<div class="kpi"${t ? ` title="${esc(t)}"` : ''}><div class="v">${v}${s ? ` <small>${s}</small>` : ''}</div><div class="l">${l}</div></div>`).join('');
+  const nic = d3.sort(D.nic_snapshots.filter(r => r.level === 'platform' && r.metric === 'verifications_total'), r => r.snapshot_date).at(-1);
+  $('#stats').innerHTML = [
+    [impl, `<small>of ${P.length}</small>`, 'projects are implemented and in use'],
+    [pct(impl, impl + pil + unc), '', 'of tested or announced projects reached production'],
+    [jurs, '<small>of 36</small>', 'States and UTs run at least one project'],
+    [nic ? cr(+nic.value) : '–', '<small>crore</small>', `verifications on NIC's blockchain, as on ${nic ? asOn(nic.snapshot_date) : ''}`],
+  ].map(([v, s, l]) => `<div class="stat"><div class="v">${v} ${s}</div><div class="l">${l}</div></div>`).join('');
 }
-
-// ---------- map ----------
-let PATHS = null;
-const BINS = [0, 1, 2, 4, 6, 10];
-const binVar = c => c <= 0 ? '--map-0' : c === 1 ? '--seq-1' : c < 4 ? '--seq-2' : c < 6 ? '--seq-3' : c < 10 ? '--seq-4' : '--seq-5';
+let MAP = null;
 function initMap() {
-  const obj = D.geo.objects[Object.keys(D.geo.objects)[0]];
-  const fc = topojson.feature(D.geo, obj);
-  const W = 600, H = 660;
-  const proj = d3.geoMercator().fitExtent([[6, 6], [W - 6, H - 6]], fc);
-  const path = d3.geoPath(proj);
-  PATHS = fc.features.map(f => ({id: f.id, name: f.properties.name, d: path(f)}));
-  D.mapWH = [W, H];
-  $('#map-legend').innerHTML = `<span>Projects</span><span class="ramp">${[['0','--map-0'],['1','--seq-1'],['2–3','--seq-2'],['4–5','--seq-3'],['6–9','--seq-4'],['10+','--seq-5']]
-    .map(([l, v], i) => `<span style="background:var(${v});color:${i >= 3 ? 'var(--surface)' : 'var(--ink)'}">${l}</span>`).join('')}</span>`;
-  $('#map').addEventListener('click', e => { const p = e.target.closest('path[data-id]'); if (p) setJur(p.dataset.id); });
+  const obj = D.geo.objects[Object.keys(D.geo.objects)[0]]; const fc = topojson.feature(D.geo, obj);
+  const W = 680, H = 680;
+  const proj = d3.geoMercator().fitExtent([[118, 8], [W - 8, H - 8]], fc); const path = d3.geoPath(proj);
+  const anchor = f => { const g = f.geometry; if (g.type !== 'MultiPolygon') return path.centroid(f);
+    let best = null, ba = -1; for (const c of g.coordinates) { const pf = {type: 'Feature', geometry: {type: 'Polygon', coordinates: c}}; const a = path.area(pf); if (a > ba) { ba = a; best = pf; } } return path.centroid(best); };
+  const NUDGE = {'IN-DL': [26, -8], 'IN-CH': [-14, -18], 'IN-GA': [-22, 6], 'IN-PY': [24, 4], 'IN-DH': [-26, 0], 'IN-HR': [-6, 4], 'IN-SK': [0, -14], 'IN-TR': [10, 10], 'IN-KL': [-6, 0]};
+  const states = fc.features.map(f => { const [cx, cy] = anchor(f); const n = NUDGE[f.id] || [0, 0]; return {id: f.id, name: f.properties.name, d: path(f), cx, cy, bx: cx + n[0], by: cy + n[1], nudged: !!NUDGE[f.id]}; });
+  MAP = {W, H, states, union: {x: 14, y: Math.round(proj([72, 16.2])[1])}};
+  $('#heromap').addEventListener('click', e => { const b = e.target.closest('rect[data-pid]'); if (b) { openDetail(b.dataset.pid); return; } const s = e.target.closest('path[data-id]'); if (s) setJur(s.dataset.id); });
+  $('#hlegend').innerHTML = `<span style="color:var(--hero-text)">1 square = 1 project</span>` + STAGES.filter(s => D.P.some(p => p.stage === s.k)).map(s => `<span><i style="background:var(${s.c})"></i>${esc(s.s)} ${D.P.filter(p => p.stage === s.k).length}</span>`).join('') + `<span><i style="background:transparent;border:1px solid var(--hero-text-2)"></i>Boxed in the sea: Union and national bodies</span>`;
 }
 function renderMap() {
-  const P = filtered(true);
-  const cnt = d3.rollup(P, v => v.length, p => p.jurisdiction_id);
-  const [W, H] = D.mapWH;
-  $('#map').innerHTML = `<svg viewBox="0 0 ${W} ${H}" aria-hidden="true">${PATHS.map(f => {
-    const c = cnt.get(f.id) || 0; const j = D.J[f.id] || {};
-    const st = d3.rollups(P.filter(p => p.jurisdiction_id === f.id), v => v.length, p => p.stage).map(([k, v]) => `${v} ${sshort(k).toLowerCase()}`).join(', ');
-    return `<path class="st${F.jur === f.id ? ' sel' : ''}" data-id="${f.id}" d="${f.d}" style="fill:var(${binVar(c)})" ${tipAttr(`<b>${esc(f.name)}</b> <span class="mono">${f.id}</span><br>${c} project${c === 1 ? '' : 's'}${st ? ': ' + st : ''}${c ? '' : '<br><span class="muted">' + esc(j.search_result || '') + '</span>'}`)}></path>`;
-  }).join('')}</svg>`;
-  $('#smallut').innerHTML = SMALL.map(id => { const c = cnt.get(id) || 0; const j = D.J[id];
-    return `<button type="button" class="chip${F.jur === id ? ' jur' : ''}" data-jur="${id}" aria-pressed="${F.jur === id}"><span class="sw" style="background:var(${binVar(c)});outline:1px solid var(--line-strong)"></span>${esc(j ? j.name.replace('Dadra and Nagar Haveli and Daman and Diu', 'DNH & Daman and Diu').replace('Andaman and Nicobar Islands', 'Andaman & Nicobar') : id)} <b class="num">${c}</b></button>`; }).join('');
-  const un = cnt.get('IN') || 0;
-  const ub = $('#union-btn'); ub.setAttribute('aria-pressed', F.jur === 'IN');
-  ub.innerHTML = `<span><b>Union government and national bodies</b><br><span class="note">Ministries, regulators, courts, Election Commission, statutory boards, PSUs</span></span><b class="num" style="font-size:1.3rem">${un}</b>`;
+  const match = new Set(filtered().map(p => p.project_id));
+  const byJ = d3.group(d3.sort(D.P, p => SIDX(p.stage), p => p.project_id), p => p.jurisdiction_id);
+  const S = 9, G = 2.5, step = S + G; let i = 0, out = '';
+  const grid = (ps, x0, y0, cols, center) => { const rows = Math.ceil(ps.length / cols); const w = cols * step - G, h = rows * step - G;
+    const ox = center ? x0 - w / 2 : x0, oy = center ? y0 - h / 2 : y0;
+    return ps.map((p, k) => `<rect class="b${match.has(p.project_id) ? '' : ' dim'}" style="--i:${i++}" data-pid="${p.project_id}" x="${ox + (k % cols) * step}" y="${oy + Math.floor(k / cols) * step}" width="${S}" height="${S}" rx="2" fill="${scol(p.stage)}" ${tipAttr(ptip(p))}></rect>`).join(''); };
+  out += MAP.states.map(s => { const n = (byJ.get(s.id) || []).length; const j = D.J[s.id] || {};
+    return `<path class="st${n ? ' has' : ''}${F.jur === s.id ? ' sel' : ''}" data-id="${s.id}" d="${s.d}" ${tipAttr(`<b>${esc(s.name)}</b> <span class="mono">${s.id}</span><br>${n ? `${n} project${n === 1 ? '' : 's'}` : esc(j.search_result || 'No project found')}<br><span class="muted">Select to filter</span>`)}></path>`; }).join('');
+  for (const s of MAP.states) { const ps = byJ.get(s.id); if (!ps) continue;
+    if (s.nudged) out += `<line x1="${s.cx}" y1="${s.cy}" x2="${s.bx}" y2="${s.by}" stroke="var(--hero-text-2)" stroke-opacity=".5" stroke-width=".8"/>`;
+    out += grid(ps, s.bx, s.by, Math.ceil(Math.sqrt(ps.length)), true); }
+  const un = byJ.get('IN') || []; const uc = 7;
+  out += `<text x="${MAP.union.x - 6}" y="${MAP.union.y - 32}" fill="var(--hero-text)" font-size="13.5" font-weight="600">Union and national bodies</text>
+          <text x="${MAP.union.x - 6}" y="${MAP.union.y - 15}" fill="var(--hero-muted)" font-size="12">${un.length} projects</text>`;
+  out += `<g class="ub${F.jur === 'IN' ? ' sel' : ''}">${grid(un, MAP.union.x, MAP.union.y, uc, false)}</g>`;
+  out += `<rect x="${MAP.union.x - 8}" y="${MAP.union.y - 8}" width="${uc * step - G + 16}" height="${Math.ceil(un.length / uc) * step - G + 16}" rx="8" fill="none" stroke="${F.jur === 'IN' ? 'var(--marigold)' : 'var(--hero-line)'}" stroke-width="${F.jur === 'IN' ? 2 : 1}" data-union style="cursor:pointer;pointer-events:stroke"/>`;
+  $('#heromap').innerHTML = `<svg viewBox="0 0 ${MAP.W} ${MAP.H}" aria-hidden="true"><defs><filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur in="SourceGraphic" stdDeviation="2.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>${out}</svg>`;
 }
 
-// ---------- register (side panel) ----------
-function stageBars(P, clickable) {
-  const by = d3.rollup(P, v => v.length, p => p.stage); const max = d3.max(STAGES, s => by.get(s.k) || 0) || 1;
-  return `<div class="bars">${STAGES.filter(s => by.get(s.k)).map(s => `<div class="barrow"><span>${pill(s.k)}</span><span class="track"><span class="fill" style="display:block;width:${100 * by.get(s.k) / max}%;background:var(${s.c})"></span></span><span class="n">${by.get(s.k)}</span></div>`).join('')}</div>`;
+// ---------- overview ----------
+function blocksHTML(ps) { return ps.map(p => `<button type="button" class="blk" data-pid="${p.project_id}" style="background:${scol(p.stage)}" aria-label="${esc(p.project_id + ' ' + p.title)}" ${tipAttr(ptip(p))}></button>`).join(''); }
+function renderWaffle(P) {
+  const n = P.length;
+  $('#waffle').innerHTML = STAGES.filter(s => P.some(p => p.stage === s.k)).map(s => { const ps = d3.sort(P.filter(p => p.stage === s.k), p => p.project_id);
+    return `<div class="wrow"><div class="lab"><b>${ps.length}</b><span>${pill(s.k)} ${pct(ps.length, n)}</span><div class="def">${esc(s.d)}</div></div><div>${blocksHTML(ps)}</div></div>`; }).join('')
+    || '<p class="empty">No project matches these filters. Use Reset to clear them.</p>';
 }
-function renderRegister(P) {
-  const el = $('#register');
-  if (!F.jur) {
-    const top = d3.sort(d3.rollups(P.filter(p => p.jurisdiction_id !== 'IN'), v => v.length, p => p.jurisdiction_id), d => -d[1]).slice(0, 8);
-    const max = top.length ? top[0][1] : 1;
-    el.innerHTML = `<div class="eyebrow">All of India</div><h3>${P.length} projects match the filters</h3>${stageBars(P)}
-      <h3 style="margin-top:18px">States and UTs with the most projects</h3>
-      <div class="bars">${top.map(([id, c]) => `<button type="button" class="barrow" data-jur="${id}"><span>${esc(D.J[id].name)}</span><span class="track"><span class="fill" style="display:block;width:${100 * c / max}%;background:var(--seq-3)"></span></span><span class="n">${c}</span></button>`).join('')}</div>
-      <p class="note" style="margin-top:14px">Select a State on the map, or the Union-level button, to list its projects here.</p>`;
-    return;
-  }
-  const j = D.J[F.jur] || {name: F.jur};
-  const items = d3.sort(P, p => STAGES.findIndex(s => s.k === p.stage), p => p.project_id);
-  el.innerHTML = `<div class="eyebrow">${F.jur === 'IN' ? 'Union and national level' : esc(j.type)} · <span class="mono">${esc(F.jur)}</span>${j.lgd_code ? ` · LGD ${esc(j.lgd_code)}` : ''}</div>
-    <h3>${esc(j.name)}: ${items.length} project${items.length === 1 ? '' : 's'}</h3>
+function renderProfile(P) {
+  const el = $('#profile');
+  if (!F.jur) { el.hidden = true; return; }
+  const j = D.J[F.jur] || {name: F.jur}; const items = d3.sort(P, p => SIDX(p.stage), p => p.project_id);
+  el.hidden = false;
+  el.innerHTML = `<div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 16px;align-items:baseline"><h2>${esc(F.jur === 'IN' ? 'Union and national bodies' : j.name)}</h2>
+      <span class="note">${F.jur === 'IN' ? '' : `${esc(j.type)}, ${esc(j.region)} region, <span class="mono">${esc(F.jur)}</span>, LGD ${esc(j.lgd_code)}`}</span></div>
     ${j.search_note ? `<p class="note" style="margin-top:4px">${esc(j.search_note)}</p>` : ''}
-    ${items.length ? stageBars(items) : ''}
-    <div class="reglist">${items.length ? items.map(p => `<button type="button" class="regitem" data-pid="${p.project_id}"><span class="idchip">${p.project_id}</span><span><span class="t">${esc(p.title)}</span><br><span class="b">${esc(p._body)}</span></span><span>${pill(p.stage)}</span></button>`).join('') : `<p class="empty">No project matches the filters here. ${esc(j.search_result || '')}</p>`}</div>
+    <div class="plist">${items.length ? items.map(p => `<button type="button" class="pitem" data-pid="${p.project_id}"><span class="idc">${p.project_id}</span><span><span class="t">${esc(p.title)}</span><br><span class="b">${esc(p._body)}</span></span><span>${pill(p.stage)}</span></button>`).join('') : `<p class="empty">No project matches the filters here. ${esc(j.search_result || '')}</p>`}</div>
     <button class="linkbtn" type="button" data-clearjur style="margin-top:8px">Show all of India</button>`;
 }
-
-// ---------- table ----------
+function whoBars(sel, col, key, P) {
+  const order = (D.V.get(col) || []).map(v => v.code);
+  const groups = d3.sort(d3.groups(P, p => p[col]), g => -g[1].length, g => order.indexOf(g[0])); const max = d3.max(groups, g => g[1].length) || 1;
+  $(sel).innerHTML = groups.length ? groups.map(([k, ps]) => { const by = d3.rollup(ps, v => v.length, p => p.stage);
+    const t = `<b>${esc(k)}</b> · ${ps.length} projects<br>` + STAGES.filter(s => by.get(s.k)).map(s => `${by.get(s.k)} ${esc(s.s.toLowerCase())}`).join(', ');
+    return `<button type="button" class="srow" data-filter="${key}" data-val="${esc(k)}" aria-pressed="${F[key] === k}" ${tipAttr(t)}><span class="lab">${esc(k)}</span>
+      <span class="stk" style="width:${Math.max(4, 100 * ps.length / max)}%">${STAGES.filter(s => by.get(s.k)).map(s => `<span style="flex:${by.get(s.k)};background:var(${s.c})"></span>`).join('')}</span><span class="n">${ps.length}</span></button>`; }).join('')
+    : '<p class="empty">No project matches the filters.</p>';
+}
+function renderStartYears(P) {
+  const lo = Math.min(2017, d3.min(P, p => p.start_year) || 2017), hi = Math.max(2026, d3.max(P, p => p.start_year) || 2026); const yrs = d3.range(lo, hi + 1);
+  const box = $('#startyears').clientWidth || 900; const S = 14, G = 3, step = S + G;
+  const colW = Math.max(56, box / yrs.length); const perCol = colW >= 90 ? 4 : 3; const W = Math.max(box, yrs.length * colW);
+  const cols = yrs.map(y => d3.sort(P.filter(p => p.start_year === y), p => SIDX(p.stage), p => p.project_id));
+  const maxN = d3.max(cols, c => c.length) || 1; const rows = Math.max(3, Math.ceil(maxN / perCol));
+  const H = rows * step + 52; const base = H - 30;
+  let out = `<line x1="0" x2="${W}" y1="${base + 4}" y2="${base + 4}" stroke="var(--axis)"/>`;
+  yrs.forEach((y, i) => { const cx = i * colW + colW / 2; const x0 = cx - (perCol * step - G) / 2;
+    cols[i].forEach((p, k) => { out += `<rect x="${x0 + (k % perCol) * step}" y="${base - (Math.floor(k / perCol) + 1) * step + G}" width="${S}" height="${S}" rx="3" fill="${scol(p.stage)}" data-pid="${p.project_id}" style="cursor:pointer" ${tipAttr(ptip(p) + `<br>Started ${p.start_year}`)}></rect>`; });
+    if (cols[i].length) out += `<text x="${cx}" y="${base - Math.ceil(cols[i].length / perCol) * step - 5}" text-anchor="middle" style="fill:var(--text);font-weight:700;font-size:13px">${cols[i].length}</text>`;
+    out += `<text x="${cx}" y="${base + 22}" text-anchor="middle" style="font-size:12px">${y}</text>`; });
+  const und = P.filter(p => !p.start_year).length;
+  $('#sy-note').textContent = `Each square is a project, stacked in the year it was announced or started and coloured by its stage today.${und ? ` ${und} projects with no known start year are not shown.` : ''}`;
+  $('#startyears').innerHTML = `<div style="overflow-x:auto"><svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" style="width:${W}px;max-width:none" role="img" aria-label="Projects by start year, one square per project">${out}</svg></div>`;
+}
+// ---------- register table ----------
 const COLS = [
-  {k:'project_id', l:'ID', v:p => p.project_id, h:p => `<span class="idchip">${p.project_id}</span>`},
-  {k:'title', l:'Project and body', v:p => p.title, h:p => `<div class="t">${esc(p.title)}</div><div class="b">${esc(p._body)}</div>`, cls:'tt'},
-  {k:'_jur', l:'Jurisdiction', v:p => p._jur, h:p => `${esc(p.jurisdiction_id === 'IN' ? 'Union / national' : p._jur)}`},
-  {k:'stage', l:'Stage', v:p => STAGES.findIndex(s => s.k === p.stage), h:p => pill(p.stage)},
+  {k:'project_id', l:'ID', v:p => p.project_id, h:p => `<span class="idc">${p.project_id}</span>`},
+  {k:'title', l:'Project and body', v:p => p.title, h:p => `<div class="t">${esc(p.title)}</div><div class="b">${esc(p._body)}</div>`},
+  {k:'_jur', l:'Where', v:p => p._jur, h:p => `<div>${esc(p._jur)}</div><div class="b">${esc(p.government_level)}, ${esc(p.body_category)}</div>`},
+  {k:'stage', l:'Stage', v:p => SIDX(p.stage), h:p => pill(p.stage)},
   {k:'use_case', l:'Use-case', v:p => p.use_case, h:p => esc(p.use_case)},
-  {k:'platform', l:'Platform', v:p => p.platform, h:p => esc(p.platform)},
+  {k:'implementation_model', l:'Built by', v:p => p.implementation_model, h:p => esc(p.implementation_model)},
   {k:'start_year', l:'Start', v:p => p.start_year || 9999, h:p => p.start_year || '<span class="muted">–</span>', num:true},
   {k:'_live', l:'Live from', v:p => p._live || '9999', h:p => p._live ? dmy(p._live) : '<span class="muted">–</span>', num:true},
   {k:'status_as_of', l:'Latest evidence', v:p => p.status_as_of || '0', h:p => p.status_as_of ? dmy(p.status_as_of) : '<span class="muted">–</span>', num:true},
   {k:'evidence_score', l:'Evidence', v:p => p.evidence_score, h:p => evBoxes(p.evidence_score)},
-  {k:'_nsrc', l:'Sources', v:p => p._nsrc, h:p => p._nsrc, num:true},
 ];
 function renderTable(P) {
   const c = COLS.find(c => c.k === SORT.k) || COLS[0];
   const rows = P.slice().sort((a, b) => { const x = c.v(a), y = c.v(b); return (x < y ? -1 : x > y ? 1 : 0) * SORT.dir || a.project_id.localeCompare(b.project_id); });
   $('#ptable thead').innerHTML = `<tr>${COLS.map(c => `<th scope="col" aria-sort="${SORT.k === c.k ? (SORT.dir > 0 ? 'ascending' : 'descending') : 'none'}"><button type="button" data-sort="${c.k}">${c.l}</button></th>`).join('')}</tr>`;
-  $('#ptable tbody').innerHTML = rows.length ? rows.map(p => `<tr data-pid="${p.project_id}" tabindex="0">${COLS.map(c => `<td class="${c.cls || ''}${c.num ? ' num' : ''}">${c.h(p)}</td>`).join('')}</tr>`).join('')
+  $('#ptable tbody').innerHTML = rows.length ? rows.map(p => `<tr data-pid="${p.project_id}" tabindex="0">${COLS.map(c => `<td class="${c.num ? 'num' : ''}">${c.h(p)}</td>`).join('')}</tr>`).join('')
     : `<tr><td colspan="${COLS.length}" class="empty">No project matches these filters. Use Reset to clear them.</td></tr>`;
 }
 
-// ---------- lifecycle lanes ----------
+// ---------- lifecycle ----------
 const EVK = {announced:'Announced', pilot_started:'Pilot started', pilot_completed:'Pilot completed', live:'Live', scaled:'Scaled', discontinued:'Discontinued', latest_update:'Latest evidence'};
 function marker(type, x, y, color) {
   switch (type) {
-    case 'announced': return `<circle cx="${x}" cy="${y}" r="3.2" fill="var(--surface)" stroke="${color}" stroke-width="1.6"/>`;
-    case 'pilot_started': return `<rect x="${x - 3}" y="${y - 3}" width="6" height="6" fill="var(--surface)" stroke="${color}" stroke-width="1.6"/>`;
-    case 'pilot_completed': return `<rect x="${x - 3}" y="${y - 3}" width="6" height="6" fill="${color}"/>`;
-    case 'live': return `<circle cx="${x}" cy="${y}" r="4" fill="${color}" stroke="var(--surface)" stroke-width="1"/>`;
-    case 'scaled': return `<path d="M${x - 4},${y + 3}L${x},${y - 4}L${x + 4},${y + 3}Z" fill="${color}"/>`;
+    case 'announced': return `<circle cx="${x}" cy="${y}" r="3.3" fill="var(--surface)" stroke="${color}" stroke-width="1.8"/>`;
+    case 'pilot_started': return `<rect x="${x - 3.2}" y="${y - 3.2}" width="6.4" height="6.4" rx="1" fill="var(--surface)" stroke="${color}" stroke-width="1.8"/>`;
+    case 'pilot_completed': return `<rect x="${x - 3.5}" y="${y - 3.5}" width="7" height="7" rx="1" fill="${color}"/>`;
+    case 'live': return `<circle cx="${x}" cy="${y}" r="4.4" fill="${color}" stroke="var(--surface)" stroke-width="1.2"/>`;
+    case 'scaled': return `<path d="M${x - 4.5},${y + 3.5}L${x},${y - 4.5}L${x + 4.5},${y + 3.5}Z" fill="${color}"/>`;
     case 'discontinued': return `<path d="M${x - 3},${y - 3}L${x + 3},${y + 3}M${x + 3},${y - 3}L${x - 3},${y + 3}" stroke="${color}" stroke-width="2"/>`;
-    default: return `<line x1="${x}" x2="${x}" y1="${y - 4}" y2="${y + 4}" stroke="var(--ink-2)" stroke-width="1.5"/>`;
+    default: return `<line x1="${x}" x2="${x}" y1="${y - 4.5}" y2="${y + 4.5}" stroke="var(--text-2)" stroke-width="1.6"/>`;
   }
 }
+const markerIcon = (t, col) => `<svg width="14" height="12" aria-hidden="true" style="vertical-align:-1px">${marker(t, 7, 6, col)}</svg>`;
 function renderLanes(P) {
-  $('#lane-key').innerHTML = ['announced', 'pilot_started', 'pilot_completed', 'live', 'scaled', 'latest_update'].map(t => `<span><svg width="14" height="12" aria-hidden="true">${marker(t, 7, 6, 'var(--ink-2)')}</svg> ${EVK[t]}</span>`).join('') + '<span>Colour = current stage</span>';
+  $('#lane-key').innerHTML = ['announced', 'pilot_started', 'pilot_completed', 'live', 'scaled', 'latest_update'].map(t => `<span>${markerIcon(t, 'var(--text-2)')} ${EVK[t]}</span>`).join('') + '<span>Colour shows the current stage</span>';
   const rows = P.filter(p => p._ev.length);
   const groups = STAGES.map(s => ({s, items: d3.sort(rows.filter(p => p.stage === s.k), p => p._first, p => p.project_id)})).filter(g => g.items.length);
-  const W = 1000, L = 230, R = 16, RH = 13, GH = 26, TOP = 26;
+  const W = 1000, L = 250, R = 16, RH = 14, GH = 30, TOP = 28;
   const H = TOP + groups.reduce((a, g) => a + GH + g.items.length * RH, 0) + 10;
-  const yMin = Math.min(2017, d3.min(rows, p => +p._first.slice(0, 4)) || 2017), yMax = Math.max(2027, (d3.max(rows, p => +p._last.slice(0, 4)) || 2026) + 1);
+  const yMin = Math.min(2017, d3.min(rows, p => +p._first.slice(0, 4)) || 2017), yMax = Math.max(2027, (d3.max(rows, p => +p.status_as_of.slice(0, 4)) || 2026) + 1);
   const x = d3.scaleTime().domain([new Date(yMin, 0, 1), new Date(yMax, 0, 1)]).range([L, W - R]);
-  let y = TOP, out = '';
-  const years = d3.range(yMin, yMax + 1);
-  out += years.map(yr => `<line class="gl" x1="${x(new Date(yr, 0, 1))}" x2="${x(new Date(yr, 0, 1))}" y1="${TOP - 6}" y2="${H - 6}"/><text x="${x(new Date(yr, 0, 1)) + 3}" y="${TOP - 10}" text-anchor="start">${yr < yMax ? yr : ''}</text>`).join('');
+  let y = TOP, out = d3.range(yMin, yMax).map(yr => `<line class="gl" x1="${x(new Date(yr, 0, 1))}" x2="${x(new Date(yr, 0, 1))}" y1="${TOP - 8}" y2="${H - 6}"/><text x="${x(new Date(yr, 0, 1)) + 4}" y="${TOP - 12}">${yr}</text>`).join('');
   for (const g of groups) {
-    out += `<text x="4" y="${y + 17}" style="font-weight:600;fill:var(--ink)">${esc(g.s.s)} · ${g.items.length}</text>`;
-    y += GH;
-    for (const p of g.items) {
-      const col = `var(${g.s.c})`; const cy = y + RH / 2;
-      const xs = p._ev.map(e => x(toDate(e.date)));
+    out += `<rect x="4" y="${y + 9}" width="10" height="10" rx="2" fill="var(${g.s.c})"/><text x="20" y="${y + 18}" style="font-weight:700;fill:var(--text);font-size:12px">${esc(g.s.s)}, ${g.items.length}</text>`; y += GH;
+    for (const p of g.items) { const col = `var(${g.s.c})`, cy = y + RH / 2; const xs = p._ev.map(e => x(toDate(e.date)));
       const t = `<b>${p.project_id} · ${esc(p.title)}</b><br><span class="muted">${esc(p._jur)}</span><br>${p._ev.map(e => `${EVK[e.event_type]}: ${dmy(e.date)}`).join('<br>')}`;
-      out += `<g class="row" data-pid="${p.project_id}" ${tipAttr(t)} style="cursor:pointer"><rect class="hit" x="0" y="${y}" width="${W}" height="${RH}" fill="transparent"/>
-        <text x="4" y="${cy + 3.5}" style="font-size:10.5px"><tspan class="mono" style="fill:var(--muted)">${p.project_id}</tspan> ${esc(p.title.length > 34 ? p.title.slice(0, 33) + '…' : p.title)}</text>
-        <line x1="${d3.min(xs)}" x2="${d3.max(xs)}" y1="${cy}" y2="${cy}" stroke="${col}" stroke-opacity=".45" stroke-width="2"/>
+      out += `<g class="row" data-pid="${p.project_id}" ${tipAttr(t)} style="cursor:pointer"><rect class="hit" x="0" y="${y}" width="${W}" height="${RH}" rx="3" fill="transparent"/>
+        <text x="20" y="${cy + 3.5}" style="font-size:10.5px"><tspan style="fill:var(--muted);font-family:var(--mono)">${p.project_id}</tspan> ${esc(p.title.length > 36 ? p.title.slice(0, 35) + '…' : p.title)}</text>
+        <line x1="${d3.min(xs)}" x2="${d3.max(xs)}" y1="${cy}" y2="${cy}" stroke="${col}" stroke-opacity=".35" stroke-width="2.5" stroke-linecap="round"/>
         ${p._ev.filter(e => e.event_type === 'latest_update').map(e => marker('latest_update', x(toDate(e.date)), cy, col)).join('')}
         ${p._ev.filter(e => e.event_type !== 'latest_update').map(e => marker(e.event_type, x(toDate(e.date)), cy, col)).join('')}</g>`;
-      y += RH;
-    }
+      y += RH; }
   }
   $('#lanes').innerHTML = rows.length ? `<svg viewBox="0 0 ${W} ${H}" class="chart" role="img" aria-label="Lifecycle timeline of ${rows.length} projects">${out}</svg>` : '<p class="empty">No dated events for these filters.</p>';
 }
-
-// ---------- start years (stacked) ----------
-function renderStartYears(P) {
-  const yrs = d3.range(Math.min(2017, d3.min(P, p => p.start_year) || 2017), Math.max(2026, d3.max(P, p => p.start_year) || 2026) + 1); const W = 520, H = 250, L = 30, B = 26, T = 10;
-  const data = yrs.map(yr => ({yr, ...Object.fromEntries(STAGES.map(s => [s.k, P.filter(p => p.start_year === yr && p.stage === s.k).length]))}));
-  const max = d3.max(data, d => d3.sum(STAGES, s => d[s.k])) || 1;
-  const x = d3.scaleBand().domain(yrs).range([L, W - 6]).padding(.22), y = d3.scaleLinear().domain([0, max]).nice().range([H - B, T]);
-  let out = y.ticks(4).map(t => `<line class="gl" x1="${L}" x2="${W - 6}" y1="${y(t)}" y2="${y(t)}"/><text x="${L - 6}" y="${y(t) + 4}" text-anchor="end">${t}</text>`).join('');
-  for (const d of data) { let acc = 0; const tot = d3.sum(STAGES, s => d[s.k]);
-    STAGES.forEach(s => { const v = d[s.k]; if (!v) return; const y0 = y(acc), y1 = y(acc + v); acc += v;
-      out += `<rect x="${x(d.yr)}" y="${y1 + 1}" width="${x.bandwidth()}" height="${Math.max(0, y0 - y1 - 1)}" fill="var(${s.c})" ${tipAttr(`<b>${d.yr}</b><br>${v} ${esc(sshort(s.k).toLowerCase())} of ${tot} started`)}/>`; });
-    if (tot) out += `<text x="${x(d.yr) + x.bandwidth() / 2}" y="${y(tot) - 5}" text-anchor="middle" style="fill:var(--ink)">${tot}</text>`;
-    out += `<text x="${x(d.yr) + x.bandwidth() / 2}" y="${H - 8}" text-anchor="middle">${d.yr === yrs[0] ? d.yr : "'" + String(d.yr).slice(2)}</text>`; }
-  out += `<line x1="${L}" x2="${W - 6}" y1="${H - B}" y2="${H - B}" stroke="var(--axis)"/>`;
-  const undated = P.filter(p => !p.start_year).length;
-  $('#sy-note').textContent = `Bars are stacked by current stage (key in the filter bar).${undated ? ` ${undated} projects with no start year are not shown.` : ''}`;
-  $('#startyears').innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Projects by start year">${out}</svg>`;
-}
-
-// ---------- time to live ----------
 function renderTTL(P) {
-  const pts = [];
-  for (const p of P) { const live = p._ev.find(e => e.event_type === 'live'); const st = p._ev.find(e => e.event_type === 'announced' || e.event_type === 'pilot_started');
-    if (!live || !st || live.date_precision === 'year' || st.date_precision === 'year') continue;
-    const m = (+live.date.slice(0, 4) - +st.date.slice(0, 4)) * 12 + (+live.date.slice(5, 7) - +st.date.slice(5, 7));
-    if (m >= 0) pts.push({p, m}); }
+  const pts = P.filter(p => p.months_to_live !== '').map(p => ({p, m: +p.months_to_live}));
+  if (!pts.length) { $('#ttl').innerHTML = '<p class="empty">No project in this selection has both a start and a go-live date to the month.</p>'; $('#ttl-note').textContent = ''; return; }
   const cats = d3.sort(d3.rollups(pts, v => v.length, d => d.p.use_case), d => -d[1]).map(d => d[0]);
-  const W = 520, L = 170, RH = 30, T = 20, H = T + cats.length * RH + 30;
-  if (!pts.length) { $('#ttl').innerHTML = '<p class="empty">No project in this selection has both a start and a go-live date at month precision.</p>'; $('#ttl-note').textContent = ''; return; }
-  const x = d3.scaleLinear().domain([0, Math.max(12, d3.max(pts, d => d.m))]).nice().range([L, W - 10]);
-  let out = x.ticks(6).map(t => `<line class="gl" x1="${x(t)}" x2="${x(t)}" y1="${T - 4}" y2="${H - 24}"/><text x="${x(t)}" y="${H - 8}" text-anchor="middle">${t}</text>`).join('');
-  cats.forEach((c, i) => { const cy = T + i * RH + RH / 2; const ds = pts.filter(d => d.p.use_case === c); const med = d3.median(ds, d => d.m);
-    out += `<text x="${L - 10}" y="${cy + 4}" text-anchor="end">${esc(c)}</text>`;
-    out += `<line x1="${x(med)}" x2="${x(med)}" y1="${cy - 9}" y2="${cy + 9}" stroke="var(--ink)" stroke-width="2" ${tipAttr(`<b>${esc(c)}</b><br>Median ${med} months (n = ${ds.length})`)}/>`;
-    ds.forEach((d, k) => out += `<circle cx="${x(d.m)}" cy="${cy + ((k % 3) - 1) * 4}" r="4.5" fill="${scol(d.p.stage)}" fill-opacity=".85" stroke="var(--surface)" stroke-width="1" data-pid="${d.p.project_id}" style="cursor:pointer" ${tipAttr(`<b>${d.p.project_id} · ${esc(d.p.title)}</b><br>${d.m} months to go-live (${dmy(d.p._ev.find(e => e.event_type === 'live').date)})`)}/>`); });
-  out += `<text x="${L}" y="${T - 8}" style="fill:var(--muted)">months →</text>`;
-  $('#ttl-note').textContent = `${pts.length} projects with month-level start and go-live dates. Black tick = median.`;
-  $('#ttl').innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Months from start to go-live by use-case">${out}</svg>`;
+  const W = 1000, L = 210, RH = 34, T = 26, H = T + cats.length * RH + 30;
+  const x = d3.scaleLinear().domain([0, Math.max(12, d3.max(pts, d => d.m))]).nice().range([L, W - 20]);
+  let out = x.ticks(8).map(t => `<line class="gl" x1="${x(t)}" x2="${x(t)}" y1="${T - 6}" y2="${H - 26}"/><text x="${x(t)}" y="${H - 8}" text-anchor="middle">${t}</text>`).join('');
+  out += `<text x="${L}" y="${T - 12}" style="fill:var(--muted)">months to go-live</text>`;
+  cats.forEach((c, i) => { const cy = T + i * RH + RH / 2; const ds = d3.sort(pts.filter(d => d.p.use_case === c), d => d.m); const med = d3.median(ds, d => d.m);
+    out += `<text x="${L - 12}" y="${cy + 4}" text-anchor="end" style="fill:var(--text)">${esc(c)}</text>`;
+    out += `<line x1="${x(med)}" x2="${x(med)}" y1="${cy - 11}" y2="${cy + 11}" stroke="var(--text)" stroke-width="2" ${tipAttr(`<b>${esc(c)}</b><br>Median ${med} months (n = ${ds.length})`)}/>`;
+    ds.forEach((d, k) => out += `<rect x="${x(d.m) - 6}" y="${cy - 6 + ((k % 3) - 1) * 5}" width="12" height="12" rx="3" fill="${scol(d.p.stage)}" stroke="var(--surface)" stroke-width="1.5" data-pid="${d.p.project_id}" style="cursor:pointer" ${tipAttr(`<b>${d.p.project_id} · ${esc(d.p.title)}</b><br>${d.m} months to go-live (${dmy(d.p.date_live)})`)}/>`); });
+  $('#ttl-note').textContent = `${pts.length} projects have start and go-live dates known to the month. The black tick marks the median for each use-case.`;
+  $('#ttl').innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Months to go-live by use-case">${out}</svg>`;
 }
 
 // ---------- challenges ----------
 let CHSEL = null;
 function renderChallenges(P) {
-  const ids = new Set(P.map(p => p.project_id));
-  const rows = D.challenges.filter(c => ids.has(c.project_id));
-  const voc = (D.V.get('challenge_code') || []);
-  const dims = ['Technology', 'Organisation', 'Environment'];
-  const max = d3.max(voc, v => new Set(rows.filter(r => r.challenge_code === v.code).map(r => r.project_id)).size) || 1;
-  $('#toe').innerHTML = `<h3>Projects reporting each challenge</h3><p class="note" style="margin-top:4px">${rows.length} coded challenges across ${new Set(rows.map(r => r.project_id)).size} of ${P.length} matching projects. Most projects publish no account of their problems, so absence here is not evidence of a smooth rollout.</p>` +
-    dims.map(dm => `<h4>${dm}</h4><div class="bars">${voc.filter(v => v.maps_to.startsWith(dm)).map(v => { const n = new Set(rows.filter(r => r.challenge_code === v.code).map(r => r.project_id)).size;
-      const doi = v.maps_to.split('|')[1];
-      return `<button type="button" class="barrow" data-ch="${v.code}" aria-pressed="${CHSEL === v.code}" ${tipAttr(`<b>${v.code} · ${esc(v.label)}</b><br>${n} project${n === 1 ? '' : 's'}<br><span class="muted">DOI link (analytical): ${esc(doi)}</span>`)}><span><span class="mono" style="color:var(--muted)">${v.code}</span> ${esc(v.label)}</span><span class="track"><span class="fill" style="display:block;width:${100 * n / max}%;background:${CHSEL && CHSEL !== v.code ? 'var(--line-strong)' : 'var(--accent)'}"></span></span><span class="n">${n}</span></button>`; }).join('')}</div>`).join('');
-  const show = CHSEL ? rows.filter(r => r.challenge_code === CHSEL) : rows;
-  const vmap = Object.fromEntries(voc.map(v => [v.code, v]));
-  $('#ch-title').innerHTML = CHSEL ? `${esc(CHSEL)} · ${esc(vmap[CHSEL].label)} <button class="linkbtn" type="button" data-ch="">Show all</button>` : 'All reported challenges';
-  $('#chlist').innerHTML = show.length ? show.map(c => { const p = D.P.find(p => p.project_id === c.project_id); const s = D.S[c.source_id] || {};
-    return `<div class="chitem" style="border-left-color:${scol(p.stage)}"><div class="h"><span class="mono">${c.challenge_code}</span><button class="linkbtn" type="button" data-pid="${p.project_id}" style="padding:0;font-weight:600">${p.project_id} · ${esc(p.title)}</button></div>
-      <div>${esc(c.description)}</div><div class="note">${esc(c.evidence)} ${s.url ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.publisher || 'source')}${s.date ? ', ' + dmy(s.date) : ''}</a>` : ''}</div></div>`; }).join('') : '<p class="empty">No coded challenges for these filters.</p>';
+  const ids = new Set(P.map(p => p.project_id)); const rows = D.challenges.filter(c => ids.has(c.project_id));
+  const voc = D.V.get('challenge_code') || []; const PM = Object.fromEntries(D.P.map(p => [p.project_id, p]));
+  $('#toe').innerHTML = `<p class="note" style="margin-bottom:12px">${rows.length} challenges reported for ${new Set(rows.map(r => r.project_id)).size} of ${P.length} matching projects. Most projects publish no account of their problems, so a missing square is not evidence of a smooth rollout.</p>` +
+    ['Technology', 'Organisation', 'Environment'].map(dm => `<h4>${dm}</h4>${voc.filter(v => v.maps_to.startsWith(dm)).map(v => {
+      const ps = d3.sort([...new Set(rows.filter(r => r.challenge_code === v.code).map(r => r.project_id))].map(id => PM[id]).filter(Boolean), p => SIDX(p.stage));
+      return `<button type="button" class="chrow" data-ch="${v.code}" aria-pressed="${CHSEL === v.code}" ${tipAttr(`<b>${v.code} · ${esc(v.label)}</b><br>${ps.length} project${ps.length === 1 ? '' : 's'}<br><span class="muted">Diffusion-of-innovations link (analytical): ${esc(v.maps_to.split('|')[1])}</span>`)}>
+        <span class="c"><span class="mono">${v.code}</span>${esc(v.label)}</span><span class="note num">${ps.length}</span><span class="bl">${ps.map(p => `<span class="blk" style="background:${scol(p.stage)}"></span>`).join('') || '<span class="blk" style="background:var(--empty-block)"></span>'}</span></button>`; }).join('')}`).join('');
+  const show = CHSEL ? rows.filter(r => r.challenge_code === CHSEL) : rows; const vmap = Object.fromEntries(voc.map(v => [v.code, v]));
+  $('#ch-title').innerHTML = CHSEL ? `${esc(CHSEL)}: ${esc(vmap[CHSEL].label)} <button class="linkbtn" type="button" data-ch="">Show all</button>` : 'All reported challenges';
+  $('#chlist').innerHTML = show.length ? show.map(c => { const p = PM[c.project_id]; const s = D.S[c.source_id] || {};
+    return `<div class="chitem" style="border-left-color:${scol(p.stage)}"><div class="h"><span class="mono muted">${c.challenge_code}</span><button class="linkbtn" type="button" data-pid="${p.project_id}">${p.project_id} · ${esc(p.title)}</button></div>
+      <div>${esc(c.description)}</div><div class="note">${esc(c.evidence)} ${s.url ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.publisher || 'Source')}${s.date ? ', ' + dmy(s.date) : ''}</a>` : ''}</div></div>`; }).join('') : '<p class="empty">No reported challenges for these filters.</p>';
 }
 
 // ---------- NIC ----------
-function lineChart(sel, metric, label) {
+function areaChart(sel, metric, label) {
   const pts = d3.sort(D.nic_snapshots.filter(r => r.level === 'platform' && r.metric === metric).map(r => ({d: toDate(r.snapshot_date), iso: r.snapshot_date, v: +r.value, src: r.source_id})), d => d.d);
-  const W = 520, H = 230, L = 46, R = 24, T = 26, B = 28;
-  const allDates = D.nic_snapshots.filter(r => r.level === 'platform').map(r => toDate(r.snapshot_date));
-  const lo = d3.min(allDates), hi = d3.max(allDates);
-  const x = d3.scaleTime().domain([d3.timeMonth.offset(lo, -3), d3.timeMonth.offset(hi, 3)]).range([L, W - R]);
-  const y = d3.scaleLinear().domain([0, d3.max(pts, d => d.v) * 1.1]).nice().range([H - B, T]);
-  let out = y.ticks(4).map(t => `<line class="gl" x1="${L}" x2="${W - R}" y1="${y(t)}" y2="${y(t)}"/><text x="${L - 6}" y="${y(t) + 4}" text-anchor="end">${(t / 1e7).toLocaleString('en-IN')}</text>`).join('');
-  out += x.ticks(d3.timeMonth.every(6)).map(d => `<text x="${x(d)}" y="${H - 8}" text-anchor="middle">${d3.timeFormat('%b %Y')(d)}</text>`).join('');
-  out += `<text x="${L - 6}" y="${T - 12}" text-anchor="end" style="fill:var(--muted)">crore</text>`;
-  out += `<line x1="${L}" x2="${W - R}" y1="${H - B}" y2="${H - B}" stroke="var(--axis)"/>`;
-  if (pts.length > 1) out += `<path d="${d3.line().x(d => x(d.d)).y(d => y(d.v))(pts)}" fill="none" stroke="var(--accent)" stroke-width="2"/>`;
-  pts.forEach((d, i) => { const last = i === pts.length - 1, first = i === 0;
-    out += `<circle cx="${x(d.d)}" cy="${y(d.v)}" r="${last ? 5 : 4}" fill="var(--accent)" stroke="var(--surface)" stroke-width="2" ${tipAttr(`<b>As on ${asOnFmt(d.iso)}</b><br>${fmtIN(d.v)} ${label}<br>(${crore(d.v)})<br><span class="muted">Source ${d.src}</span>`)}/>`;
-    if (first || last) out += `<text x="${x(d.d) + (last ? -8 : 8)}" y="${y(d.v) - 10}" text-anchor="${last ? 'end' : 'start'}" style="fill:var(--ink);font-weight:600">${(d.v / 1e7).toLocaleString('en-IN', {maximumFractionDigits: 2})}</text>`; });
-  $(sel).innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${label} on NIC chains over time">${out}</svg><p class="note">${pts.length} snapshots: ${pts.map(d => asOnFmt(d.iso)).join(', ')}.${metric === 'verifications_total' ? ' Verification totals were not published in the July 2024 file.' : ''}</p>`;
+  const all = D.nic_snapshots.filter(r => r.level === 'platform').map(r => toDate(r.snapshot_date));
+  const W = Math.max(300, $(sel).clientWidth || 560), H = W < 480 ? 210 : 240, L = 40, R = 30, T = 28, B = 28;
+  const x = d3.scaleTime().domain([d3.timeMonth.offset(d3.min(all), -2), d3.timeMonth.offset(d3.max(all), 2)]).range([L, W - R]);
+  const y = d3.scaleLinear().domain([0, d3.max(pts, d => d.v) * 1.15]).nice().range([H - B, T]);
+  const gid = 'g' + metric;
+  let out = `<defs><linearGradient id="${gid}" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="var(--st-prog)" stop-opacity=".35"/><stop offset="1" stop-color="var(--st-prog)" stop-opacity="0"/></linearGradient></defs>`;
+  out += y.ticks(4).map(t => `<line class="gl" x1="${L}" x2="${W - R}" y1="${y(t)}" y2="${y(t)}"/><text x="${L - 6}" y="${y(t) + 4}" text-anchor="end">${(t / 1e7).toLocaleString('en-IN')}</text>`).join('');
+  out += x.ticks(d3.timeMonth.every(W < 480 ? 12 : 6)).map(d => `<text x="${x(d)}" y="${H - 8}" text-anchor="middle">${d3.timeFormat('%b %Y')(d)}</text>`).join('');
+  if (pts.length > 1) { out += `<path d="${d3.area().x(d => x(d.d)).y0(H - B).y1(d => y(d.v)).curve(d3.curveMonotoneX)(pts)}" fill="url(#${gid})"/>`;
+    out += `<path d="${d3.line().x(d => x(d.d)).y(d => y(d.v)).curve(d3.curveMonotoneX)(pts)}" fill="none" stroke="var(--st-prog)" stroke-width="2.5"/>`; }
+  pts.forEach((d, i) => { const last = i === pts.length - 1;
+    out += `<circle cx="${x(d.d)}" cy="${y(d.v)}" r="${last ? 6 : 4.5}" fill="var(--st-prog)" stroke="var(--surface)" stroke-width="2" ${tipAttr(`<b>As on ${asOn(d.iso)}</b><br>${fmtIN(d.v)} ${label} (${cr(d.v)} crore)<br><span class="muted">Source ${d.src}</span>`)}/>`;
+    if (i === 0 || last) out += `<text x="${x(d.d) + (last ? -10 : 10)}" y="${y(d.v) - 12}" text-anchor="${last ? 'end' : 'start'}" style="fill:var(--text);font-weight:700;font-size:13px">${cr(d.v)}</text>`; });
+  $(sel).innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${label} on NIC chains over time">${out}</svg><p class="note">${pts.length} snapshots: ${pts.map(d => asOn(d.iso)).join(', ')}.${metric === 'verifications_total' ? ' The July 2024 file did not publish verification totals.' : ''}</p>`;
 }
 function renderNIC() {
-  lineChart('#nic-docs', 'documents', 'documents');
-  lineChart('#nic-ver', 'verifications_total', 'verifications');
-  const dep = D.nic_snapshots.filter(r => r.level === 'department');
-  const dates = d3.sort([...new Set(dep.map(r => r.snapshot_date))]);
-  const last = dates.at(-1), first = dates[0];
-  const units = d3.groups(dep, r => r.unit + '|' + r.application);
-  const totVer = d3.sum(dep.filter(r => r.snapshot_date === last && r.metric === 'verifications_total'), r => +r.value);
+  const plat = (m) => d3.sort(D.nic_snapshots.filter(r => r.level === 'platform' && r.metric === m), r => r.snapshot_date);
+  const docs = plat('documents'), ver = plat('verifications_total'), dep = plat('departments'), org = plat('organisations_states');
+  const L = a => a.at(-1), Fst = a => a[0];
+  $('#nic-big').innerHTML = [
+    [cr(+L(docs).value), 'crore documents recorded', `up from ${cr(+Fst(docs).value)} crore on ${asOn(Fst(docs).snapshot_date)}`],
+    [cr(+L(ver).value), 'crore verifications', `as on ${asOn(L(ver).snapshot_date)}`],
+    [L(dep).value, 'departments onboarded', `from ${L(org).value} central organisations and States`],
+  ].map(([v, l, s]) => `<div><div class="big">${v}</div><div class="l"><b style="color:var(--text)">${l}</b><br>${s}</div></div>`).join('');
+  areaChart('#nic-docs', 'documents', 'documents'); areaChart('#nic-ver', 'verifications_total', 'verifications');
+  const deps = D.nic_snapshots.filter(r => r.level === 'department');
+  const dates = d3.sort([...new Set(deps.map(r => r.snapshot_date))]); const last = dates.at(-1), first = dates[0];
+  // treemap of documents at the latest snapshot
+  const leaves = d3.rollups(deps.filter(r => r.snapshot_date === last && r.metric === 'documents'), v => d3.sum(v, r => +r.value), r => r.unit + '|' + r.chain_product)
+    .map(([k, v]) => { const [unit, chain] = k.split('|'); return {unit, chain, v, ka: unit.startsWith('Karnataka')}; }).filter(d => d.v > 0);
+  const tot = d3.sum(leaves, d => d.v), ka = d3.sum(leaves.filter(d => d.ka), d => d.v);
+  const W = Math.max(300, $('#treemap').clientWidth || 1000), H = W < 600 ? 300 : 380;
+  const root = d3.hierarchy({children: leaves}).sum(d => d.v).sort((a, b) => b.value - a.value);
+  d3.treemap().size([W, H]).paddingInner(3).round(true)(root);
+  $('#tm-title').textContent = `Karnataka departments hold ${Math.round(100 * ka / tot)}% of all documents on NIC chains`;
+  $('#tm-note').textContent = `Area = documents recorded by each department as on ${asOn(last)}. Karnataka in green, all others in blue.`;
+  $('#treemap').innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Treemap of documents by department">${root.leaves().map(l => { const d = l.data, w = l.x1 - l.x0, h = l.y1 - l.y0;
+    const fill = d.ka ? 'var(--st-impl)' : 'var(--st-prog)'; const big = w > 110 && h > 44;
+    const fit = (t, px) => { const n = Math.floor((w - 20) / (px * .56)); return t.length > n ? t.slice(0, Math.max(1, n - 1)) + '…' : t; };
+    const nm = d.unit.replace(/^Karnataka – /, '').replace(/^Ministry of [^–]+– /, '');
+    return `<g ${tipAttr(`<b>${esc(d.unit)}</b><br>${esc(d.chain)}<br>${fmtIN(d.v)} documents (${(100 * d.v / tot).toFixed(1)}%)`)}><rect x="${l.x0}" y="${l.y0}" width="${w}" height="${h}" rx="4" fill="${fill}" fill-opacity="${d.ka ? .9 : .75}"/>
+      ${big ? `<text x="${l.x0 + 10}" y="${l.y0 + 22}" fill="#fff" font-size="13" font-weight="700">${esc(fit(nm, 13))}</text><text x="${l.x0 + 10}" y="${l.y0 + 40}" fill="#fff" fill-opacity=".85" font-size="12">${esc(fit(cr(d.v) + ' crore, ' + d.chain, 12))}</text>` : ''}</g>`; }).join('')}</svg>`;
+  // table
+  const units = d3.groups(deps, r => r.unit + '|' + r.application);
+  const totVer = d3.sum(deps.filter(r => r.snapshot_date === last && r.metric === 'verifications_total'), r => +r.value);
   const rows = units.map(([k, rs]) => { const g = (d, m) => { const r = rs.find(r => r.snapshot_date === d && r.metric === m); return r ? +r.value : null; };
-    const r0 = rs[0]; return {unit: r0.unit, app: r0.application, chain: r0.chain_product, pid: r0.project_id,
-      d0: g(first, 'documents'), d1: g(last, 'documents'), v1: g(last, 'verifications_total'), m1: g(last, 'verifications_current_month')}; });
-  rows.sort((a, b) => (b.d1 ?? -1) - (a.d1 ?? -1));
+    const r0 = rs[0]; return {unit: r0.unit, chain: r0.chain_product, pid: r0.project_id, d0: g(first, 'documents'), d1: g(last, 'documents'), v1: g(last, 'verifications_total'), m1: g(last, 'verifications_current_month')}; })
+    .sort((a, b) => (b.d1 ?? -1) - (a.d1 ?? -1));
   const n = v => v == null ? '<span class="muted">–</span>' : fmtIN(v);
-  $('#nic-tab-note').textContent = `${rows.length} departments or applications. Earliest department snapshot ${asOnFmt(first)}; latest ${asOnFmt(last)}. A dash means the unit was not listed in that snapshot. Verifications are shown under the department NIC lists them against, and NIC's department rows do not add up exactly to its chain totals.`;
-  $('#nictable thead').innerHTML = `<tr><th>Department</th><th>Chain</th><th>Project</th><th class="num">Documents ${asOnFmt(first)}</th><th class="num">Documents ${asOnFmt(last)}</th><th class="num">Verifications ${asOnFmt(last)}</th><th>Share of verifications</th><th class="num">This month</th></tr>`;
-  $('#nictable tbody').innerHTML = rows.map(r => `<tr${r.pid ? ` data-pid="${r.pid}" tabindex="0"` : ''}><td>${esc(r.unit)}</td><td>${esc(r.chain)}</td><td>${r.pid ? `<span class="idchip">${r.pid}</span>` : '<span class="muted">–</span>'}</td>
+  $('#nic-tab-note').textContent = `${rows.length} departments or applications, from ${asOn(first)} to ${asOn(last)}. A dash means the unit was not listed in that snapshot. Verifications appear under the department NIC lists them against, and NIC's department rows do not add up exactly to its chain totals.`;
+  $('#nictable thead').innerHTML = `<tr><th>Department</th><th>Chain</th><th>Project</th><th class="num">Documents ${asOn(first)}</th><th class="num">Documents ${asOn(last)}</th><th class="num">Verifications ${asOn(last)}</th><th>Share of verifications</th><th class="num">This month</th></tr>`;
+  $('#nictable tbody').innerHTML = rows.map(r => `<tr${r.pid ? ` data-pid="${r.pid}" tabindex="0"` : ''}><td>${esc(r.unit)}</td><td>${esc(r.chain)}</td><td>${r.pid ? `<span class="idc">${r.pid}</span>` : '<span class="muted">–</span>'}</td>
     <td class="num">${n(r.d0)}</td><td class="num">${n(r.d1)}</td><td class="num">${n(r.v1)}</td>
-    <td>${r.v1 != null && totVer ? `<span style="display:inline-flex;align-items:center;gap:6px;width:100%"><span class="track" style="flex:1;height:8px;background:var(--surface-2);border-radius:2px;overflow:hidden;min-width:60px"><span style="display:block;height:100%;width:${Math.max(r.v1 > 0 ? 1 : 0, 100 * r.v1 / totVer)}%;background:var(--accent)"></span></span><span class="num" style="min-width:44px;text-align:right">${(100 * r.v1 / totVer).toFixed(r.v1 / totVer < .01 ? 2 : 1)}%</span></span>` : '<span class="muted">–</span>'}</td>
+    <td>${r.v1 != null && totVer ? `<span style="display:flex;align-items:center;gap:8px"><span style="flex:1;min-width:60px;height:8px;background:var(--surface-2);border-radius:3px;overflow:hidden"><span style="display:block;height:100%;width:${Math.max(r.v1 > 0 ? 1 : 0, 100 * r.v1 / totVer)}%;background:var(--st-prog)"></span></span><span class="num" style="min-width:46px;text-align:right">${(100 * r.v1 / totVer).toFixed(r.v1 / totVer < .01 ? 2 : 1)}%</span></span>` : '<span class="muted">–</span>'}</td>
     <td class="num">${n(r.m1)}</td></tr>`).join('');
 }
 
-// ---------- evidence ----------
+// ---------- evidence / coverage ----------
 function renderEvidence(P) {
-  const labels = Object.fromEntries((D.V.get('evidence_score') || []).map(v => [+v.code, v.label]));
-  const by = d3.rollup(P, v => v.length, p => p.evidence_score); const max = d3.max([1,2,3,4,5], k => by.get(k) || 0) || 1;
-  $('#evbars').innerHTML = [5,4,3,2,1].map(k => `<div class="barrow" style="grid-template-columns:minmax(150px,52%) minmax(0,1fr) 34px"><span>${evBoxes(k)} <span class="note">${esc((labels[k] || '').replace(/^\d – /, ''))}</span></span><span class="track"><span class="fill" style="display:block;width:${100 * (by.get(k) || 0) / max}%;background:var(--ink-2)"></span></span><span class="n">${by.get(k) || 0}</span></div>`).join('');
+  const labels = Object.fromEntries((D.V.get('evidence_score') || []).map(v => [+v.code, v.label.replace(/^\d – /, '')]));
+  $('#evwaffle').innerHTML = [5, 4, 3, 2, 1].map(k => { const ps = d3.sort(P.filter(p => p.evidence_score === k), p => SIDX(p.stage));
+    return `<div class="wrow" style="grid-template-columns:170px minmax(0,1fr)"><div class="lab">${evBoxes(k)} <b style="display:inline;font-size:1rem;margin-left:6px">${ps.length}</b><div class="def">${esc(labels[k] || '')}</div></div><div>${blocksHTML(ps)}</div></div>`; }).join('');
   const off = P.filter(p => p.evidence_score >= 4).length;
-  $('#ev-note').textContent = `${off} of ${P.length} matching projects (${pct(off, P.length)}) are backed by an official source. Mean score ${P.length ? d3.mean(P, p => p.evidence_score).toFixed(2) : '–'}. Use the evidence filter above to test any finding on official-source rows only.`;
+  $('#ev-note').textContent = `${off} of ${P.length} matching projects (${pct(off, P.length)}) rest on an official source. Squares keep their stage colour. Use the evidence filter to test any finding on official-source projects only.`;
   $('#kappa tbody').innerHTML = D.reliability.filter(r => r.cohen_s_kappa && !isNaN(+r.cohen_s_kappa)).map(r => `<tr><td>${esc(r.variable)}</td><td class="num">${esc(r.n)}</td><td class="num">${(+r.observed_agreement * 100).toFixed(1)}%</td><td class="num"><b>${(+r.cohen_s_kappa).toFixed(2)}</b></td></tr>`).join('');
 }
-
-// ---------- coverage ----------
 function renderCoverage() {
   const P = filtered(true);
   const js = d3.sort(D.jurisdictions.filter(j => j.jurisdiction_id !== 'IN'), j => j.type !== 'State', j => j.name);
-  $('#tiles').innerHTML = js.map(j => { const ps = P.filter(p => p.jurisdiction_id === j.jurisdiction_id); const n = ps.length;
-    const by = d3.rollup(ps, v => v.length, p => p.stage);
+  $('#tiles').innerHTML = js.map(j => { const ps = d3.sort(P.filter(p => p.jurisdiction_id === j.jurisdiction_id), p => SIDX(p.stage)); const n = ps.length;
     return `<button type="button" class="tile${n ? '' : ' zero'}" data-jur="${j.jurisdiction_id}" ${tipAttr(`<b>${esc(j.name)}</b><br>${esc(j.search_result)}${j.search_note ? '<br><span class="muted">' + esc(j.search_note) + '</span>' : ''}`)}>
-      <span class="nm">${esc(j.name)}</span><span class="meta"><span class="mono">${j.jurisdiction_id}</span><span>${n ? `${n} project${n === 1 ? '' : 's'}` : 'none'}</span></span>
-      <span class="stk">${STAGES.filter(s => by.get(s.k)).map(s => `<span style="flex:${by.get(s.k)};background:var(${s.c})"></span>`).join('')}</span></button>`; }).join('');
+      <span class="nm">${esc(j.name)}</span><span class="meta2"><span class="mono">${j.jurisdiction_id}</span><span>${n ? `${n} project${n === 1 ? '' : 's'}` : 'none'}</span></span>
+      <span class="bl">${ps.map(p => `<i style="background:${scol(p.stage)}"></i>`).join('')}</span></button>`; }).join('');
 }
 
 // ---------- detail dialog ----------
 function openDetail(pid) {
-  const p = D.P.find(p => p.project_id === pid); if (!p) return;
-  const ev = p._ev; const chs = D.CH.get(pid) || []; const ps = (D.PS.get(pid) || []);
-  const srcs = d3.sort(ps.map(x => ({...D.S[x.source_id], role: x.role})), s => -(+s.evidence_score), s => s.date ? -(+s.date.slice(0, 4)) : 0);
+  const p = D.P.find(p => p.project_id === pid); if (!p) return; hideTip();
+  const ev = p._ev, chs = D.CH.get(pid) || [];
+  const srcs = d3.sort((D.PS.get(pid) || []).map(x => ({...D.S[x.source_id], role: x.role})), s => -(+s.evidence_score), s => s.date ? -(+s.date.slice(0, 4)) : 0);
   const voc = Object.fromEntries((D.V.get('challenge_code') || []).map(v => [v.code, v]));
-  const cof = Object.fromEntries((D.V.get('cofog_division') || []).map(v => [v.code, v.label]));
-  const nic = D.nic_snapshots.filter(r => r.project_id === pid && r.level === 'department' && r.metric === 'documents');
   const fact = (k, v) => v ? `<div class="fact"><div class="k">${k}</div><div class="v">${v}</div></div>` : '';
-  // mini timeline
   let tl = '';
-  if (ev.length) { const W = 760, H = 64, L = 14, R = 14; const ds = ev.map(e => toDate(e.date));
-    const lo = d3.min(ds), hi = d3.max(ds); const pad = Math.max(60, (hi - lo) / 86400000 * .06) * 86400000;
-    const x = d3.scaleTime().domain([new Date(+lo - pad), new Date(+hi + pad)]).range([L, W - R]); const col = scol(p.stage);
-    tl = `<svg viewBox="0 0 ${W} ${H}" class="chart" role="img" aria-label="Timeline of ${ev.length} events"><line x1="${L}" x2="${W - R}" y1="30" y2="30" stroke="var(--axis)"/>
-      ${(() => { const span = (x.domain()[1] - x.domain()[0]) / 864e5; const yrs = span > 900;
-        const ticks = yrs ? x.ticks(d3.timeYear.every(Math.max(1, Math.round(span / 365 / 8)))) : x.ticks(d3.timeMonth.every(Math.max(1, Math.round(span / 30 / 6))));
-        return ticks.map(t => `<line x1="${x(t)}" x2="${x(t)}" y1="26" y2="34" stroke="var(--axis)"/><text x="${x(t)}" y="54" text-anchor="middle">${d3.timeFormat(yrs ? '%Y' : '%b %Y')(t)}</text>`).join(''); })()}
+  if (ev.length) { const W = 780, H = 66, L = 16, R = 16; const ds = ev.map(e => toDate(e.date)); const lo = d3.min(ds), hi = d3.max(ds);
+    const pad = Math.max(60, (hi - lo) / 864e5 * .06) * 864e5; const x = d3.scaleTime().domain([new Date(+lo - pad), new Date(+hi + pad)]).range([L, W - R]); const col = scol(p.stage);
+    const span = (x.domain()[1] - x.domain()[0]) / 864e5, yrs = span > 900;
+    const ticks = yrs ? x.ticks(d3.timeYear.every(Math.max(1, Math.round(span / 365 / 8)))) : x.ticks(d3.timeMonth.every(Math.max(1, Math.round(span / 30 / 6))));
+    tl = `<svg viewBox="0 0 ${W} ${H}" class="chart" role="img" aria-label="Timeline of ${ev.length} events"><line x1="${L}" x2="${W - R}" y1="30" y2="30" stroke="var(--axis)" stroke-width="1.5"/>
+      ${ticks.map(t => `<line x1="${x(t)}" x2="${x(t)}" y1="26" y2="34" stroke="var(--axis)"/><text x="${x(t)}" y="54" text-anchor="middle">${d3.timeFormat(yrs ? '%Y' : '%b %Y')(t)}</text>`).join('')}
       ${ev.map(e => `<g ${tipAttr(`<b>${EVK[e.event_type]}</b> · ${dmy(e.date)}<br>${esc(e.evidence)}`)}>${marker(e.event_type, x(toDate(e.date)), 30, col)}</g>`).join('')}</svg>`; }
-  $('#dcontent').innerHTML = `<div class="dhead"><button class="x" type="button" data-close aria-label="Close">×</button>
-      <div class="eyebrow"><span class="mono">${p.project_id}</span> · ${esc(p.tier)} · ${esc(p.jurisdiction_id === 'IN' ? 'Union / national' : p._jur)}</div>
-      <h2 id="d-title" style="padding-right:36px">${esc(p.title)}</h2>
+  $('#dcontent').innerHTML = `<div class="dhead"><span class="band" style="background:${scol(p.stage)}"></span><button class="x" type="button" data-close aria-label="Close">×</button>
+      <div class="note"><span class="idc">${p.project_id}</span> ${esc(p.government_level)}, ${esc(p.body_category)}, ${esc(p._jur)}${p.region && p.region !== 'National' ? `, ${esc(p.region)} region` : ''}</div>
+      <h2 id="d-title">${esc(p.title)}</h2>
       <div style="display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center">${pill(p.stage)}<span class="note">${esc(p._body)}</span><span class="note">Latest evidence ${p.status_as_of ? dmy(p.status_as_of) : 'undated'}</span>${evBoxes(p.evidence_score)}</div></div>
     <div class="dbody">
       <p>${esc(p.description)}</p>
-      ${p.status_text ? `<p class="ink2"><b>Status:</b> ${esc(p.status_text)}</p>` : ''}
+      ${p.status_text ? `<p class="note"><b style="color:var(--text)">Status:</b> ${esc(p.status_text)}</p>` : ''}
       ${p.verify_note ? `<div class="callout"><b>Note:</b> ${esc(p.verify_note)}</div>` : ''}
-      <div class="facts">${fact('DOMAIN', `${esc(p.domain)}${p.cofog_division ? ` <span class="muted">· COFOG ${p.cofog_division} ${esc(cof[p.cofog_division] || '')}</span>` : ''}`)}${fact('USE-CASE', esc(p.use_case))}
-        ${fact('SERVICE', esc(p.service_type))}${fact('PLATFORM', `${esc(p.platform)}${p.platform_reported && p.platform_reported !== p.platform ? `<br><span class="muted">reported: ${esc(p.platform_reported)}</span>` : ''}`)}
-        ${fact('CHAIN TYPE', esc(p.chain_type))}${fact('TECH PARTNER', esc(p.tech_partner))}${fact('SCALE', `${esc(p.scale_text || '–')} <span class="muted">(${esc(p.scale_tier)})</span>`)}
-        ${fact('PROBLEM ADDRESSED', esc(p.problem))}${fact('STARTED', esc(p.started_text))}${fact('EVIDENCE', esc(p.evidence_basis))}</div>
+      <div class="facts">${fact('Domain', `${esc(p.domain)} <span class="muted">(COFOG ${esc(p.cofog_division)}: ${esc(p.cofog_label)})</span>`)}${fact('Use-case', esc(p.use_case))}${fact('Service', esc(p.service_type))}
+        ${fact('Built by', esc(p.implementation_model))}${fact('Platform', `${esc(p.platform)} <span class="muted">(${esc(p.platform_family)})</span>`)}${fact('Chain type', esc(p.chain_type))}
+        ${fact('Technology partner', esc(p.tech_partner))}${fact('Scale', `${esc(p.scale_text || '–')} <span class="muted">(${esc(p.scale_tier)})</span>`)}${fact('Problem addressed', esc(p.problem))}
+        ${fact('Parent ministry or State', esc(p.parent_ministry_or_state))}${fact('Start year', esc(p.start_year || '–'))}
+        ${p.nic_documents_latest ? fact('On NIC chains', `${fmtIN(+p.nic_documents_latest)} documents${p.nic_verifications_latest ? `, ${fmtIN(+p.nic_verifications_latest)} verifications` : ''} <span class="muted">(as on ${asOn(p.nic_snapshot_date)})</span>`) : ''}
+        ${fact('Evidence', `${esc(p.evidence_label)} <span class="muted">(${p.n_sources} sources, ${p.n_official_sources} official)</span>`)}</div>
       <div><h3>Stage dates</h3>${tl}<div class="events">${ev.map(e => { const s = D.S[e.source_id] || {};
-        return `<div class="evrow"><span class="num"><b>${dmy(e.date)}</b><br><span class="muted">${e.date_precision} precision</span></span><span>${marker2(e.event_type, scol(p.stage))} ${EVK[e.event_type]}</span>
+        return `<div class="evrow"><span class="num"><b>${dmy(e.date)}</b><br><span class="muted">${e.date_precision} precision</span></span><span>${markerIcon(e.event_type, scol(p.stage))} ${EVK[e.event_type]}</span>
           <span>${esc(e.evidence)}<br>${s.url ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.publisher || s.title)}</a>` : esc(s.title || e.source_id)} <span class="mono muted">${esc(e.source_id)}</span></span></div>`; }).join('') || '<p class="note">No dated events yet.</p>'}</div></div>
-      ${nic.length ? `<div><h3>On the NIC platform</h3><p class="note">${d3.sort(nic, r => r.snapshot_date).map(r => `${esc(r.unit)}: ${fmtIN(+r.value)} documents as on ${asOnFmt(r.snapshot_date)}`).join('<br>')}</p></div>` : ''}
       ${chs.length ? `<div><h3>Reported challenges</h3><div class="chlist" style="max-height:none">${chs.map(c => { const s = D.S[c.source_id] || {};
-        return `<div class="chitem"><div class="h"><span class="mono">${c.challenge_code}</span> ${esc((voc[c.challenge_code] || {}).label || '')}</div><div>${esc(c.description)}</div><div class="note">${esc(c.evidence)} ${s.url ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">source</a>` : ''}</div></div>`; }).join('')}</div></div>` : ''}
+        return `<div class="chitem"><div class="h"><span class="mono muted">${c.challenge_code}</span> ${esc((voc[c.challenge_code] || {}).label || '')}</div><div>${esc(c.description)}</div><div class="note">${esc(c.evidence)} ${s.url ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">Source</a>` : ''}</div></div>`; }).join('')}</div></div>` : ''}
       <div><h3>Sources (${srcs.length})</h3><div class="srcs" style="margin-top:8px">${srcs.map(s => `<div class="src"><span class="badge${s.source_type === 'Official' ? ' o' : ''}">${esc(s.source_type)} ${s.evidence_score}</span>
-        <span>${s.url ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a>` : esc(s.title)}<br><span class="note">${esc(s.publisher || s.author)}${s.date ? ' · ' + dmy(s.date) : ''} · <span class="mono">${esc(s.source_id)}</span> · ${esc(s.role)}</span></span></div>`).join('')}</div></div>
+        <span>${s.url ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a>` : esc(s.title)}<br><span class="note">${esc(s.publisher || s.author)}${s.date ? ', ' + dmy(s.date) : ''}, <span class="mono">${esc(s.source_id)}</span>, ${esc(s.role)}</span></span></div>`).join('')}</div></div>
     </div>`;
   const dlg = $('#detail'); if (!dlg.open) dlg.showModal(); dlg.scrollTop = 0; $('#dcontent .x').focus();
 }
-function marker2(t, col) { return `<svg width="14" height="12" aria-hidden="true" style="vertical-align:-1px">${marker(t, 7, 6, col)}</svg>`; }
 $('#detail').addEventListener('click', e => { if (e.target.closest('[data-close]') || e.target === $('#detail')) $('#detail').close(); });
 
 // ---------- data section ----------
-const DESC = {projects:'One row per project: stage, coded variables, evidence score', stage_events:'Dated lifecycle events with sources', challenges:'Source-reported challenges, TOE-coded',
-  sources:'All sources with type and evidence score', project_sources:'Which sources support which project', jurisdictions:'36 States/UTs + India: ISO 3166-2 and LGD codes, search results',
-  bodies:'Implementing public bodies', nic_snapshots:'NIC platform time series (platform, application, department)', vocabularies:'Controlled vocabularies and mappings (TOE, DOI, COFOG)',
+const DESC = {all_projects:'Start here: every project in one table with all classifications, dates, NIC usage, challenges and evidence (built automatically)',
+  projects:'Source table for projects: stage and coded variables', stage_events:'Dated lifecycle events with sources', challenges:'Source-reported challenges, TOE-coded',
+  sources:'All sources with type and evidence score', project_sources:'Which sources support which project', jurisdictions:'36 States/UTs + India: ISO 3166-2 and LGD codes, region, search results',
+  bodies:'Implementing public bodies with body type and level of government', nic_snapshots:'NIC platform time series (platform, application, department)', vocabularies:'Controlled vocabularies and mappings (TOE, DOI, COFOG, regions)',
   reliability:'Coding consistency check (Cohen kappa)', changelog:'Changes by version', policies:'Policies, tenders, judgments', literature:'Related literature',
   context_stats:'National context figures', excluded_items:'Items checked and excluded', rti_drafts:'Draft RTI applications for unclear projects'};
 let DL = null, VER = '';
 function renderData() {
   VER = (D.changelog.at(-1) || {}).version || '';
-  const all = [...FILES, ...EXTRA];
-  $('#files').innerHTML = `<div class="file"><span><span class="mono">India_Govt_Blockchain_Dataset_v${esc(VER)}.zip</span><br><span class="d">All CSV tables, datapackage.json, map, build tools and documentation in one archive. The Excel and SQLite editions are in the deposited archive.</span></span><button class="btn primary" type="button" data-zip hidden>Download .zip</button></div>
+  $('#files').innerHTML = `<div class="file"><span><b>India_Govt_Blockchain_Dataset_v${esc(VER)}.zip</b><br><span class="d">All tables, datapackage.json, map, build tools and documentation in one archive. The Excel and SQLite editions are in the <a href="https://doi.org/10.5281/zenodo.23136332" target="_blank" rel="noopener">Zenodo archive</a>.</span></span><button class="btn primary" type="button" data-zip hidden>Download .zip</button></div>
     <div class="file"><span><span class="mono">datapackage.json</span><br><span class="d">Schemas, keys and vocabularies (Frictionless Data Package)</span></span><button class="btn" type="button" data-dl="datapackage.json" hidden>Download</button></div>` +
-    all.map(n => `<div class="file"><span><span class="mono">${n}.csv</span>${D[n] ? ` <span class="d">· ${D[n].length} rows</span>` : ''}<br><span class="d">${esc(DESC[n] || '')}</span></span><button class="btn" type="button" data-dl="data/${n}.csv" hidden>Download</button></div>`).join('');
-  const cite = `Mondal, S. (2026). Blockchain in Indian Government Administration: A Project-Level Dataset (2017–2026) (Version 1.1.0) [Data set]. DOI to be added after deposit.`;
+    [...FILES, ...EXTRA].map(n => `<div class="file"><span><span class="mono">${n}.csv</span>${D[n] ? ` <span class="d">${D[n].length} rows</span>` : ''}<br><span class="d">${esc(DESC[n] || '')}</span></span><button class="btn" type="button" data-dl="data/${n}.csv" hidden>Download</button></div>`).join('');
+  const cite = `Mondal, S., & Chithralekha, T. (2026). Blockchain in Indian Government Administration: A Project-Level Dataset (2017–2026) [Data set]. Zenodo. https://doi.org/10.5281/zenodo.23136332`;
   $('#cite').textContent = cite;
   $('#copy-cite').addEventListener('click', async () => { const b = $('#copy-cite'); try { await navigator.clipboard.writeText(cite); b.textContent = 'Copied'; }
     catch { const r = document.createRange(); r.selectNodeContents($('#cite')); const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = 'Selected, press Ctrl+C'; } setTimeout(() => b.textContent = 'Copy citation', 2500); });
-  const ch = D.changelog.filter(c => c.version === '1.1.0' && c.change_type !== 'status date updated');
-  const kinds = d3.rollup(D.changelog.filter(c => c.version === '1.1.0'), v => v.length, c => c.change_type);
-  $('#changes').innerHTML = `<p class="note">${[...kinds].map(([k, v]) => `${v} ${k}`).join(' · ')}</p>` + ch.map(c => `<div><span class="mono muted">${esc(c.record)}</span> ${esc(c.description)}</div>`).join('');
-  // downloads capability
+  const kinds = d3.rollup(D.changelog.filter(c => c.version === VER), v => v.length, c => c.change_type);
+  $('#changes').innerHTML = `<p class="note">${[...kinds].map(([k, v]) => `${v} ${k}`).join('; ')}</p>` + D.changelog.filter(c => c.version === VER && c.change_type !== 'status date updated').map(c => `<div><span class="mono muted">${esc(c.record)}</span> ${esc(c.description)}</div>`).join('');
   (async () => {
     if (!window.claude || !window.claude.use) {   // hosted elsewhere (e.g. GitHub Pages): ordinary browser downloads
       DL = {save: async ({filename, data}) => { const u = URL.createObjectURL(data instanceof Blob ? data : new Blob([data])); const a = document.createElement('a'); a.href = u; a.download = filename; document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(u), 4000); return {status: 'saved'}; }};
@@ -770,50 +800,66 @@ function renderData() {
     if (!DL) { $('#dl-note').textContent = 'File downloads are not available in this viewer. The same files are in the dataset archive.'; return; }
     $('#dl-note').textContent = 'Each download asks you to confirm before saving.';
     document.querySelectorAll('[data-dl],[data-zip]').forEach(b => b.hidden = false); })();
+  document.addEventListener('click', async e => { const b = e.target.closest('[data-dl]'); if (!b || !DL) return; const path = b.dataset.dl; const old = b.textContent; b.disabled = true;
+    try { const r = await fetch(path); if (!r.ok) throw new Error('missing'); await DL.save({filename: path.split('/').pop(), data: await r.blob()}); b.textContent = 'Saved'; }
+    catch (err) { b.textContent = err && err.code === 'declined' ? 'Cancelled' : 'Could not save'; } finally { setTimeout(() => { b.textContent = old; b.disabled = false; }, 2500); } });
   document.addEventListener('click', async e => { const b = e.target.closest('[data-zip]'); if (!b || !DL) return; const old = b.textContent; b.disabled = true; b.textContent = 'Preparing…';
     try {
       if (!window.JSZip) await new Promise((ok, no) => { const sc = document.createElement('script'); sc.src = 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js'; sc.onload = ok; sc.onerror = no; document.head.appendChild(sc); });
       const zip = new JSZip();
       const paths = [...[...FILES, ...EXTRA].map(n => `data/${n}.csv`), 'datapackage.json', 'geo/india_states.json', 'README.md', 'METHODS.md', 'UPDATE_GUIDE.md', 'LICENSE.txt',
-        ['CITATION.cff.txt', 'CITATION.cff'], ['tools/build.py', 'tools/build.py'], ['tools/nic_snapshot.py', 'tools/nic_snapshot.py'], ['tools/make_workbook.py', 'tools/make_workbook.py'], 'tools/package_meta.json'];
-      for (const p of paths) { const [src, dst] = Array.isArray(p) ? p : [p, p]; let r = await fetch(src); if (!r.ok && src !== dst) r = await fetch(dst); if (r.ok) zip.file(dst, await r.text()); }
-      const blob = await zip.generateAsync({type: 'blob'});
-      await DL.save({filename: `India_Govt_Blockchain_Dataset_v${VER}.zip`, data: blob}); b.textContent = 'Saved';
+        ['CITATION.cff', 'CITATION.cff.txt'], 'tools/build.py', 'tools/nic_snapshot.py', 'tools/make_workbook.py', 'tools/make_release.py', 'tools/package_meta.json'];
+      for (const p of paths) { const [dst, alt] = Array.isArray(p) ? p : [p, null]; let r = await fetch(dst); if (!r.ok && alt) r = await fetch(alt); if (r.ok) zip.file(dst, await r.text()); }
+      await DL.save({filename: `India_Govt_Blockchain_Dataset_v${VER}.zip`, data: await zip.generateAsync({type: 'blob'})}); b.textContent = 'Saved';
     } catch (err) { b.textContent = err && err.code === 'declined' ? 'Cancelled' : 'Could not prepare the file'; }
-    finally { setTimeout(() => { b.textContent = old; b.disabled = false; }, 2500); } });
-  document.addEventListener('click', async e => { const b = e.target.closest('[data-dl]'); if (!b || !DL) return; const path = b.dataset.dl; const old = b.textContent; b.disabled = true;
-    try { const r = await fetch(path); if (!r.ok) throw new Error('missing'); const blob = await r.blob(); await DL.save({filename: path.split('/').pop(), data: blob}); b.textContent = 'Saved'; }
-    catch (err) { b.textContent = err && err.code === 'declined' ? 'Cancelled' : (err && err.message === 'missing' ? 'Not available' : 'Could not save'); }
     finally { setTimeout(() => { b.textContent = old; b.disabled = false; }, 2500); } });
 }
 
-// ---------- main render ----------
+// ---------- tabs ----------
+const TABS = ['overview', 'projects', 'lifecycle', 'challenges', 'nic', 'data'];
+function showTab(id, focus) {
+  if (!TABS.includes(id)) id = 'overview';
+  const wasHidden = $('#' + id).hidden;
+  document.querySelectorAll('.tab').forEach(t => { const on = t.dataset.tab === id; t.setAttribute('aria-selected', on); t.tabIndex = on ? 0 : -1; if (on && focus) t.focus(); });
+  TABS.forEach(t => $('#' + t).hidden = t !== id);
+  try { history.replaceState(null, '', '#' + id); } catch {}
+  if (wasHidden && D.P) { if (id === 'overview') renderStartYears(filtered()); if (id === 'nic') renderNIC(); }
+}
+let rsz; addEventListener('resize', () => { clearTimeout(rsz); rsz = setTimeout(() => { if (!D.P) return; if (!$('#overview').hidden) renderStartYears(filtered()); if (!$('#nic').hidden) renderNIC(); }, 150); });
+document.querySelector('.tabs').addEventListener('click', e => { const t = e.target.closest('[data-tab]'); if (t) showTab(t.dataset.tab); });
+document.querySelector('.tabs').addEventListener('keydown', e => { const i = TABS.indexOf(document.activeElement?.dataset?.tab); if (i < 0) return;
+  if (e.key === 'ArrowRight') showTab(TABS[(i + 1) % TABS.length], true); if (e.key === 'ArrowLeft') showTab(TABS[(i + TABS.length - 1) % TABS.length], true); });
+
+// ---------- render ----------
 function render() {
   const P = filtered();
   $('#f-count').textContent = `Showing ${P.length} of ${D.P.length}`;
+  for (const [k, , sel] of SEL) $(sel).value = F[k];
   document.querySelectorAll('#f-stages [data-stage]').forEach(b => b.setAttribute('aria-pressed', F.stages.has(b.dataset.stage)));
-  $('#f-jur').innerHTML = F.jur ? `<button type="button" class="chip jur" data-clearjur aria-label="Remove place filter">${esc(F.jur === 'IN' ? 'Union / national' : D.J[F.jur].name)} ×</button>` : '';
-  renderKPIs(P); renderMap(); renderRegister(P); renderTable(P); renderLanes(P); renderStartYears(P); renderTTL(P); renderChallenges(P); renderEvidence(P); renderCoverage();
+  $('#f-jur').innerHTML = F.jur ? `<button type="button" class="chip place" data-clearjur aria-label="Remove place filter">${esc(F.jur === 'IN' ? 'Union and national' : D.J[F.jur].name)} ×</button>` : '';
+  renderStats(P); renderMap(); renderProfile(P); renderWaffle(P);
+  whoBars('#who-level', 'government_level', 'level', P); whoBars('#who-impl', 'implementation_model', 'impl', P); whoBars('#who-cat', 'body_category', 'cat', P); whoBars('#who-region', 'region', 'region', P);
+  renderStartYears(P); renderTable(P); renderLanes(P); renderTTL(P); renderChallenges(P); renderEvidence(P); renderCoverage();
 }
-
 document.addEventListener('click', e => {
   if (e.target.closest('#detail')) return;
   const s = e.target.closest('[data-sort]'); if (s) { const k = s.dataset.sort; SORT = {k, dir: SORT.k === k ? -SORT.dir : 1}; renderTable(filtered()); return; }
-  const j = e.target.closest('[data-jur]'); if (j && !e.target.closest('#map')) { setJur(j.dataset.jur); if (j.classList.contains('tile')) $('#map-sec').scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'}); return; }
+  if (e.target.closest('[data-union]')) { setJur('IN'); return; }
+  const j = e.target.closest('[data-jur]'); if (j) { setJur(j.dataset.jur); if (j.classList.contains('tile')) { showTab('overview'); scrollTo({top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'}); } return; }
   if (e.target.closest('[data-clearjur]')) { F.jur = null; render(); return; }
-  if (e.target.closest('#union-btn')) { setJur('IN'); return; }
+  const fb = e.target.closest('[data-filter]'); if (fb) { const k = fb.dataset.filter; F[k] = F[k] === fb.dataset.val ? '' : fb.dataset.val; render(); return; }
   const c = e.target.closest('[data-ch]'); if (c) { const k = c.dataset.ch; CHSEL = (!k || CHSEL === k) ? null : k; renderChallenges(filtered()); return; }
-  const p = e.target.closest('[data-pid]'); if (p) { hideTip(); openDetail(p.dataset.pid); }
+  const p = e.target.closest('[data-pid]'); if (p && !e.target.closest('#heromap')) openDetail(p.dataset.pid);
 });
 document.addEventListener('keydown', e => { if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('tr[data-pid]')) { e.preventDefault(); openDetail(e.target.dataset.pid); } });
 
 load().then(() => {
-  const maxDate = d3.max(D.projects, p => p.last_reviewed);
-  const nicLast = d3.max(D.nic_snapshots, r => r.snapshot_date);
-  $('#asof').innerHTML = `<span>As on <b>${asOnFmt(maxDate)}</b></span><span>Dataset <b>v${esc((D.changelog.at(-1) || {}).version || '')}</b></span><span><b>${D.P.length}</b> projects</span><span><b>${D.sources.length}</b> sources</span><span><b>${D.stage_events.length}</b> dated events</span><span>NIC data as on <b>${asOnFmt(nicLast)}</b></span>`;
-  $('#foot').innerHTML = `<span>Data: Santanu Mondal (Pondicherry University), CC BY 4.0. Prepared with AI assistance (Claude, Anthropic) and reviewed by the author.</span><span>Sources are public government documents, NIC/MeitY portals, court judgments and news reports, listed per project. "Unclear" means no public update was found, not that a project failed.</span>`;
+  const asof = d3.max(D.P, p => p.last_reviewed), nicLast = d3.max(D.nic_snapshots, r => r.snapshot_date);
+  VER = (D.changelog.at(-1) || {}).version || '';
+  $('#meta').innerHTML = `<a class="doi" href="https://doi.org/10.5281/zenodo.23136332" target="_blank" rel="noopener" title="Covers all versions and always opens the latest"><b>DOI</b> 10.5281/zenodo.23136332</a><span>As on <b>${asOn(asof)}</b></span><span>Dataset <b>v${esc(VER)}</b></span><span><b>${D.sources.length}</b> sources</span><span><b>${D.stage_events.length}</b> dated events</span><span>NIC data as on <b>${asOn(nicLast)}</b></span>`;
+  $('#foot').innerHTML = `<span>Data: Santanu Mondal and T. Chithralekha (Pondicherry University), CC BY 4.0, <a href="https://doi.org/10.5281/zenodo.23136332" target="_blank" rel="noopener">doi.org/10.5281/zenodo.23136332</a>. Prepared with AI assistance (Claude, Anthropic) and reviewed by the authors. Map boundaries: DataMeet India (CC BY 4.0), following the Survey of India outline, simplified.</span><span>Sources are public government documents, NIC and MeitY portals, court judgments and news reports, listed per project. "Unclear" means no public update was found, not that a project failed.</span>`;
   buildFilters(); initMap(); renderNIC(); renderData();
-  $('#loading').hidden = true; document.querySelectorAll('section.block').forEach(s => s.hidden = false);
+  $('#loading').hidden = true; showTab(location.hash.slice(1) || 'overview');
   render();
 }).catch(err => { $('#loading').innerHTML = `The dataset files could not be loaded (${esc(err.message)}). Reload the page; if it persists, the data files are missing from this publish.`; console.error(err); });
 })();

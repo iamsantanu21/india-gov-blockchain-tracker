@@ -1,38 +1,38 @@
-jurisdiction_id,name,type,lgd_code,parent_id,search_result,search_note,last_searched
-IN,India,Country,,,,"Union-level and national bodies (Union ministries, regulators, courts, statutory bodies, PSUs)",
-IN-AP,Andhra Pradesh,State,28,IN,Active projects,,2026-10-04
-IN-AR,Arunachal Pradesh,State,12,IN,No project found,Searched – no govt blockchain project found (2024 eBook: early-stage awareness only),2026-10-04
-IN-AS,Assam,State,18,IN,Active projects,,2026-10-04
-IN-BR,Bihar,State,10,IN,Pilot completed only,2024 eBook also notes an IT Dept blockchain workshop,2026-10-04
-IN-CG,Chhattisgarh,State,22,IN,Active projects,,2026-10-04
-IN-GA,Goa,State,30,IN,Only planned / unclear,,2026-10-04
-IN-GJ,Gujarat,State,24,IN,Only planned / unclear,Central rows: NITI fertilizer pilot (GNFC); CBDC food-subsidy DBT (Feb 2026),2026-10-04
-IN-HR,Haryana,State,6,IN,Active projects,,2026-10-04
-IN-HP,Himachal Pradesh,State,2,IN,Only planned / unclear,Only an unverified NITI apple pilot (eBook); July 2026 land guidelines do not mention blockchain,2026-10-04
-IN-JH,Jharkhand,State,20,IN,Active projects,,2026-10-04
-IN-KA,Karnataka,State,29,IN,Active projects,Central rows: Judiciary Chain at High Court of Karnataka; NIC CoE is in Bengaluru,2026-10-04
-IN-KL,Kerala,State,32,IN,Active projects,,2026-10-04
-IN-MP,Madhya Pradesh,State,23,IN,Active projects,,2026-10-04
-IN-MH,Maharashtra,State,27,IN,Active projects,NBF node at NIC Pune,2026-10-04
-IN-MN,Manipur,State,14,IN,Active projects,,2026-10-04
-IN-ML,Meghalaya,State,17,IN,Only planned / unclear,,2026-10-04
-IN-MZ,Mizoram,State,15,IN,No project found,Searched – no govt blockchain project found,2026-10-04
-IN-NL,Nagaland,State,13,IN,No project found,Searched – no govt blockchain project found,2026-10-04
-IN-OD,Odisha,State,21,IN,Active projects,NBF node at NIC Bhubaneswar,2026-10-04
-IN-PB,Punjab,State,3,IN,Only planned / unclear,,2026-10-04
-IN-RJ,Rajasthan,State,8,IN,Active projects,,2026-10-04
-IN-SK,Sikkim,State,11,IN,No project found,Searched – no govt blockchain project found,2026-10-04
-IN-TN,Tamil Nadu,State,33,IN,Active projects,,2026-10-04
-IN-TS,Telangana,State,36,IN,Active projects,NBF node at NIC Hyderabad,2026-10-04
-IN-TR,Tripura,State,16,IN,Active projects,,2026-10-04
-IN-UP,Uttar Pradesh,State,9,IN,Active projects,UP draft blockchain policy 2018 (policy),2026-10-04
-IN-UK,Uttarakhand,State,5,IN,Active projects,,2026-10-04
-IN-WB,West Bengal,State,19,IN,Only planned / unclear,NIC WB 'State at a glance' (Oct 2025) lists no blockchain apps; WB Blockchain Promotion Guidelines 2020 (policy),2026-10-04
-IN-AN,Andaman and Nicobar Islands,Union Territory,35,IN,No project found,Searched – no govt blockchain project found,2026-10-04
-IN-CH,Chandigarh,Union Territory,4,IN,Only central CBDC pilot,No own blockchain project found. Central row: CBDC food-subsidy DBT rolled out 14 Aug 2026,2026-10-04
-IN-DH,Dadra and Nagar Haveli and Daman and Diu,Union Territory,38,IN,Only central CBDC pilot,No own blockchain project found. Central row: CBDC food-subsidy DBT rolled out 14 Aug 2026,2026-10-04
-IN-DL,Delhi,Union Territory,7,IN,Active projects,,2026-10-04
-IN-JK,Jammu and Kashmir,Union Territory,1,IN,Active projects,"DOVE domicile-certificate verification (C-DAC, MeitY success story); a land-registry claim remains unverified.",2026-10-04
-IN-LA,Ladakh,Union Territory,37,IN,No project found,Searched – no blockchain project found (official e-gov page has none),2026-10-04
-IN-LD,Lakshadweep,Union Territory,31,IN,No project found,Searched – no govt blockchain project found,2026-10-04
-IN-PY,Puducherry,Union Territory,34,IN,Active projects,"Central row: CBDC food-subsidy DBT pilot (26 Feb 2026, PIB)",2026-10-04
+jurisdiction_id,name,type,lgd_code,parent_id,search_result,search_note,last_searched,region
+IN,India,Country,,,,"Union-level and national bodies (Union ministries, regulators, courts, statutory bodies, PSUs)",,National
+IN-AP,Andhra Pradesh,State,28,IN,Active projects,,2026-10-04,Southern
+IN-AR,Arunachal Pradesh,State,12,IN,No project found,Searched – no govt blockchain project found (2024 eBook: early-stage awareness only),2026-10-04,North-Eastern
+IN-AS,Assam,State,18,IN,Active projects,,2026-10-04,North-Eastern
+IN-BR,Bihar,State,10,IN,Pilot completed only,2024 eBook also notes an IT Dept blockchain workshop,2026-10-04,Eastern
+IN-CG,Chhattisgarh,State,22,IN,Active projects,,2026-10-04,Central
+IN-GA,Goa,State,30,IN,Only planned / unclear,,2026-10-04,Western
+IN-GJ,Gujarat,State,24,IN,Only planned / unclear,Central rows: NITI fertilizer pilot (GNFC); CBDC food-subsidy DBT (Feb 2026),2026-10-04,Western
+IN-HR,Haryana,State,6,IN,Active projects,,2026-10-04,Northern
+IN-HP,Himachal Pradesh,State,2,IN,Only planned / unclear,Only an unverified NITI apple pilot (eBook); July 2026 land guidelines do not mention blockchain,2026-10-04,Northern
+IN-JH,Jharkhand,State,20,IN,Active projects,,2026-10-04,Eastern
+IN-KA,Karnataka,State,29,IN,Active projects,Central rows: Judiciary Chain at High Court of Karnataka; NIC CoE is in Bengaluru,2026-10-04,Southern
+IN-KL,Kerala,State,32,IN,Active projects,,2026-10-04,Southern
+IN-MP,Madhya Pradesh,State,23,IN,Active projects,,2026-10-04,Central
+IN-MH,Maharashtra,State,27,IN,Active projects,NBF node at NIC Pune,2026-10-04,Western
+IN-MN,Manipur,State,14,IN,Active projects,,2026-10-04,North-Eastern
+IN-ML,Meghalaya,State,17,IN,Only planned / unclear,,2026-10-04,North-Eastern
+IN-MZ,Mizoram,State,15,IN,No project found,Searched – no govt blockchain project found,2026-10-04,North-Eastern
+IN-NL,Nagaland,State,13,IN,No project found,Searched – no govt blockchain project found,2026-10-04,North-Eastern
+IN-OD,Odisha,State,21,IN,Active projects,NBF node at NIC Bhubaneswar,2026-10-04,Eastern
+IN-PB,Punjab,State,3,IN,Only planned / unclear,,2026-10-04,Northern
+IN-RJ,Rajasthan,State,8,IN,Active projects,,2026-10-04,Northern
+IN-SK,Sikkim,State,11,IN,No project found,Searched – no govt blockchain project found,2026-10-04,North-Eastern
+IN-TN,Tamil Nadu,State,33,IN,Active projects,,2026-10-04,Southern
+IN-TS,Telangana,State,36,IN,Active projects,NBF node at NIC Hyderabad,2026-10-04,Southern
+IN-TR,Tripura,State,16,IN,Active projects,,2026-10-04,North-Eastern
+IN-UP,Uttar Pradesh,State,9,IN,Active projects,UP draft blockchain policy 2018 (policy),2026-10-04,Central
+IN-UK,Uttarakhand,State,5,IN,Active projects,,2026-10-04,Central
+IN-WB,West Bengal,State,19,IN,Only planned / unclear,NIC WB 'State at a glance' (Oct 2025) lists no blockchain apps; WB Blockchain Promotion Guidelines 2020 (policy),2026-10-04,Eastern
+IN-AN,Andaman and Nicobar Islands,Union Territory,35,IN,No project found,Searched – no govt blockchain project found,2026-10-04,Island UTs
+IN-CH,Chandigarh,Union Territory,4,IN,Only central CBDC pilot,No own blockchain project found. Central row: CBDC food-subsidy DBT rolled out 14 Aug 2026,2026-10-04,Northern
+IN-DH,Dadra and Nagar Haveli and Daman and Diu,Union Territory,38,IN,Only central CBDC pilot,No own blockchain project found. Central row: CBDC food-subsidy DBT rolled out 14 Aug 2026,2026-10-04,Western
+IN-DL,Delhi,Union Territory,7,IN,Active projects,,2026-10-04,Northern
+IN-JK,Jammu and Kashmir,Union Territory,1,IN,Active projects,"DOVE domicile-certificate verification (C-DAC, MeitY success story); a land-registry claim remains unverified.",2026-10-04,Northern
+IN-LA,Ladakh,Union Territory,37,IN,No project found,Searched – no blockchain project found (official e-gov page has none),2026-10-04,Northern
+IN-LD,Lakshadweep,Union Territory,31,IN,No project found,Searched – no govt blockchain project found,2026-10-04,Island UTs
+IN-PY,Puducherry,Union Territory,34,IN,Active projects,"Central row: CBDC food-subsidy DBT pilot (26 Feb 2026, PIB)",2026-10-04,Southern

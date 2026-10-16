@@ -30,6 +30,11 @@
    "role": "author",
    "organization": "Pondicherry University",
    "path": "https://orcid.org/0009-0001-6243-1709"
+  },
+  {
+   "title": "T. Chithralekha",
+   "role": "author",
+   "organization": "Pondicherry University"
   }
  ],
  "sources": [
@@ -37,7 +42,566 @@
    "title": "See sources.csv (339 public sources: PIB, NIC, MeitY, State portals, courts, news)"
   }
  ],
+ "id": "https://doi.org/10.5281/zenodo.23136332",
+ "homepage": "https://doi.org/10.5281/zenodo.23136332",
  "resources": [
+  {
+   "name": "all_projects",
+   "path": "data/all_projects.csv",
+   "profile": "tabular-data-resource",
+   "format": "csv",
+   "mediatype": "text/csv",
+   "encoding": "utf-8",
+   "description": "COMBINED MASTER TABLE: every project (Union, State, UT, district, municipal, PSU, regulator, court ...) in one row with all classifications, dates, NIC usage, challenges and evidence. Built automatically by tools/build.py from the other tables - do not edit by hand.",
+   "schema": {
+    "fields": [
+     {
+      "name": "project_id",
+      "type": "string",
+      "description": "Project ID (C = Union, S = State/UT, O = other public body)",
+      "constraints": {
+       "required": true
+      }
+     },
+     {
+      "name": "project_name",
+      "type": "string",
+      "description": "Project name",
+      "constraints": {
+       "required": true
+      }
+     },
+     {
+      "name": "description",
+      "type": "string",
+      "description": "What the project does"
+     },
+     {
+      "name": "record_status",
+      "type": "string",
+      "description": "active, merged or withdrawn",
+      "constraints": {
+       "enum": [
+        "active",
+        "merged",
+        "withdrawn"
+       ]
+      }
+     },
+     {
+      "name": "government_level",
+      "type": "string",
+      "description": "Union, State, Union Territory, District or Municipal",
+      "constraints": {
+       "enum": [
+        "Union",
+        "State",
+        "Union Territory",
+        "District",
+        "Municipal"
+       ]
+      }
+     },
+     {
+      "name": "body_category",
+      "type": "string",
+      "description": "Kind of public body",
+      "constraints": {
+       "enum": [
+        "Ministry / department",
+        "Government (whole of government)",
+        "IT / e-governance agency",
+        "Policy / planning body",
+        "PSU / state-owned company",
+        "Regulator / central bank",
+        "Court / judiciary",
+        "Election commission",
+        "Statutory board / authority",
+        "University / research institute",
+        "Society / foundation",
+        "District administration",
+        "Municipal body"
+       ]
+      }
+     },
+     {
+      "name": "implementing_body",
+      "type": "string",
+      "description": "Implementing body"
+     },
+     {
+      "name": "parent_ministry_or_state",
+      "type": "string",
+      "description": "Parent ministry or State"
+     },
+     {
+      "name": "dataset_group",
+      "type": "string",
+      "description": "v1.0 grouping: Union government, State / UT government, Other public body",
+      "constraints": {
+       "enum": [
+        "Union government",
+        "State / UT government",
+        "Other public body"
+       ]
+      }
+     },
+     {
+      "name": "jurisdiction_id",
+      "type": "string",
+      "description": "ISO 3166-2 code (IN = Union / national)"
+     },
+     {
+      "name": "state_ut",
+      "type": "string",
+      "description": "State or UT name (Union / national for IN)"
+     },
+     {
+      "name": "jurisdiction_type",
+      "type": "string",
+      "description": "State, Union Territory or National",
+      "constraints": {
+       "enum": [
+        "State",
+        "Union Territory",
+        "National"
+       ]
+      }
+     },
+     {
+      "name": "region",
+      "type": "string",
+      "description": "Region (Zonal Councils / NEC)",
+      "constraints": {
+       "enum": [
+        "Northern",
+        "Central",
+        "Eastern",
+        "Western",
+        "Southern",
+        "North-Eastern",
+        "Island UTs",
+        "National"
+       ]
+      }
+     },
+     {
+      "name": "lgd_code",
+      "type": "integer",
+      "description": "LGD state code"
+     },
+     {
+      "name": "domain",
+      "type": "string",
+      "description": "Policy domain",
+      "constraints": {
+       "enum": [
+        "Land & Property",
+        "Platform & Infrastructure",
+        "Certificates & Identity",
+        "Grievance & Records",
+        "Elections",
+        "Justice & Police",
+        "Finance & Payments",
+        "Agriculture & Trade",
+        "Telecom & Cyber",
+        "Transport",
+        "Energy",
+        "Health & Supply Chain",
+        "Education & Skills",
+        "Welfare & Subsidy"
+       ]
+      }
+     },
+     {
+      "name": "cofog_division",
+      "type": "string",
+      "description": "UN COFOG division",
+      "constraints": {
+       "enum": [
+        "01",
+        "03",
+        "04",
+        "07",
+        "09",
+        "10"
+       ]
+      }
+     },
+     {
+      "name": "cofog_label",
+      "type": "string",
+      "description": "COFOG division name"
+     },
+     {
+      "name": "use_case",
+      "type": "string",
+      "description": "Use-case type",
+      "constraints": {
+       "enum": [
+        "Authentication & anti-fraud",
+        "CBDC / digital payments",
+        "Certificates & identity",
+        "E-voting",
+        "Energy trading",
+        "Financial infrastructure",
+        "Land / property registry",
+        "Platform / ecosystem",
+        "Public procurement",
+        "Records & audit trail",
+        "Supply-chain traceability",
+        "Tokenisation / NFTs",
+        "Welfare delivery"
+       ]
+      }
+     },
+     {
+      "name": "problem",
+      "type": "string",
+      "description": "Main problem addressed",
+      "constraints": {
+       "enum": [
+        "Asset liquidity / digital ownership",
+        "Capacity & shared infrastructure",
+        "Digital souvenirs / ownership",
+        "Forgery / fake documents",
+        "Fraud / spam / fake apps",
+        "Identity verification & privacy",
+        "Lack of traceability / counterfeits",
+        "Land fraud & disputes",
+        "Leakage / beneficiary fraud",
+        "Market access for prosumers",
+        "Market transparency & settlement risk",
+        "Payment efficiency & programmability",
+        "Supplier fraud & opacity in procurement",
+        "Tampering of records",
+        "Verification of public works",
+        "Voter access & vote integrity"
+       ]
+      }
+     },
+     {
+      "name": "service_type",
+      "type": "string",
+      "description": "G2C, G2B or G2G",
+      "constraints": {
+       "enum": [
+        "G2C",
+        "G2B",
+        "G2G"
+       ]
+      }
+     },
+     {
+      "name": "platform_reported",
+      "type": "string",
+      "description": "Platform as reported"
+     },
+     {
+      "name": "platform",
+      "type": "string",
+      "description": "Normalised platform",
+      "constraints": {
+       "enum": [
+        "5ire",
+        "Avalanche",
+        "Corda / IBM",
+        "Depository / regulator DLT",
+        "Ethereum",
+        "Hyperledger (other)",
+        "Hyperledger Fabric",
+        "IIT Kanpur NBP",
+        "Internet Computer (ICP)",
+        "NIC chains (Hyperledger-based)",
+        "Not disclosed",
+        "Oracle Blockchain",
+        "Polygon",
+        "Polygon Edge",
+        "Power Ledger",
+        "RBI CBDC infrastructure"
+       ]
+      }
+     },
+     {
+      "name": "platform_family",
+      "type": "string",
+      "description": "Platform family",
+      "constraints": {
+       "enum": [
+        "CBDC infrastructure",
+        "Ethereum / EVM chains",
+        "Hyperledger family",
+        "Not disclosed",
+        "Other enterprise DLT",
+        "Other public chains"
+       ]
+      }
+     },
+     {
+      "name": "chain_type",
+      "type": "string",
+      "description": "Chain type",
+      "constraints": {
+       "enum": [
+        "Permissioned",
+        "Public",
+        "Hybrid (private + public anchor)",
+        "CBDC (DLT not confirmed)",
+        "Not disclosed"
+       ]
+      }
+     },
+     {
+      "name": "tech_partner",
+      "type": "string",
+      "description": "Technology partner(s)"
+     },
+     {
+      "name": "implementation_model",
+      "type": "string",
+      "description": "Who built or runs the technology",
+      "constraints": {
+       "enum": [
+        "Government IT (NIC / C-DAC / NeGD)",
+        "State IT agency (in-house)",
+        "Private technology vendor",
+        "Academic / research partner",
+        "Banks, depositories or telecom operators",
+        "Government–industry consortium",
+        "International organisation",
+        "Not applicable (policy or judgment)",
+        "Not disclosed"
+       ]
+      }
+     },
+     {
+      "name": "is_nic_chain",
+      "type": "string",
+      "description": "Runs on an NIC chain (Yes/No)",
+      "constraints": {
+       "enum": [
+        "Yes",
+        "No"
+       ]
+      }
+     },
+     {
+      "name": "stage",
+      "type": "string",
+      "description": "Current stage",
+      "constraints": {
+       "required": true,
+       "enum": [
+        "Implemented",
+        "In progress",
+        "Proposed / Planned",
+        "Pilot completed",
+        "Unclear (no recent update)",
+        "Discontinued"
+       ]
+      }
+     },
+     {
+      "name": "stage_generic",
+      "type": "string",
+      "description": "Generic lifecycle stage (for cross-country comparison)"
+     },
+     {
+      "name": "status_text",
+      "type": "string",
+      "description": "Current status as reported"
+     },
+     {
+      "name": "status_as_of",
+      "type": "string",
+      "description": "Date of latest dated evidence",
+      "constraints": {
+       "pattern": "^\\d{4}(-\\d{2}(-\\d{2})?)?$"
+      }
+     },
+     {
+      "name": "start_year",
+      "type": "integer",
+      "description": "Start year"
+     },
+     {
+      "name": "date_announced",
+      "type": "string",
+      "description": "First announced",
+      "constraints": {
+       "pattern": "^\\d{4}(-\\d{2}(-\\d{2})?)?$"
+      }
+     },
+     {
+      "name": "date_pilot_started",
+      "type": "string",
+      "description": "Pilot started",
+      "constraints": {
+       "pattern": "^\\d{4}(-\\d{2}(-\\d{2})?)?$"
+      }
+     },
+     {
+      "name": "date_pilot_completed",
+      "type": "string",
+      "description": "Pilot completed",
+      "constraints": {
+       "pattern": "^\\d{4}(-\\d{2}(-\\d{2})?)?$"
+      }
+     },
+     {
+      "name": "date_live",
+      "type": "string",
+      "description": "First live (go-live or live-by date)",
+      "constraints": {
+       "pattern": "^\\d{4}(-\\d{2}(-\\d{2})?)?$"
+      }
+     },
+     {
+      "name": "date_scaled",
+      "type": "string",
+      "description": "Scaled",
+      "constraints": {
+       "pattern": "^\\d{4}(-\\d{2}(-\\d{2})?)?$"
+      }
+     },
+     {
+      "name": "date_discontinued",
+      "type": "string",
+      "description": "Discontinued",
+      "constraints": {
+       "pattern": "^\\d{4}(-\\d{2}(-\\d{2})?)?$"
+      }
+     },
+     {
+      "name": "date_latest_update",
+      "type": "string",
+      "description": "Latest dated evidence",
+      "constraints": {
+       "pattern": "^\\d{4}(-\\d{2}(-\\d{2})?)?$"
+      }
+     },
+     {
+      "name": "months_to_live",
+      "type": "integer",
+      "description": "Months from first announcement or pilot to go-live (month precision or better)"
+     },
+     {
+      "name": "years_since_update",
+      "type": "number",
+      "description": "Years from the latest evidence to the dataset date"
+     },
+     {
+      "name": "scale_text",
+      "type": "string",
+      "description": "Scale as reported"
+     },
+     {
+      "name": "scale_tier",
+      "type": "string",
+      "description": "Scale tier",
+      "constraints": {
+       "enum": [
+        "Large (≥10 lakh)",
+        "Medium (10,000–10 lakh)",
+        "Small (<10,000)",
+        "Not reported"
+       ]
+      }
+     },
+     {
+      "name": "nic_documents_latest",
+      "type": "integer",
+      "description": "Documents on NIC chains at the latest snapshot"
+     },
+     {
+      "name": "nic_verifications_latest",
+      "type": "integer",
+      "description": "Verifications on NIC chains at the latest snapshot"
+     },
+     {
+      "name": "nic_snapshot_date",
+      "type": "string",
+      "description": "Date of that NIC snapshot",
+      "constraints": {
+       "pattern": "^\\d{4}(-\\d{2}(-\\d{2})?)?$"
+      }
+     },
+     {
+      "name": "challenge_codes",
+      "type": "string",
+      "description": "Reported challenge codes (;-separated)"
+     },
+     {
+      "name": "toe_dimensions",
+      "type": "string",
+      "description": "TOE dimensions of reported challenges"
+     },
+     {
+      "name": "n_challenges",
+      "type": "integer",
+      "description": "Number of reported challenges"
+     },
+     {
+      "name": "evidence_score",
+      "type": "integer",
+      "description": "Evidence score 1-5"
+     },
+     {
+      "name": "evidence_label",
+      "type": "string",
+      "description": "Meaning of the evidence score"
+     },
+     {
+      "name": "n_sources",
+      "type": "integer",
+      "description": "Number of linked sources"
+     },
+     {
+      "name": "n_official_sources",
+      "type": "integer",
+      "description": "Number of linked official sources"
+     },
+     {
+      "name": "primary_source_url",
+      "type": "string",
+      "description": "URL of the strongest source"
+     },
+     {
+      "name": "verify_note",
+      "type": "string",
+      "description": "Caveats and verification flags"
+     },
+     {
+      "name": "related_projects",
+      "type": "string",
+      "description": "Related rows"
+     },
+     {
+      "name": "last_reviewed",
+      "type": "string",
+      "description": "Date last reviewed",
+      "constraints": {
+       "pattern": "^\\d{4}(-\\d{2}(-\\d{2})?)?$"
+      }
+     }
+    ],
+    "missingValues": [
+     ""
+    ],
+    "primaryKey": [
+     "project_id"
+    ],
+    "foreignKeys": [
+     {
+      "fields": "project_id",
+      "reference": {
+       "resource": "projects",
+       "fields": "project_id"
+      }
+     }
+    ]
+   }
+  },
   {
    "name": "jurisdictions",
    "path": "data/jurisdictions.csv",
@@ -105,6 +669,23 @@
       "constraints": {
        "pattern": "^\\d{4}(-\\d{2}(-\\d{2})?)?$"
       }
+     },
+     {
+      "name": "region",
+      "type": "string",
+      "description": "Region (MHA Zonal Councils / North Eastern Council; see vocabularies)",
+      "constraints": {
+       "enum": [
+        "Northern",
+        "Central",
+        "Eastern",
+        "Western",
+        "Southern",
+        "North-Eastern",
+        "Island UTs",
+        "National"
+       ]
+      }
      }
     ],
     "missingValues": [
@@ -158,7 +739,7 @@
      {
       "name": "level",
       "type": "string",
-      "description": "Coded tier of government",
+      "description": "Coded tier of government (v1.0 coding)",
       "constraints": {
        "enum": [
         "Agency / foundation",
@@ -180,6 +761,44 @@
       "name": "parent",
       "type": "string",
       "description": "Parent ministry or State"
+     },
+     {
+      "name": "body_category",
+      "type": "string",
+      "description": "Kind of public body (see vocabularies: body_category)",
+      "constraints": {
+       "required": true,
+       "enum": [
+        "Ministry / department",
+        "Government (whole of government)",
+        "IT / e-governance agency",
+        "Policy / planning body",
+        "PSU / state-owned company",
+        "Regulator / central bank",
+        "Court / judiciary",
+        "Election commission",
+        "Statutory board / authority",
+        "University / research institute",
+        "Society / foundation",
+        "District administration",
+        "Municipal body"
+       ]
+      }
+     },
+     {
+      "name": "government_level",
+      "type": "string",
+      "description": "Union, State, Union Territory, District or Municipal",
+      "constraints": {
+       "required": true,
+       "enum": [
+        "Union",
+        "State",
+        "Union Territory",
+        "District",
+        "Municipal"
+       ]
+      }
      }
     ],
     "missingValues": [
@@ -351,6 +970,25 @@
       "name": "tech_partner",
       "type": "string",
       "description": "Technology partner(s) as reported"
+     },
+     {
+      "name": "implementation_model",
+      "type": "string",
+      "description": "Who built or runs the technology (see vocabularies)",
+      "constraints": {
+       "required": true,
+       "enum": [
+        "Government IT (NIC / C-DAC / NeGD)",
+        "State IT agency (in-house)",
+        "Private technology vendor",
+        "Academic / research partner",
+        "Banks, depositories or telecom operators",
+        "Government–industry consortium",
+        "International organisation",
+        "Not applicable (policy or judgment)",
+        "Not disclosed"
+       ]
+      }
      },
      {
       "name": "started_text",

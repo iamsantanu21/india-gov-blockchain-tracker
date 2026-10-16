@@ -8,10 +8,47 @@
   "Pilot completed": 11,
   "Unclear (no recent update)": 27
  },
- "by_tier": {
-  "Union government": 20,
-  "State / UT government": 78,
-  "Other public body": 19
+ "by_government_level": {
+  "Union": 39,
+  "State": 65,
+  "Union Territory": 6,
+  "District": 4,
+  "Municipal": 3
+ },
+ "by_body_category": {
+  "IT / e-governance agency": 13,
+  "Ministry / department": 50,
+  "Court / judiciary": 4,
+  "Policy / planning body": 5,
+  "Regulator / central bank": 7,
+  "Election commission": 3,
+  "Society / foundation": 1,
+  "Statutory board / authority": 11,
+  "PSU / state-owned company": 6,
+  "University / research institute": 6,
+  "Government (whole of government)": 4,
+  "District administration": 4,
+  "Municipal body": 3
+ },
+ "by_region": {
+  "National": 39,
+  "Southern": 29,
+  "North-Eastern": 5,
+  "Eastern": 9,
+  "Central": 11,
+  "Western": 14,
+  "Northern": 10
+ },
+ "by_implementation_model": {
+  "Government IT (NIC / C-DAC / NeGD)": 43,
+  "Banks, depositories or telecom operators": 6,
+  "Not disclosed": 17,
+  "Academic / research partner": 8,
+  "Private technology vendor": 30,
+  "Not applicable (policy or judgment)": 2,
+  "International organisation": 2,
+  "Government\u2013industry consortium": 4,
+  "State IT agency (in-house)": 5
  },
  "pilot_to_production": 0.5682,
  "permissioned_share_of_disclosed": 0.7231,

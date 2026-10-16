@@ -1,6 +1,6 @@
 Creative Commons Attribution 4.0 International (CC BY 4.0)
 
-Copyright (c) 2026 Santanu Mondal
+Copyright (c) 2026 Santanu Mondal and T. Chithralekha
 
 You are free to share (copy and redistribute) and adapt (remix, transform and build upon) this dataset for any purpose, including commercially, provided you give appropriate credit, provide a link to the licence, and indicate if changes were made.
 

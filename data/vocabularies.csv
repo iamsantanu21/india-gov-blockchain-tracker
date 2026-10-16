@@ -72,22 +72,63 @@ use_case,Records & audit trail,Records & audit trail,,
 use_case,Supply-chain traceability,Supply-chain traceability,,
 use_case,Tokenisation / NFTs,Tokenisation / NFTs,,
 use_case,Welfare delivery,Welfare delivery,,
-platform,5ire,5ire,,
-platform,Avalanche,Avalanche,,
-platform,Corda / IBM,Corda / IBM,,
-platform,Depository / regulator DLT,Depository / regulator DLT,,
-platform,Ethereum,Ethereum,,
-platform,Hyperledger (other),Hyperledger (other),,
-platform,Hyperledger Fabric,Hyperledger Fabric,,
-platform,IIT Kanpur NBP,IIT Kanpur NBP,,
-platform,Internet Computer (ICP),Internet Computer (ICP),,
-platform,NIC chains (Hyperledger-based),NIC chains (Hyperledger-based),,
-platform,Not disclosed,Not disclosed,,
-platform,Oracle Blockchain,Oracle Blockchain,,
-platform,Polygon,Polygon,,
-platform,Polygon Edge,Polygon Edge,,
-platform,Power Ledger,Power Ledger,,
-platform,RBI CBDC infrastructure,RBI CBDC infrastructure,,
+platform,5ire,5ire,Normalised platform,Ethereum / EVM chains
+platform,Avalanche,Avalanche,Normalised platform,Other public chains
+platform,Corda / IBM,Corda / IBM,Normalised platform,Other enterprise DLT
+platform,Depository / regulator DLT,Depository / regulator DLT,Normalised platform,Other enterprise DLT
+platform,Ethereum,Ethereum,Normalised platform,Ethereum / EVM chains
+platform,Hyperledger (other),Hyperledger (other),Normalised platform,Hyperledger family
+platform,Hyperledger Fabric,Hyperledger Fabric,Normalised platform,Hyperledger family
+platform,IIT Kanpur NBP,IIT Kanpur NBP,Normalised platform,Other enterprise DLT
+platform,Internet Computer (ICP),Internet Computer (ICP),Normalised platform,Other public chains
+platform,NIC chains (Hyperledger-based),NIC chains (Hyperledger-based),Normalised platform,Hyperledger family
+platform,Not disclosed,Not disclosed,Normalised platform,Not disclosed
+platform,Oracle Blockchain,Oracle Blockchain,Normalised platform,Other enterprise DLT
+platform,Polygon,Polygon,Normalised platform,Ethereum / EVM chains
+platform,Polygon Edge,Polygon Edge,Normalised platform,Ethereum / EVM chains
+platform,Power Ledger,Power Ledger,Normalised platform,Other enterprise DLT
+platform,RBI CBDC infrastructure,RBI CBDC infrastructure,Normalised platform,CBDC infrastructure
+platform_family,CBDC infrastructure,CBDC infrastructure,Grouping of normalised platforms (see maps_to on platform),
+platform_family,Ethereum / EVM chains,Ethereum / EVM chains,Grouping of normalised platforms (see maps_to on platform),
+platform_family,Hyperledger family,Hyperledger family,Grouping of normalised platforms (see maps_to on platform),
+platform_family,Not disclosed,Not disclosed,Grouping of normalised platforms (see maps_to on platform),
+platform_family,Other enterprise DLT,Other enterprise DLT,Grouping of normalised platforms (see maps_to on platform),
+platform_family,Other public chains,Other public chains,Grouping of normalised platforms (see maps_to on platform),
+implementation_model,Government IT (NIC / C-DAC / NeGD),Government IT (NIC / C-DAC / NeGD),"Built or hosted by NIC, C-DAC, NeGD or MeitY platforms",
+implementation_model,State IT agency (in-house),State IT agency (in-house),"Built by a State IT agency, corporation or society, with no external vendor named",
+implementation_model,Private technology vendor,Private technology vendor,Built by a named private company or startup,
+implementation_model,Academic / research partner,Academic / research partner,"Built with an IIT, IIIT, IDRBT or a university academy",
+implementation_model,"Banks, depositories or telecom operators","Banks, depositories or telecom operators","Run by regulated entities (banks, depositories, telcos) under a regulator",
+implementation_model,Government–industry consortium,Government–industry consortium,"Several government, academic and industry partners with no single builder",
+implementation_model,International organisation,International organisation,UN agency or international standards body as the main partner,
+implementation_model,Not applicable (policy or judgment),Not applicable (policy or judgment),"A policy proposal or court judgment, not a system",
+implementation_model,Not disclosed,Not disclosed,No builder or partner reported,
+body_category,Ministry / department,Ministry / department,"Union ministry or department, State/UT department or directorate (incl. police)",
+body_category,Government (whole of government),Government (whole of government),A State government or Chief Minister's office acting as a whole,
+body_category,IT / e-governance agency,IT / e-governance agency,"NIC, C-DAC, STPI and State IT agencies or IT corporations",
+body_category,Policy / planning body,Policy / planning body,NITI Aayog and State transformation institutions,
+body_category,PSU / state-owned company,PSU / state-owned company,Public sector undertaking or other government-owned company,
+body_category,Regulator / central bank,Regulator / central bank,"RBI, SEBI, TRAI and RBI regulatory sandbox entities",
+body_category,Court / judiciary,Court / judiciary,"Supreme Court, High Courts and judiciary chains",
+body_category,Election commission,Election commission,Election Commission of India and State Election Commissions,
+body_category,Statutory board / authority,Statutory board / authority,"Statutory or autonomous boards, councils and development authorities",
+body_category,University / research institute,University / research institute,"Public universities, IITs, academies and government colleges",
+body_category,Society / foundation,Society / foundation,Government-backed societies and foundations,
+body_category,District administration,District administration,"District collectorate, district offices or district police",
+body_category,Municipal body,Municipal body,Municipal corporations and other urban local bodies,
+government_level,Union,Union,Union (central) government bodies and national public institutions,
+government_level,State,State,State government bodies,
+government_level,Union Territory,Union Territory,Union Territory administrations,
+government_level,District,District,District administrations,
+government_level,Municipal,Municipal,Urban local bodies,
+region,Northern,Northern,Northern Zonal Council members (Ladakh grouped here as it was carved out of Jammu and Kashmir),MHA Zonal Councils / North Eastern Council
+region,Central,Central,Central Zonal Council members,MHA Zonal Councils / North Eastern Council
+region,Eastern,Eastern,Eastern Zonal Council members,MHA Zonal Councils / North Eastern Council
+region,Western,Western,Western Zonal Council members (incl. Dadra and Nagar Haveli and Daman and Diu),MHA Zonal Councils / North Eastern Council
+region,Southern,Southern,Southern Zonal Council members (Telangana grouped here as it was carved out of Andhra Pradesh),MHA Zonal Councils / North Eastern Council
+region,North-Eastern,North-Eastern,"North Eastern Council members (incl. Sikkim, added in 2002)",MHA Zonal Councils / North Eastern Council
+region,Island UTs,Island UTs,Andaman and Nicobar Islands and Lakshadweep (not members of a zonal council),MHA Zonal Councils / North Eastern Council
+region,National,National,Union-level and national bodies,MHA Zonal Councils / North Eastern Council
 level,Agency / foundation,Agency / foundation,,
 level,Central institute,Central institute,,
 level,Central ministry / dept,Central ministry / dept,,

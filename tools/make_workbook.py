@@ -37,67 +37,71 @@ def table_sheet(wb, name, rows, widths=None, freeze='B2', stage_col=None, wrap=(
     return ws
 
 wb = Workbook(); ws = wb.active; ws.title = 'README'
-P = read('derived/projects_flat.csv')
-lines = [(META['title'], 14, True), (f'Version {META["version"]} · created {META["created"][:10]} · licence CC BY 4.0 · author: Santanu Mondal (ORCID 0009-0001-6243-1709)', 10, False), ('', 10, False),
+P = read('data/all_projects.csv')
+lines = [(META['title'], 14, True), (f'Version {META["version"]} · created {META["created"][:10]} · licence CC BY 4.0 · authors: Santanu Mondal (ORCID 0009-0001-6243-1709) and T. Chithralekha, Pondicherry University', 10, False), ('DOI (all versions, always the latest): https://doi.org/10.5281/zenodo.23136332 · this version 1.1.0: https://doi.org/10.5281/zenodo.23415599', 10, False), ('', 10, False),
  (META['description'], 10, False), ('', 10, False), ('Sheets', 11, True),
- ('Projects – one row per project (flat view: coded variables, evidence score, first dates of each stage event, months to live, challenge codes, source counts)', 10, False),
+ ('All projects – THE COMBINED TABLE: every project (Union, State, UT, district, municipal, PSU, regulator, court ...) in one row with level of government, body type, region, who built it, stage dates, NIC usage, challenges and evidence', 10, False),
  ('Summary – live counts by stage, tier, use-case and evidence score (formulas on the Projects sheet)', 10, False),
  ('Stage events – dated lifecycle events with sources (announced, pilot, live, scaled, latest update)', 10, False),
  ('Challenges – source-reported challenges, TOE-coded (see Vocabularies for TOE/DOI mapping)', 10, False),
  ('Sources / Project sources – all sources with type and evidence score, and which project each supports', 10, False),
  ('NIC snapshots – time series of the NIC blockchain platform by platform, application and department', 10, False),
  ('Jurisdictions – all 36 States/UTs with ISO 3166-2 and LGD codes, search results and live project counts', 10, False),
- ('Bodies, Vocabularies – implementing bodies; controlled lists and mappings (COFOG, TOE, DOI, stage)', 10, False),
+ ('Bodies, Vocabularies – implementing bodies; controlled lists and mappings (COFOG, TOE, DOI, stage, region, body type, platform family)', 10, False),
  ('Reliability, Your Coding Sheet – consistency check (kappa) and a blind sheet for a human second coder (kappa calculates automatically)', 10, False),
  ('RTI drafts, Policies, Literature, Context stats, Excluded, Changelog – supporting tables', 10, False), ('', 10, False),
  ('The CSV files and datapackage.json are the master copy. Edit them, run tools/build.py (validation) and tools/make_workbook.py to rebuild this workbook.', 10, False),
- ('Prepared with AI assistance (Claude, Anthropic); reviewed by the author. "Unclear" means no public update was found, not that a project failed.', 10, False)]
+ ('Prepared with AI assistance (Claude, Anthropic); reviewed by the authors. "Unclear" means no public update was found, not that a project failed.', 10, False)]
 for i, (t, sz, b) in enumerate(lines, 1):
     c = ws.cell(row=i, column=1, value=t); c.font = Font(name=F, size=sz, bold=b); c.alignment = Alignment(wrap_text=True, vertical='top')
 ws.column_dimensions['A'].width = 130
 for i in (4,): ws.row_dimensions[i].height = 44
 
-W = {'title': 40, 'description': 50, 'status_text': 34, 'scale_text': 30, 'verify_note': 36, 'evidence_basis': 38, 'body_name': 32, 'platform_reported': 24, 'tech_partner': 20, 'started_text': 20}
-pw = table_sheet(wb, 'Projects', P, W, freeze='C2', stage_col='stage', wrap=('title', 'description', 'status_text', 'verify_note', 'scale_text'))
+W = {'project_name': 40, 'description': 50, 'status_text': 34, 'scale_text': 30, 'verify_note': 36, 'implementing_body': 32, 'platform_reported': 24,
+     'tech_partner': 20, 'body_category': 26, 'implementation_model': 30, 'parent_ministry_or_state': 28, 'primary_source_url': 40, 'evidence_label': 34}
+pw = table_sheet(wb, 'All projects', P, W, freeze='C2', stage_col='stage', wrap=('project_name', 'description', 'status_text', 'verify_note', 'scale_text'))
 PH = list(P[0].keys()); col = lambda name: get_column_letter(PH.index(name) + 1); n = len(P) + 1
-rng = lambda name: f"Projects!${col(name)}$2:${col(name)}${n}"
+rng = lambda name: f"'All projects'!${col(name)}$2:${col(name)}${n}"
 A = f'{rng("record_status")},"active"'
 
 # Summary with formulas
 sm = wb.create_sheet('Summary', 1)
-sm['A1'] = 'Summary (live formulas on the Projects sheet; active records only)'; sm['A1'].font = Font(name=F, bold=True, size=13)
+sm['A1'] = "Summary (live formulas on the 'All projects' sheet; active records only)"; sm['A1'].font = Font(name=F, bold=True, size=13)
 r = 3
 def header(cells):
     global r
     for j, h in enumerate(cells, 1):
         c = sm.cell(row=r, column=j, value=h); c.font = HF; c.fill = HDR; c.border = BD
     r += 1
-tiers = VOC['tier']
+tiers = VOC['government_level']
+T = get_column_letter(len(tiers) + 2)          # Total column
 header(['Stage'] + tiers + ['Total', '% of all'])
 s0 = r
 for st in STAGES:
     sm.cell(row=r, column=1, value=st)
-    for j, t in enumerate(tiers, 2): sm.cell(row=r, column=j, value=f'=COUNTIFS({rng("stage")},$A{r},{rng("tier")},{get_column_letter(j)}$3,'+A+')')
+    for j, t in enumerate(tiers, 2): sm.cell(row=r, column=j, value=f'=COUNTIFS({rng("stage")},$A{r},{rng("government_level")},{get_column_letter(j)}$3,'+A+')')
     sm.cell(row=r, column=len(tiers) + 2, value=f'=SUM(B{r}:{get_column_letter(len(tiers) + 1)}{r})')
-    sm.cell(row=r, column=len(tiers) + 3, value=f'=IF($E${s0 + len(STAGES)}=0,0,E{r}/$E${s0 + len(STAGES)})').number_format = '0.0%'
+    sm.cell(row=r, column=len(tiers) + 3, value=f'=IF(${T}${s0 + len(STAGES)}=0,0,{T}{r}/${T}${s0 + len(STAGES)})').number_format = '0.0%'
     r += 1
 sm.cell(row=r, column=1, value='Total').font = Font(name=F, bold=True, size=10)
 for j in range(2, len(tiers) + 3): sm.cell(row=r, column=j, value=f'=SUM({get_column_letter(j)}{s0}:{get_column_letter(j)}{r - 1})')
-tot = f'$E${r}'; r += 2
+tot = f'${T}${r}'; r += 2
 impl, pil, unc = s0, s0 + STAGES.index('Pilot completed'), s0 + STAGES.index('Unclear (no recent update)')
 sm.cell(row=r, column=1, value='Pilot-to-production rate = Implemented ÷ (Implemented + Pilot completed + Unclear)').font = Font(name=F, bold=True, size=10)
-c = sm.cell(row=r, column=5, value=f'=IFERROR(E{impl}/(E{impl}+E{pil}+E{unc}),0)'); c.number_format = '0.0%'; r += 1
+c = sm.cell(row=r, column=2, value=f'=IFERROR({T}{impl}/({T}{impl}+{T}{pil}+{T}{unc}),0)'); c.number_format = '0.0%'; r += 1
 sm.cell(row=r, column=1, value='Share backed by an official source (evidence score 4–5)').font = Font(name=F, bold=True, size=10)
-c = sm.cell(row=r, column=5, value=f'=COUNTIFS({rng("evidence_score")},">=4",'+A+f')/{tot}'); c.number_format = '0.0%'; r += 1
+c = sm.cell(row=r, column=2, value=f'=COUNTIFS({rng("evidence_score")},">=4",'+A+f')/{tot}'); c.number_format = '0.0%'; r += 1
 sm.cell(row=r, column=1, value='Mean evidence score').font = Font(name=F, bold=True, size=10)
-c = sm.cell(row=r, column=5, value=f'=AVERAGEIFS({rng("evidence_score")},'+A+')'); c.number_format = '0.00'; r += 2
-header(['Use-case'] + ['Implemented', 'All', 'Implemented %'])
-for uc in VOC['use_case']:
-    sm.cell(row=r, column=1, value=uc)
-    sm.cell(row=r, column=2, value=f'=COUNTIFS({rng("use_case")},$A{r},{rng("stage")},"Implemented",'+A+')')
-    sm.cell(row=r, column=3, value=f'=COUNTIFS({rng("use_case")},$A{r},'+A+')')
-    sm.cell(row=r, column=4, value=f'=IF(C{r}=0,"",B{r}/C{r})').number_format = '0%'; r += 1
-r += 1
+c = sm.cell(row=r, column=2, value=f'=AVERAGEIFS({rng("evidence_score")},'+A+')'); c.number_format = '0.00'; r += 2
+for title, colname, voc in [('Type of public body', 'body_category', 'body_category'), ('Built by', 'implementation_model', 'implementation_model'),
+                            ('Region', 'region', 'region'), ('Use-case', 'use_case', 'use_case')]:
+    header([title, 'Implemented', 'All', 'Implemented %'])
+    for v in VOC[voc]:
+        sm.cell(row=r, column=1, value=v)
+        sm.cell(row=r, column=2, value=f'=COUNTIFS({rng(colname)},$A{r},{rng("stage")},"Implemented",'+A+')')
+        sm.cell(row=r, column=3, value=f'=COUNTIFS({rng(colname)},$A{r},'+A+')')
+        sm.cell(row=r, column=4, value=f'=IF(C{r}=0,"",B{r}/C{r})').number_format = '0%'; r += 1
+    r += 1
 header(['Evidence score', 'Projects'])
 for k in range(5, 0, -1):
     sm.cell(row=r, column=1, value=k); sm.cell(row=r, column=2, value=f'=COUNTIFS({rng("evidence_score")},$A{r},'+A+')'); r += 1
@@ -105,7 +109,7 @@ for row in sm.iter_rows(min_row=3):
     for c in row:
         if c.value is not None and c.fill != HDR and not c.font.bold: c.font = BF
         if c.value is not None: c.border = BD
-sm.column_dimensions['A'].width = 34
+sm.column_dimensions['A'].width = 44
 for L in 'BCDEFG': sm.column_dimensions[L].width = 22
 
 table_sheet(wb, 'Stage events', read('data/stage_events.csv'), {'evidence': 70, 'recorded_by': 26}, wrap=('evidence',))
@@ -151,7 +155,7 @@ for j, h in enumerate(H2, 1):
 YF = PatternFill('solid', fgColor='FFF2CC')
 for k, sid in enumerate(SID):
     rr = k + 5; p = PM[sid]
-    for j, v in enumerate([sid, p['body_name'], p['title'], p['description'], p['platform_reported'], p['status_text'], p['scale_text']], 1):
+    for j, v in enumerate([sid, p['implementing_body'], p['project_name'], p['description'], p['platform_reported'], p['status_text'], p['scale_text']], 1):
         c = yc.cell(row=rr, column=j, value=v); c.font = BF; c.border = BD; c.alignment = Alignment(wrap_text=True, vertical='top')
     for j in range(8, 13): c = yc.cell(row=rr, column=j); c.fill = YF; c.border = BD
 last = 4 + len(SID)

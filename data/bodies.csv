@@ -1,111 +1,111 @@
-body_id,name,jurisdiction_id,body_type,level,parent
-ORG001,MeitY / NIC,IN,Ministry,Central ministry / dept,Ministry of Electronics & IT
-ORG002,MeitY,IN,Ministry,Central ministry / dept,Ministry of Electronics & IT
-ORG003,MeitY with C-DAC,IN,Ministry,Central ministry / dept,Ministry of Electronics & IT
-ORG004,NIC – Centre of Excellence in Blockchain (Bengaluru),IN,Attached office,Central ministry / dept,Ministry of Electronics & IT
-ORG005,NIC,IN,Attached office,Central ministry / dept,Ministry of Electronics & IT
-ORG006,NIC with Supreme Court of India,IN,Constitutional court,Judiciary,Ministry of Law & Justice / Judiciary
-ORG007,NIC – ICJS with High Court of Karnataka,IN,Ministry + High Court,Judiciary,Ministry of Home Affairs / Judiciary
-ORG008,Dept of Consumer Affairs – Legal Metrology,IN,Ministry,Central ministry / dept,"Ministry of Consumer Affairs, Food & PD"
-ORG009,Ministry of Rural Development – Rural Skills Division,IN,Ministry,Central ministry / dept,Ministry of Rural Development
-ORG010,"Dept of Food & Public Distribution with RBI, PFMS, Canara Bank",IN,Ministry,Central ministry / dept,"Ministry of Consumer Affairs, Food & PD"
-ORG011,Ministry of Corporate Affairs,IN,Ministry,Central ministry / dept,Ministry of Corporate Affairs
-ORG012,Ministry of Textiles – Cotton Corporation of India & TEXPROCIL,IN,Ministry,Central ministry / dept,Ministry of Textiles
-ORG013,Ministry of Women & Child Development,IN,Ministry,Central ministry / dept,Ministry of Women & Child Development
-ORG014,Ministry of Railways with IIT Kharagpur & IIT Bhubaneswar,IN,Ministry,Central ministry / dept,Ministry of Railways
-ORG015,NITI Aayog,IN,Policy think tank,Central ministry / dept,NITI Aayog
-ORG016,Revenue Dept / CRDA,IN-AP,State department,State,Andhra Pradesh
-ORG017,Transport Dept,IN-AP,State department,State,Andhra Pradesh
-ORG018,Civil Supplies / Revenue Dept,IN-AP,State department,State,Andhra Pradesh
-ORG019,Water Resources Dept,IN-AP,State department,State,Andhra Pradesh
-ORG020,Chief Minister / RTGS,IN-AP,State government,State,Andhra Pradesh
-ORG021,Revenue & Survey Depts with NIC AP & NIC CoE,IN-AP,State department,State,Andhra Pradesh
-ORG022,Revenue Dept – Mee Bhumi Mee Hakku,IN-AP,State department,State,Andhra Pradesh
-ORG023,Revenue & Disaster Management Dept with Dept of Land Resources,IN-AS,State department,State,Assam
-ORG024,Bihar State Election Commission,IN-BR,State body,State,Bihar
-ORG025,CHiPS (IT agency),IN-CG,State agency,State,Chhattisgarh
-ORG026,"Office of Land Records, Dantewada district",IN-CG,District,District,Chhattisgarh
-ORG027,"Indira Gandhi Krishi Vishwavidyalaya, Raipur (state agri university)",IN-CG,State university,State,Chhattisgarh
-ORG028,"Dept of IT, Electronics & Communication",IN-GA,State department,State,Goa
-ORG029,Goa Police (Crime Branch),IN-GA,State department,State,Goa
-ORG030,Revenue Department,IN-GJ,State department,State,Gujarat
-ORG031,Govt of Gujarat,IN-GJ,State government,State,Gujarat
-ORG032,Board of School Education Haryana (BSEH),IN-HR,State board,State,Haryana
-ORG033,Govt of Haryana with STPI (MeitY),IN-HR,State + central,State,Haryana
-ORG034,NITI Aayog with Govt of Himachal Pradesh,IN-HP,State + central,State,Himachal Pradesh
-ORG035,Directorate of Agriculture,IN-JH,State department,State,Jharkhand
-ORG036,Department of Revenue,IN-JH,State department,State,Jharkhand
-ORG037,Karnataka State Medical Supplies Corporation Ltd (formerly KSDLWS),IN-KA,State PSU,State,Karnataka
-ORG038,Directorate of Economics & Statistics,IN-KA,State department,State,Karnataka
-ORG039,Revenue Department,IN-KA,State department,State,Karnataka
-ORG040,Karnataka School Examination and Assessment Board,IN-KA,State board,State,Karnataka
-ORG041,Revenue Department (Bhoomi land records),IN-KA,State department,State,Karnataka
-ORG042,City Corporations & Town Municipal Councils,IN-KA,Municipal body,Municipal body,Karnataka
-ORG043,Centre for Smart Governance (CSG),IN-KA,State agency,State,Karnataka
-ORG044,Centre for Smart Governance (CSG) with IIT Kanpur's CRUBN,IN-KA,State agency,State,Karnataka
-ORG045,Kerala Blockchain Academy (Digital University Kerala),IN-KL,State institution,State,Kerala
-ORG046,Kerala Blockchain Academy,IN-KL,State institution,State,Kerala
-ORG047,Govt of Kerala,IN-KL,State government,State,Kerala
-ORG048,Registration Department,IN-KL,State department,State,Kerala
-ORG049,MP State Electronics Development Corporation (MPSEDC),IN-MP,State PSU,State,Madhya Pradesh
-ORG050,MPSEDC,IN-MP,State PSU,State,Madhya Pradesh
-ORG051,CRISP Bhopal (state society),IN-MP,State society,State,Madhya Pradesh
-ORG052,Maharashtra IT Directorate,IN-MH,State department,State,Maharashtra
-ORG053,Gadchiroli district admin (Etapalli),IN-MH,District,District,Maharashtra
-ORG054,Maharashtra State Board of Skill Development,IN-MH,State board,State,Maharashtra
-ORG055,Maharashtra University of Health Sciences (MUHS),IN-MH,State university,State,Maharashtra
-ORG056,Maharashtra State Board of Nursing & Paramedical Education,IN-MH,State board,State,Maharashtra
-ORG057,General Administration Department,IN-MH,State department,State,Maharashtra
-ORG058,Amravati city administration / revenue depts,IN-MH,Municipal body,Municipal body,Maharashtra
-ORG059,"Dept of Disaster Management, Relief & Rehabilitation (DMRR)",IN-MH,State department,State,Maharashtra
-ORG060,Maharashtra Institution for Transformation (MITRA),IN-MH,State agency,State,Maharashtra
-ORG061,Dharashiv district administration,IN-MH,District,District,Maharashtra
-ORG062,Department of Education,IN-MN,State department,State,Manipur
-ORG063,"Council of Higher Secondary Education, Manipur",IN-MN,State board,State,Manipur
-ORG064,IT & Communications Dept with NeGD,IN-ML,State department,State,Meghalaya
-ORG065,Odisha Computer Application Centre (OCAC),IN-OD,State agency,State,Odisha
-ORG066,Women & Child Development Dept with UNFPA,IN-OD,State department,State,Odisha
-ORG067,"Handloom, Textiles & Construction Depts",IN-OD,State department,State,Odisha
-ORG068,Dept of Agriculture & Farmers Welfare with PAGREXCO,IN-PB,State department,State,Punjab
-ORG069,Dept of IT & Communication with RVPN & IIT Kanpur,IN-RJ,State department,State,Rajasthan
-ORG070,Govt of Rajasthan,IN-RJ,State government,State,Rajasthan
-ORG071,TNeGA (IT Dept),IN-TN,State agency,State,Tamil Nadu
-ORG072,TN Police – Idol Wing CID,IN-TN,State department,State,Tamil Nadu
-ORG073,ITE&C Dept,IN-TS,State department,State,Telangana
-ORG074,Registration & Stamps Dept with MeitY & C-DAC Hyderabad,IN-TS,State department,State,Telangana
-ORG075,Telangana State Election Commission with C-DAC,IN-TS,State body,State,Telangana
-ORG076,School Education Dept,IN-TS,State department,State,Telangana
-ORG077,IT Department with NIC Blockchain CoE,IN-TR,State department,State,Tripura
-ORG078,Revenue Department,IN-UP,State department,State,Uttar Pradesh
-ORG079,Firozabad Police (UP Police),IN-UP,District,District,Uttar Pradesh
-ORG080,"UPPCL, UPNEDA, UPERC",IN-UP,State PSUs / regulator,State,Uttar Pradesh
-ORG081,UPERC with PVVNL,IN-UP,State regulator / PSU,State,Uttar Pradesh
-ORG082,Govt medical colleges (Medical Education),IN-UK,State department,State,Uttarakhand
-ORG083,"Dept of IT, Good Governance & Science and Technology",IN-UK,State department,State,Uttarakhand
-ORG084,New Town Kolkata Development Authority (NKDA),IN-WB,Development authority,State,West Bengal
-ORG085,Bankura & Durgapur Municipal Corporations,IN-WB,Municipal body,Municipal body,West Bengal
-ORG086,Delhi Forensic Science Laboratory with NIC,IN-DL,UT department,Union Territory,Delhi
-ORG087,Revenue Department,IN-DL,UT department,Union Territory,Delhi
-ORG088,J&K Government with C-DAC Mumbai,IN-JK,UT department,Union Territory,Jammu and Kashmir
-ORG089,Revenue Department,IN-JK,UT department,Union Territory,Jammu and Kashmir
-ORG090,Revenue Department,IN-PY,UT department,Union Territory,Puducherry
-ORG091,Dept of Civil Supplies & Consumer Affairs,IN-PY,UT department,Union Territory,Puducherry
-ORG092,Reserve Bank of India,IN,Regulator,Regulator / central bank,Central bank
-ORG093,"RBI with SBI, HDFC Bank, ICICI Bank",IN,Regulator,Regulator / central bank,Central bank
-ORG094,RBI Regulatory Sandbox – IBDIC (bank-owned),IN,Regulator,Regulator / central bank,Central bank
-ORG095,RBI – IDRBT,IN,Regulator,Regulator / central bank,Central bank (research arm)
-ORG096,SEBI with NSDL & CDSL,IN,Regulator,Regulator / central bank,Capital markets regulator
-ORG097,TRAI,IN,Regulator,Regulator / central bank,Telecom regulator
-ORG098,Election Commission of India with NIC (and IIT Madras research),IN,Constitutional body,Constitutional body,Constitutional body
-ORG099,Supreme Court of India – e-Committee,IN,Constitutional court,Judiciary,Judiciary
-ORG100,Supreme Court of India (judgment),IN,Constitutional court,Judiciary,Judiciary
-ORG101,RBI with depositories – Unified Markets Interface (UMI),IN,Regulator,Regulator / central bank,Central bank
-ORG102,DigiYatra Foundation (Ministry of Civil Aviation; AAI stakeholder),IN,Govt-backed foundation,Agency / foundation,Ministry of Civil Aviation
-ORG103,NDDB / Mother Dairy with GS1 India,IN,Statutory board & subsidiary,Statutory / autonomous body,Ministry of Cooperation / Dept of Animal Husbandry & Dairying
-ORG104,IRCTC (Ministry of Railways PSU),IN,PSU,PSU,Ministry of Railways
-ORG105,Central Board of Secondary Education (CBSE),IN,Autonomous board,Statutory / autonomous body,Ministry of Education
-ORG106,IIT Kanpur – National Blockchain Project (NSCS-coordinated),IN,Central institute,Central institute,Ministry of Education / NSCS
-ORG107,Coffee Board of India,IN,Statutory board,Statutory / autonomous body,Ministry of Commerce & Industry
-ORG108,Spices Board with UNDP & GS1 India,IN,Statutory board,Statutory / autonomous body,Ministry of Commerce & Industry
-ORG109,UIDAI; SPMCIL; Cotton Corporation of India; Forensic Science Laboratory,IN,PSU / statutory bodies,PSU,Various ministries
-ORG110,Govt financial agencies (eStamp),IN,Agency,Agency / foundation,Ministry of Finance
+body_id,name,jurisdiction_id,body_type,level,parent,body_category,government_level
+ORG001,MeitY / NIC,IN,Ministry,Central ministry / dept,Ministry of Electronics & IT,IT / e-governance agency,Union
+ORG002,MeitY,IN,Ministry,Central ministry / dept,Ministry of Electronics & IT,Ministry / department,Union
+ORG003,MeitY with C-DAC,IN,Ministry,Central ministry / dept,Ministry of Electronics & IT,Ministry / department,Union
+ORG004,NIC – Centre of Excellence in Blockchain (Bengaluru),IN,Attached office,Central ministry / dept,Ministry of Electronics & IT,IT / e-governance agency,Union
+ORG005,NIC,IN,Attached office,Central ministry / dept,Ministry of Electronics & IT,IT / e-governance agency,Union
+ORG006,NIC with Supreme Court of India,IN,Constitutional court,Judiciary,Ministry of Law & Justice / Judiciary,Court / judiciary,Union
+ORG007,NIC – ICJS with High Court of Karnataka,IN,Ministry + High Court,Judiciary,Ministry of Home Affairs / Judiciary,Court / judiciary,Union
+ORG008,Dept of Consumer Affairs – Legal Metrology,IN,Ministry,Central ministry / dept,"Ministry of Consumer Affairs, Food & PD",Ministry / department,Union
+ORG009,Ministry of Rural Development – Rural Skills Division,IN,Ministry,Central ministry / dept,Ministry of Rural Development,Ministry / department,Union
+ORG010,"Dept of Food & Public Distribution with RBI, PFMS, Canara Bank",IN,Ministry,Central ministry / dept,"Ministry of Consumer Affairs, Food & PD",Ministry / department,Union
+ORG011,Ministry of Corporate Affairs,IN,Ministry,Central ministry / dept,Ministry of Corporate Affairs,Ministry / department,Union
+ORG012,Ministry of Textiles – Cotton Corporation of India & TEXPROCIL,IN,Ministry,Central ministry / dept,Ministry of Textiles,Ministry / department,Union
+ORG013,Ministry of Women & Child Development,IN,Ministry,Central ministry / dept,Ministry of Women & Child Development,Ministry / department,Union
+ORG014,Ministry of Railways with IIT Kharagpur & IIT Bhubaneswar,IN,Ministry,Central ministry / dept,Ministry of Railways,Ministry / department,Union
+ORG015,NITI Aayog,IN,Policy think tank,Central ministry / dept,NITI Aayog,Policy / planning body,Union
+ORG016,Revenue Dept / CRDA,IN-AP,State department,State,Andhra Pradesh,Ministry / department,State
+ORG017,Transport Dept,IN-AP,State department,State,Andhra Pradesh,Ministry / department,State
+ORG018,Civil Supplies / Revenue Dept,IN-AP,State department,State,Andhra Pradesh,Ministry / department,State
+ORG019,Water Resources Dept,IN-AP,State department,State,Andhra Pradesh,Ministry / department,State
+ORG020,Chief Minister / RTGS,IN-AP,State government,State,Andhra Pradesh,Government (whole of government),State
+ORG021,Revenue & Survey Depts with NIC AP & NIC CoE,IN-AP,State department,State,Andhra Pradesh,Ministry / department,State
+ORG022,Revenue Dept – Mee Bhumi Mee Hakku,IN-AP,State department,State,Andhra Pradesh,Ministry / department,State
+ORG023,Revenue & Disaster Management Dept with Dept of Land Resources,IN-AS,State department,State,Assam,Ministry / department,State
+ORG024,Bihar State Election Commission,IN-BR,State body,State,Bihar,Election commission,State
+ORG025,CHiPS (IT agency),IN-CG,State agency,State,Chhattisgarh,IT / e-governance agency,State
+ORG026,"Office of Land Records, Dantewada district",IN-CG,District,District,Chhattisgarh,District administration,District
+ORG027,"Indira Gandhi Krishi Vishwavidyalaya, Raipur (state agri university)",IN-CG,State university,State,Chhattisgarh,University / research institute,State
+ORG028,"Dept of IT, Electronics & Communication",IN-GA,State department,State,Goa,Ministry / department,State
+ORG029,Goa Police (Crime Branch),IN-GA,State department,State,Goa,Ministry / department,State
+ORG030,Revenue Department,IN-GJ,State department,State,Gujarat,Ministry / department,State
+ORG031,Govt of Gujarat,IN-GJ,State government,State,Gujarat,Government (whole of government),State
+ORG032,Board of School Education Haryana (BSEH),IN-HR,State board,State,Haryana,Statutory board / authority,State
+ORG033,Govt of Haryana with STPI (MeitY),IN-HR,State + central,State,Haryana,IT / e-governance agency,State
+ORG034,NITI Aayog with Govt of Himachal Pradesh,IN-HP,State + central,State,Himachal Pradesh,Policy / planning body,State
+ORG035,Directorate of Agriculture,IN-JH,State department,State,Jharkhand,Ministry / department,State
+ORG036,Department of Revenue,IN-JH,State department,State,Jharkhand,Ministry / department,State
+ORG037,Karnataka State Medical Supplies Corporation Ltd (formerly KSDLWS),IN-KA,State PSU,State,Karnataka,PSU / state-owned company,State
+ORG038,Directorate of Economics & Statistics,IN-KA,State department,State,Karnataka,Ministry / department,State
+ORG039,Revenue Department,IN-KA,State department,State,Karnataka,Ministry / department,State
+ORG040,Karnataka School Examination and Assessment Board,IN-KA,State board,State,Karnataka,Statutory board / authority,State
+ORG041,Revenue Department (Bhoomi land records),IN-KA,State department,State,Karnataka,Ministry / department,State
+ORG042,City Corporations & Town Municipal Councils,IN-KA,Municipal body,Municipal body,Karnataka,Municipal body,Municipal
+ORG043,Centre for Smart Governance (CSG),IN-KA,State agency,State,Karnataka,IT / e-governance agency,State
+ORG044,Centre for Smart Governance (CSG) with IIT Kanpur's CRUBN,IN-KA,State agency,State,Karnataka,IT / e-governance agency,State
+ORG045,Kerala Blockchain Academy (Digital University Kerala),IN-KL,State institution,State,Kerala,University / research institute,State
+ORG046,Kerala Blockchain Academy,IN-KL,State institution,State,Kerala,University / research institute,State
+ORG047,Govt of Kerala,IN-KL,State government,State,Kerala,Government (whole of government),State
+ORG048,Registration Department,IN-KL,State department,State,Kerala,Ministry / department,State
+ORG049,MP State Electronics Development Corporation (MPSEDC),IN-MP,State PSU,State,Madhya Pradesh,IT / e-governance agency,State
+ORG050,MPSEDC,IN-MP,State PSU,State,Madhya Pradesh,IT / e-governance agency,State
+ORG051,CRISP Bhopal (state society),IN-MP,State society,State,Madhya Pradesh,Society / foundation,State
+ORG052,Maharashtra IT Directorate,IN-MH,State department,State,Maharashtra,Ministry / department,State
+ORG053,Gadchiroli district admin (Etapalli),IN-MH,District,District,Maharashtra,District administration,District
+ORG054,Maharashtra State Board of Skill Development,IN-MH,State board,State,Maharashtra,Statutory board / authority,State
+ORG055,Maharashtra University of Health Sciences (MUHS),IN-MH,State university,State,Maharashtra,University / research institute,State
+ORG056,Maharashtra State Board of Nursing & Paramedical Education,IN-MH,State board,State,Maharashtra,Statutory board / authority,State
+ORG057,General Administration Department,IN-MH,State department,State,Maharashtra,Ministry / department,State
+ORG058,Amravati city administration / revenue depts,IN-MH,Municipal body,Municipal body,Maharashtra,Municipal body,Municipal
+ORG059,"Dept of Disaster Management, Relief & Rehabilitation (DMRR)",IN-MH,State department,State,Maharashtra,Ministry / department,State
+ORG060,Maharashtra Institution for Transformation (MITRA),IN-MH,State agency,State,Maharashtra,Policy / planning body,State
+ORG061,Dharashiv district administration,IN-MH,District,District,Maharashtra,District administration,District
+ORG062,Department of Education,IN-MN,State department,State,Manipur,Ministry / department,State
+ORG063,"Council of Higher Secondary Education, Manipur",IN-MN,State board,State,Manipur,Statutory board / authority,State
+ORG064,IT & Communications Dept with NeGD,IN-ML,State department,State,Meghalaya,Ministry / department,State
+ORG065,Odisha Computer Application Centre (OCAC),IN-OD,State agency,State,Odisha,IT / e-governance agency,State
+ORG066,Women & Child Development Dept with UNFPA,IN-OD,State department,State,Odisha,Ministry / department,State
+ORG067,"Handloom, Textiles & Construction Depts",IN-OD,State department,State,Odisha,Ministry / department,State
+ORG068,Dept of Agriculture & Farmers Welfare with PAGREXCO,IN-PB,State department,State,Punjab,Ministry / department,State
+ORG069,Dept of IT & Communication with RVPN & IIT Kanpur,IN-RJ,State department,State,Rajasthan,Ministry / department,State
+ORG070,Govt of Rajasthan,IN-RJ,State government,State,Rajasthan,Government (whole of government),State
+ORG071,TNeGA (IT Dept),IN-TN,State agency,State,Tamil Nadu,IT / e-governance agency,State
+ORG072,TN Police – Idol Wing CID,IN-TN,State department,State,Tamil Nadu,Ministry / department,State
+ORG073,ITE&C Dept,IN-TS,State department,State,Telangana,Ministry / department,State
+ORG074,Registration & Stamps Dept with MeitY & C-DAC Hyderabad,IN-TS,State department,State,Telangana,Ministry / department,State
+ORG075,Telangana State Election Commission with C-DAC,IN-TS,State body,State,Telangana,Election commission,State
+ORG076,School Education Dept,IN-TS,State department,State,Telangana,Ministry / department,State
+ORG077,IT Department with NIC Blockchain CoE,IN-TR,State department,State,Tripura,Ministry / department,State
+ORG078,Revenue Department,IN-UP,State department,State,Uttar Pradesh,Ministry / department,State
+ORG079,Firozabad Police (UP Police),IN-UP,District,District,Uttar Pradesh,District administration,District
+ORG080,"UPPCL, UPNEDA, UPERC",IN-UP,State PSUs / regulator,State,Uttar Pradesh,PSU / state-owned company,State
+ORG081,UPERC with PVVNL,IN-UP,State regulator / PSU,State,Uttar Pradesh,PSU / state-owned company,State
+ORG082,Govt medical colleges (Medical Education),IN-UK,State department,State,Uttarakhand,University / research institute,State
+ORG083,"Dept of IT, Good Governance & Science and Technology",IN-UK,State department,State,Uttarakhand,Ministry / department,State
+ORG084,New Town Kolkata Development Authority (NKDA),IN-WB,Development authority,State,West Bengal,Statutory board / authority,State
+ORG085,Bankura & Durgapur Municipal Corporations,IN-WB,Municipal body,Municipal body,West Bengal,Municipal body,Municipal
+ORG086,Delhi Forensic Science Laboratory with NIC,IN-DL,UT department,Union Territory,Delhi,Ministry / department,Union Territory
+ORG087,Revenue Department,IN-DL,UT department,Union Territory,Delhi,Ministry / department,Union Territory
+ORG088,J&K Government with C-DAC Mumbai,IN-JK,UT department,Union Territory,Jammu and Kashmir,Ministry / department,Union Territory
+ORG089,Revenue Department,IN-JK,UT department,Union Territory,Jammu and Kashmir,Ministry / department,Union Territory
+ORG090,Revenue Department,IN-PY,UT department,Union Territory,Puducherry,Ministry / department,Union Territory
+ORG091,Dept of Civil Supplies & Consumer Affairs,IN-PY,UT department,Union Territory,Puducherry,Ministry / department,Union Territory
+ORG092,Reserve Bank of India,IN,Regulator,Regulator / central bank,Central bank,Regulator / central bank,Union
+ORG093,"RBI with SBI, HDFC Bank, ICICI Bank",IN,Regulator,Regulator / central bank,Central bank,Regulator / central bank,Union
+ORG094,RBI Regulatory Sandbox – IBDIC (bank-owned),IN,Regulator,Regulator / central bank,Central bank,Regulator / central bank,Union
+ORG095,RBI – IDRBT,IN,Regulator,Regulator / central bank,Central bank (research arm),Regulator / central bank,Union
+ORG096,SEBI with NSDL & CDSL,IN,Regulator,Regulator / central bank,Capital markets regulator,Regulator / central bank,Union
+ORG097,TRAI,IN,Regulator,Regulator / central bank,Telecom regulator,Regulator / central bank,Union
+ORG098,Election Commission of India with NIC (and IIT Madras research),IN,Constitutional body,Constitutional body,Constitutional body,Election commission,Union
+ORG099,Supreme Court of India – e-Committee,IN,Constitutional court,Judiciary,Judiciary,Court / judiciary,Union
+ORG100,Supreme Court of India (judgment),IN,Constitutional court,Judiciary,Judiciary,Court / judiciary,Union
+ORG101,RBI with depositories – Unified Markets Interface (UMI),IN,Regulator,Regulator / central bank,Central bank,Regulator / central bank,Union
+ORG102,DigiYatra Foundation (Ministry of Civil Aviation; AAI stakeholder),IN,Govt-backed foundation,Agency / foundation,Ministry of Civil Aviation,Society / foundation,Union
+ORG103,NDDB / Mother Dairy with GS1 India,IN,Statutory board & subsidiary,Statutory / autonomous body,Ministry of Cooperation / Dept of Animal Husbandry & Dairying,Statutory board / authority,Union
+ORG104,IRCTC (Ministry of Railways PSU),IN,PSU,PSU,Ministry of Railways,PSU / state-owned company,Union
+ORG105,Central Board of Secondary Education (CBSE),IN,Autonomous board,Statutory / autonomous body,Ministry of Education,Statutory board / authority,Union
+ORG106,IIT Kanpur – National Blockchain Project (NSCS-coordinated),IN,Central institute,Central institute,Ministry of Education / NSCS,University / research institute,Union
+ORG107,Coffee Board of India,IN,Statutory board,Statutory / autonomous body,Ministry of Commerce & Industry,Statutory board / authority,Union
+ORG108,Spices Board with UNDP & GS1 India,IN,Statutory board,Statutory / autonomous body,Ministry of Commerce & Industry,Statutory board / authority,Union
+ORG109,UIDAI; SPMCIL; Cotton Corporation of India; Forensic Science Laboratory,IN,PSU / statutory bodies,PSU,Various ministries,PSU / state-owned company,Union
+ORG110,Govt financial agencies (eStamp),IN,Agency,Agency / foundation,Ministry of Finance,PSU / state-owned company,Union
