@@ -294,8 +294,15 @@ dialog#detail::backdrop{background:rgba(14,11,40,.55)}
 .badge.o{background:color-mix(in srgb, var(--st-impl) 16%, transparent);color:var(--good)}
 .endband{margin-top:48px;background:var(--hero);color:var(--hero-text-2);padding-top:30px;padding-bottom:max(30px, env(safe-area-inset-bottom, 0px));font-size:.84rem;position:relative;overflow:hidden}
 .endband::before{content:"";position:absolute;inset:0;background:radial-gradient(520px 260px at 85% 0%, rgba(122,98,255,.20), transparent 70%);pointer-events:none}
-.endband .wrap{position:relative;display:grid;gap:16px}
-.endband #foot a{color:var(--hero-text)}
+.endband .wrap{position:relative;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:24px 56px;align-items:start}
+@media (max-width:760px){.endband .wrap{grid-template-columns:minmax(0,1fr)}}
+.endband a{color:var(--hero-text);text-underline-offset:2px}
+.endband a:hover{color:#fff}
+.credits{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:8px 18px;margin:0}
+.credits dt{color:var(--hero-muted);font-size:.78rem;padding-top:1px}
+.credits dd{margin:0;color:var(--hero-text-2)}
+.dev{display:grid;gap:6px;padding-left:20px;border-left:1px solid var(--hero-line)}
+@media (max-width:760px){.dev{padding-left:0;border-left:0;padding-top:18px;border-top:1px solid var(--hero-line)}}
 .loading{padding:40px 0;color:var(--text-2)}
 @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
 </style>
@@ -423,7 +430,15 @@ dialog#detail::backdrop{background:rgba(14,11,40,.55)}
 
 <footer class="endband gut">
   <div class="wrap">
-    <p id="foot"></p>
+    <dl class="credits">
+      <dt>Data</dt><dd><a href="https://iamsantanu21.github.io/" target="_blank" rel="noopener">Santanu Mondal</a> and <a href="https://www.pondiuni.edu.in/faculy_profiles/dr-t-chithralekha/" target="_blank" rel="noopener">Dr. T. Chithralekha</a></dd>
+      <dt>Licence</dt><dd><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></dd>
+      <dt>DOI</dt><dd><a href="https://doi.org/10.5281/zenodo.23136332" target="_blank" rel="noopener">10.5281/zenodo.23136332</a></dd>
+      <dt>Map</dt><dd>DataMeet India (CC BY 4.0), following the Survey of India outline, simplified</dd>
+    </dl>
+    <div class="dev">
+      <p>For any query, please contact <a href="mailto:iamsantanu21@gmail.com">iamsantanu21@gmail.com</a></p>
+    </div>
   </div>
 </footer>
 
@@ -921,7 +936,6 @@ document.addEventListener('keydown', e => { if ((e.key === 'Enter' || e.key === 
 
 load().then(() => {
   VER = (D.changelog.at(-1) || {}).version || '';
-  $('#foot').innerHTML = `<span>Data: <a href="https://iamsantanu21.github.io/" target="_blank" rel="noopener">Santanu Mondal</a> and <a href="https://www.pondiuni.edu.in/faculy_profiles/dr-t-chithralekha/" target="_blank" rel="noopener">Dr. T. Chithralekha</a>, CC BY 4.0, <a href="https://doi.org/10.5281/zenodo.23136332" target="_blank" rel="noopener">doi.org/10.5281/zenodo.23136332</a>. Map boundaries: DataMeet India (CC BY 4.0), following the Survey of India outline, simplified.</span>`;
   buildFilters(); initMap(); renderNIC(); renderData();
   $('#loading').hidden = true; showTab(location.hash.slice(1) || 'overview');
   render();
