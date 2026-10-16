@@ -1,7 +1,7 @@
 # Blockchain in Indian Government Administration: A Project-Level Dataset (2017–2026)
 
 **Version:** 1.1.0 · **Data as on:** 15 October 2026 (NIC platform data as on 14 October 2026)
-**Authors:** Santanu Mondal (ORCID 0009-0001-6243-1709) and T. Chithralekha, Pondicherry University · **Licence:** CC BY 4.0
+**Authors:** [Santanu Mondal](https://iamsantanu21.github.io/) (ORCID 0009-0001-6243-1709) and T. Chithralekha, Pondicherry University · **Licence:** CC BY 4.0
 **DOI (all versions, always the latest):** [10.5281/zenodo.23136332](https://doi.org/10.5281/zenodo.23136332) · this version 1.1.0: [10.5281/zenodo.23415599](https://doi.org/10.5281/zenodo.23415599) · version 1.0.0: [10.5281/zenodo.23136333](https://doi.org/10.5281/zenodo.23136333)
 
 ## What this is

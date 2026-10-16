@@ -110,9 +110,8 @@ button{font:inherit;color:inherit;cursor:pointer}
   .cue svg{animation:nudge 1.8s ease-in-out 1.2s 3}
   @keyframes nudge{0%,100%{transform:none}50%{transform:translateY(3px)}}
 }
-/* key numbers band, right below the first screen */
-.statband{background:var(--hero);color:var(--hero-text);padding-block:24px 30px;scroll-margin-top:0}
-.statband .wrap{border-top:1px solid var(--hero-line);padding-top:22px}
+/* key numbers: in the end banner */
+.endband .stats{padding-bottom:22px;margin-bottom:4px;border-bottom:1px solid var(--hero-line)}
 .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px 28px}
 @media (max-width:900px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .stat .v{font-family:var(--display);font-weight:500;font-size:1.75rem;line-height:1.1;color:var(--hero-text)}
@@ -275,7 +274,7 @@ dialog#detail::backdrop{background:rgba(14,11,40,.55)}
 .src{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px}
 .badge{font-size:.72rem;font-weight:600;border-radius:4px;padding:1px 6px;white-space:nowrap;background:var(--surface-2);color:var(--text-2)}
 .badge.o{background:color-mix(in srgb, var(--st-impl) 16%, transparent);color:var(--good)}
-.endband{margin-top:48px;background:var(--hero);color:var(--hero-text-2);padding-top:26px;padding-bottom:max(30px, env(safe-area-inset-bottom, 0px));font-size:.84rem;position:relative;overflow:hidden}
+.endband{margin-top:48px;background:var(--hero);color:var(--hero-text-2);padding-top:30px;padding-bottom:max(30px, env(safe-area-inset-bottom, 0px));font-size:.84rem;position:relative;overflow:hidden}
 .endband::before{content:"";position:absolute;inset:0;background:radial-gradient(520px 260px at 85% 0%, rgba(122,98,255,.20), transparent 70%);pointer-events:none}
 .endband .wrap{position:relative;display:grid;gap:16px}
 .endband #foot{max-width:90ch}
@@ -296,9 +295,6 @@ dialog#detail::backdrop{background:rgba(14,11,40,.55)}
     </div>
   </div>
 </header>
-<section class="statband gut" id="details" aria-label="Key numbers">
-  <div class="wrap"><div class="stats" id="stats"></div></div>
-</section>
 
 <div class="bar gut">
   <div class="wrap">
@@ -410,6 +406,7 @@ dialog#detail::backdrop{background:rgba(14,11,40,.55)}
 
 <footer class="endband gut">
   <div class="wrap">
+    <div class="stats" id="stats" aria-label="Key numbers"></div>
     <div class="meta" id="meta"></div>
     <p id="foot"></p>
   </div>
@@ -547,8 +544,8 @@ function initMap() {
 }
 function goDetails() {
   const smooth = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
-  if (F.jur) { showTab('overview'); document.querySelector('.bar').scrollIntoView({behavior: smooth}); }
-  else $('#details').scrollIntoView({behavior: smooth});
+  if (F.jur) showTab('overview');
+  scrollTo({top: document.querySelector('.hero').offsetHeight, behavior: smooth});
 }
 document.addEventListener('keydown', e => { if (e.key === 'Enter' && (e.target === document.body || e.target === document.documentElement) && scrollY < innerHeight * .5) { e.preventDefault(); goDetails(); } });
 function renderMap() {
@@ -922,7 +919,7 @@ load().then(() => {
   const asof = d3.max(D.P, p => p.last_reviewed), nicLast = d3.max(D.nic_snapshots, r => r.snapshot_date);
   VER = (D.changelog.at(-1) || {}).version || '';
   $('#meta').innerHTML = `<a class="doi" href="https://doi.org/10.5281/zenodo.23136332" target="_blank" rel="noopener" title="Covers all versions and always opens the latest"><b>DOI</b> 10.5281/zenodo.23136332</a><span>As on <b>${asOn(asof)}</b></span><span>Dataset <b>v${esc(VER)}</b></span><span><b>${D.sources.length}</b> sources</span><span><b>${D.stage_events.length}</b> dated events</span><span>NIC data as on <b>${asOn(nicLast)}</b></span>`;
-  $('#foot').innerHTML = `<span>Data: Santanu Mondal and T. Chithralekha (Pondicherry University), CC BY 4.0, <a href="https://doi.org/10.5281/zenodo.23136332" target="_blank" rel="noopener">doi.org/10.5281/zenodo.23136332</a>. Map boundaries: DataMeet India (CC BY 4.0), following the Survey of India outline, simplified.</span>`;
+  $('#foot').innerHTML = `<span>Data: <a href="https://iamsantanu21.github.io/" target="_blank" rel="noopener">Santanu Mondal</a> and T. Chithralekha (Pondicherry University), CC BY 4.0, <a href="https://doi.org/10.5281/zenodo.23136332" target="_blank" rel="noopener">doi.org/10.5281/zenodo.23136332</a>. Map boundaries: DataMeet India (CC BY 4.0), following the Survey of India outline, simplified.</span>`;
   buildFilters(); initMap(); renderNIC(); renderData();
   $('#loading').hidden = true; showTab(location.hash.slice(1) || 'overview');
   render();
