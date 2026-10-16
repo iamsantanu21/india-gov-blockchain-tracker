@@ -66,7 +66,38 @@ button{font:inherit;color:inherit;cursor:pointer}
   radial-gradient(700px 480px at 55% 55%, rgba(122,98,255,.22), transparent 70%),
   radial-gradient(420px 300px at 10% 0%, rgba(242,165,22,.10), transparent 70%);pointer-events:none}
 .herogrid{position:relative;display:flex;flex-direction:column;gap:6px;width:100%;height:100%}
-.hero h1{font-family:var(--display);font-weight:700;font-size:clamp(1.6rem, 1rem + 2.2vw, 2.7rem);line-height:1.08;letter-spacing:-.02em;text-align:center}
+/* title: two short lines, top-left, sitting in the empty corner of the map so the map can use the full height */
+/* title: four word-blocks joined by glowing mesh chain links (India → Government ↓ Blockchain → Tracker),
+   top-left in the empty corner of the map so the map keeps the full height */
+.htitle{position:absolute;top:2px;left:0;z-index:2;margin:0;font-family:var(--display);font-weight:600;font-size:clamp(.95rem, .45rem + .85vw, 1.3rem);line-height:1;letter-spacing:-.01em;
+  display:grid;grid-template-columns:repeat(5,auto);align-items:center;justify-items:start;width:max-content;pointer-events:none}
+.htitle .w{position:relative;z-index:1;display:inline-block;padding:.3em .5em .34em;border:1.5px solid rgba(110,214,255,.42);border-radius:.32em;color:var(--hero-text);
+  background:linear-gradient(180deg, rgba(120,210,255,.12), rgba(120,210,255,.03)), var(--hero-2);box-shadow:inset 0 1px 0 rgba(255,255,255,.10), 0 0 18px rgba(80,190,255,.16), 0 8px 22px rgba(8,6,30,.45)}
+.htitle .w1{grid-area:1/1}.htitle .l1{grid-area:1/2}.htitle .w2{grid-area:1/3;justify-self:stretch;text-align:center}
+.htitle .l2{grid-area:2/3;justify-self:center}
+.htitle .w3{grid-area:3/3;justify-self:stretch;text-align:center}.htitle .l3{grid-area:3/4}.htitle .w4{grid-area:3/5}
+.htitle .lnk{position:relative;z-index:2;display:block;color:transparent;font-size:inherit;line-height:0}
+.htitle .lnk.h{width:1.6em;height:2px;background:linear-gradient(90deg, rgba(122,216,255,.95), rgba(122,216,255,.55))}
+.htitle .lnk.v{width:2px;height:1.15em;background:linear-gradient(180deg, rgba(122,216,255,.95), rgba(122,216,255,.55))}
+.htitle .lnk::before,.htitle .lnk::after{content:"";position:absolute;width:7px;height:7px;border-radius:50%;background:var(--hero);border:2px solid #7ad8ff;box-shadow:0 0 8px rgba(122,216,255,.65)}
+.htitle .lnk.h::before{left:-5px;top:50%;transform:translateY(-50%)}
+.htitle .lnk.h::after{right:-5px;top:50%;transform:translateY(-50%)}
+.htitle .lnk.v::before{top:-5px;left:50%;transform:translateX(-50%)}
+.htitle .lnk.v::after{bottom:-5px;left:50%;transform:translateX(-50%)}
+.htitle .pk{position:absolute;width:6px;height:6px;border-radius:50%;background:#eafbff;box-shadow:0 0 6px 2px rgba(122,216,255,.9);opacity:0}
+.htitle .lnk.h .pk{top:50%;left:0;margin:-3px 0 0 -3px}
+.htitle .lnk.v .pk{left:50%;top:0;margin:-3px 0 0 -3px}
+@media (max-width:900px){.htitle{position:static;padding-bottom:8px}}
+@media (prefers-reduced-motion: no-preference){
+  .htitle .w{animation:blockin .45s cubic-bezier(.2,.8,.2,1) both;animation-delay:var(--d)}
+  .htitle .lnk{animation:linkin .35s ease-out both;animation-delay:var(--d)}
+  .htitle .lnk.h .pk{animation:packet-h .6s ease-in-out both;animation-delay:calc(var(--d) + 1.3s)}
+  .htitle .lnk.v .pk{animation:packet-v .5s ease-in-out both;animation-delay:calc(var(--d) + 1.3s)}
+  @keyframes blockin{from{opacity:0;transform:translateY(6px) scale(.96)}to{opacity:1;transform:none}}
+  @keyframes linkin{from{opacity:0}to{opacity:1}}
+  @keyframes packet-h{0%{left:0;opacity:0}15%{opacity:1}85%{opacity:1}100%{left:100%;opacity:0}}
+  @keyframes packet-v{0%{top:0;opacity:0}15%{opacity:1}85%{opacity:1}100%{top:100%;opacity:0}}
+}
 .mapwrap{position:relative;flex:1;min-height:0}
 #heromap{position:absolute;inset:0}
 #heromap svg{width:100%;height:100%;display:block}
@@ -278,7 +309,7 @@ dialog#detail::backdrop{background:rgba(14,11,40,.55)}
 
 <header class="hero gut">
   <div class="wrap herogrid">
-    <h1>India Government Blockchain Tracker</h1>
+    <h1 class="htitle" aria-label="India Government Blockchain Tracker"><span class="w w1" style="--d:0ms">India</span><i class="lnk h l1" style="--d:250ms" aria-hidden="true"> <b class="pk"></b></i><span class="w w2" style="--d:380ms">Government</span><i class="lnk v l2" style="--d:630ms" aria-hidden="true"> <b class="pk"></b></i><span class="w w3" style="--d:760ms">Blockchain</span><i class="lnk h l3" style="--d:1010ms" aria-hidden="true"> <b class="pk"></b></i><span class="w w4" style="--d:1140ms">Tracker</span></h1>
     <div class="mapwrap">
       <div id="heromap" role="img" aria-label="Map of India with all 28 States and 8 Union Territories, and one square per blockchain project, coloured by stage"></div>
     </div>
@@ -568,7 +599,7 @@ function renderMap() {
           <text class="us" x="${U.x - 6}" y="${U.y - 14}" fill="var(--hero-text)" font-size="17" font-weight="600">Union ${un.length}</text>`;
   out += `<g class="ub${F.jur === 'IN' ? ' sel' : ''}">${grid(un, U.x, U.y, uc, false)}</g>`;
   out += `<rect x="${U.x - 8}" y="${U.y - 8}" width="${uc * step - G + 16}" height="${Math.ceil(un.length / uc) * step - G + 16}" rx="8" fill="none" stroke="${F.jur === 'IN' ? 'var(--marigold)' : 'var(--hero-line)'}" stroke-width="${F.jur === 'IN' ? 2 : 1}" data-union style="cursor:pointer;pointer-events:stroke"/>`;
-  $('#heromap').innerHTML = `<svg viewBox="${M ? MAP.vbM : `0 0 ${MAP.W} ${MAP.H}`}" aria-hidden="true"><defs><filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur in="SourceGraphic" stdDeviation="2.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>${out}${marks}${blocks}${labels}</svg>`;
+  $('#heromap').innerHTML = `<svg viewBox="${M ? MAP.vbM : `0 12 ${MAP.W} 596`}" aria-hidden="true"><defs><filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur in="SourceGraphic" stdDeviation="2.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>${out}${marks}${blocks}${labels}</svg>`;
   const j = F.jur && (F.jur === 'IN' ? {name: 'Union and national bodies'} : D.J[F.jur]); const nj = F.jur ? filtered().length : 0;
   $('#cue-t').textContent = F.jur ? `See ${j.name}: ${nj} project${nj === 1 ? '' : 's'}` : 'Explore the data';
 }
