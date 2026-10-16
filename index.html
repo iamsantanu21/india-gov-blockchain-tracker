@@ -380,11 +380,11 @@ dialog#detail::backdrop{background:rgba(14,11,40,.55)}
   </section>
 
   <section class="tabpanel" id="data" role="tabpanel" aria-labelledby="tab-data" hidden>
-    <div class="g2">
-      <div class="card"><h3>How strong is the evidence?</h3><p class="note" style="margin-bottom:10px">A project's score is the score of its strongest source, capped when a claim is unverified or rests only on vendor or slide-deck material.</p><div class="waffle" id="evwaffle"></div><p class="note" id="ev-note" style="margin-top:12px"></p></div>
+    <div class="card"><h3>How strong is the evidence?</h3><p class="note" style="margin-bottom:10px">A project's score is the score of its strongest source, capped when a claim is unverified or rests only on vendor or slide-deck material.</p><div class="waffle" id="evwaffle"></div><p class="note" id="ev-note" style="margin-top:12px"></p></div>
+    <!-- Coding consistency check (Cohen's kappa): hidden for now. To show it again, move this card back next to the evidence card.
       <div class="card"><h3>Coding consistency check</h3><p class="note" style="margin-bottom:10px">Cohen's kappa on a 30% random sample (35 rows). Both codings were made with the same AI assistant, so this checks consistency; it is not an independent inter-rater test.</p>
         <table class="kt" id="kappa"><thead><tr><th>Variable</th><th>n</th><th>Agreement</th><th>Kappa</th></tr></thead><tbody></tbody></table></div>
-    </div>
+    -->
     <div class="head"><h2>All 36 States and UTs were searched</h2><p>Dashed tiles had no project matching the current filters. Select a tile to filter by that place.</p></div>
     <div class="tiles" id="tiles"></div>
     <div class="g21">
@@ -784,7 +784,7 @@ function renderEvidence(P) {
     return `<div class="wrow" style="grid-template-columns:170px minmax(0,1fr)"><div class="lab">${evBoxes(k)} <b style="display:inline;font-size:1rem;margin-left:6px">${ps.length}</b><div class="def">${esc(labels[k] || '')}</div></div><div>${blocksHTML(ps)}</div></div>`; }).join('');
   const off = P.filter(p => p.evidence_score >= 4).length;
   $('#ev-note').textContent = `${off} of ${P.length} matching projects (${pct(off, P.length)}) rest on an official source. Squares keep their stage colour. Use the evidence filter to test any finding on official-source projects only.`;
-  $('#kappa tbody').innerHTML = D.reliability.filter(r => r.cohen_s_kappa && !isNaN(+r.cohen_s_kappa)).map(r => `<tr><td>${esc(r.variable)}</td><td class="num">${esc(r.n)}</td><td class="num">${(+r.observed_agreement * 100).toFixed(1)}%</td><td class="num"><b>${(+r.cohen_s_kappa).toFixed(2)}</b></td></tr>`).join('');
+  if ($('#kappa tbody')) $('#kappa tbody').innerHTML = D.reliability.filter(r => r.cohen_s_kappa && !isNaN(+r.cohen_s_kappa)).map(r => `<tr><td>${esc(r.variable)}</td><td class="num">${esc(r.n)}</td><td class="num">${(+r.observed_agreement * 100).toFixed(1)}%</td><td class="num"><b>${(+r.cohen_s_kappa).toFixed(2)}</b></td></tr>`).join('');
 }
 function renderCoverage() {
   const P = filtered(true);
