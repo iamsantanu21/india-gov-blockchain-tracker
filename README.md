@@ -32,4 +32,4 @@ Mondal, S., & Chithralekha, T. (2026). *Blockchain in Indian Government Administ
 
 To cite version 1.1.0 exactly, use https://doi.org/10.5281/zenodo.23415599.
 
-Map boundaries: DataMeet India community (CC BY 4.0). Prepared with AI assistance (Claude, Anthropic) and reviewed by the authors.
+Map boundaries: DataMeet India community (CC BY 4.0).

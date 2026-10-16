@@ -27,8 +27,6 @@ Version 1.1.0 restructures the data as a Frictionless Data Package: 17 linked CS
 
 Also included: a validation and build tool (Python), SQLite and Excel editions, an offline copy of the dashboard, methods, a codebook, a coding-consistency check (Cohen's kappa), excluded items, draft RTI applications and a changelog listing every change from version 1.0.0.
 
-Prepared with AI assistance (Claude, Anthropic) and reviewed by the authors.
-
 ## After publishing
 
 - The new version gets its **own new DOI**. The v1 DOI (10.5281/zenodo.23136333) keeps working and its page shows "a newer version is available".

@@ -51,7 +51,7 @@ lines = [(META['title'], 14, True), (f'Version {META["version"]} · created {MET
  ('Reliability, Your Coding Sheet – consistency check (kappa) and a blind sheet for a human second coder (kappa calculates automatically)', 10, False),
  ('RTI drafts, Policies, Literature, Context stats, Excluded, Changelog – supporting tables', 10, False), ('', 10, False),
  ('The CSV files and datapackage.json are the master copy. Edit them, run tools/build.py (validation) and tools/make_workbook.py to rebuild this workbook.', 10, False),
- ('Prepared with AI assistance (Claude, Anthropic); reviewed by the authors. "Unclear" means no public update was found, not that a project failed.', 10, False)]
+ ('"Unclear" means no public update was found, not that a project failed.', 10, False)]
 for i, (t, sz, b) in enumerate(lines, 1):
     c = ws.cell(row=i, column=1, value=t); c.font = Font(name=F, size=sz, bold=b); c.alignment = Alignment(wrap_text=True, vertical='top')
 ws.column_dimensions['A'].width = 130
